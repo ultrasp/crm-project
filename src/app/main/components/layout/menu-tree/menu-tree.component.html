@@ -1,0 +1,14 @@
+<cdk-tree [dataSource]="dataSource" [treeControl]="treeControl">
+    <cdk-tree-node *cdkTreeNodeDef="let node" cdkTreeNodePadding class="example-tree-node">
+        <button mat-icon-button disabled></button>
+        <a mat-list-item [routerLink]="node.url">{{node.caption}}</a>
+    </cdk-tree-node>
+    <cdk-tree-node *cdkTreeNodeDef="let node; when: hasChild" cdkTreeNodePadding class="example-tree-node">
+        <button mat-icon-button [attr.aria-label]="'toggle ' + node.caption" cdkTreeNodeToggle>
+            <mat-icon class="mat-icon-rtl-mirror">
+                {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+        </button>
+        {{node.caption}}
+    </cdk-tree-node>
+</cdk-tree>

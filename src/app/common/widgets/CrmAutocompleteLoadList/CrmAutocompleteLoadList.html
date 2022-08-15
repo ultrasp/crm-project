@@ -1,0 +1,5 @@
+<div style="position: relative">
+  <crm-autocomplete [labelSize]="labelSize" [label]="label" [selectUIType]="selectUIType" [isRequired]="isRequired" [options]="_options" [haslabel]="haslabel" [invalidText]="invalidText" (selectionChanged)="selectChanged($event)" [value]="value" [showError]="showError"
+                    (selectToggled)="selectToggled($event)" [isDisabled]="isDisabled"></crm-autocomplete>
+  <crm-button [buttonType]="'button'" style="position: absolute; top: -3px; right: 0" [icon]="item.icon" *ngFor="let item of customButtons" (onClick)="customButtonClicked.emit(item.key)"></crm-button>
+</div>

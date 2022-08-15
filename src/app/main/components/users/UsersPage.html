@@ -1,0 +1,42 @@
+<filter-table-wrapper>
+  <div filter>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-3">
+          <crm-branch #filialList [label]="'GENERAL.ORGANIZATION' | translate" formControlName="branchId"
+            [isRequired]="true"></crm-branch>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'GENERAL.EMPLOYEE'|translate" formControlName="emp"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'GENERAL.LOGIN' | translate" formControlName="login"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'GENERAL.EMPLOYEE_ID' | translate" formControlName="empCode"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-load-list [label]="'GENERAL.ACCESS' |translate" [isRequired]="true" [requestName]="'role'"
+            [autoLoad]="true" formControlName="roleId"></crm-load-list>
+        </div>
+        <div class="col-sm-9">
+
+          <div class="btn--container-right">
+            <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+              (onClick)="getUserList()">
+            </crm-button>
+            <div class="inline" style="margin-left: 10px">
+              <crm-button [label]="'EMPLOYEE.ADD_EXTERNAL_EMPLOYEE' | translate" [type]="'text'" (onClick)="openForm(getExternalType())"></crm-button>
+            </div>
+            <div class="inline" style="transform: translate(10px, 0px);">
+              <crm-button [label]="'EMPLOYEE.ADD_INTERNAL_EMPLOYEE' | translate" [type]="'text'" (onClick)="openForm(getInternalType())"></crm-button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <crm-ag-gridbean #dataGrid [columnDefs]="refTablecolumnDefs" [request]="requestUsers" [pageSize]="pageSize" table>
+  </crm-ag-gridbean>
+</filter-table-wrapper>

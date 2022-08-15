@@ -1,0 +1,16 @@
+<div class="container-fluid header-secondary" id="breadcrumb">
+    <div class="breadcrumb-container">
+        <ul class="breadcrumb">
+            <li><a routerLink="/" class="breadcrum-element">{{'MENU.HOME_PAGE' | translate}} / </a></li>
+            <li *ngFor="let breadcrumb of items;index as i;">
+                <a [routerLink]="breadcrumb.url" class="breadcrum-element">{{breadcrumb.title}} 
+                    <span *ngIf="items.length != i + 1">/</span> 
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="settings">
+        <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon icondark" (click)="changeTheme('dark')">brightness_2</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon iconlight" (click)="changeTheme('light')">wb_sunny</mat-icon>
+    </div>
+</div>

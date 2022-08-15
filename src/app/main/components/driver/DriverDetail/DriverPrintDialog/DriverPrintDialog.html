@@ -1,0 +1,817 @@
+<div class="modal-header"  cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".title">
+  <crm-button [type]="'text'" [label]="'GENERAL.SEND_TO_PRINT' | translate" (onClick)="gotoPrint()"></crm-button>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()" style="cursor: pointer;">close</mat-icon>
+</div>
+<mat-dialog-content class="mat-typography">
+<div class="driver-detail-dialog__content" id="printDocument">
+  <table border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+      <tr>
+        <td width="42%" colspan="14" align="center">
+          {{pageItem.pageUniqueNumber}}
+        </td>
+        <td width="29%" colspan="10" align="center">
+          {{pageItem.printTime}}
+        </td>
+        <td width="29%" colspan="9" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.UCHYOT_MVD' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr style="height: 5px">
+        <td width="100%" colspan="33" style="height: 3px;" style="border-right: none;">
+        </td>
+      </tr>
+      <tr>
+        <td width="20%" colspan="4" rowspan="7" class="avatar">
+          <div style="width: 200px; height: 100%">
+            <crm-owner-image [width]="'200px'" class="avatar-image" #avatar
+                             [defaultSrc]="pageItem.avatarImage" [ownerType]="ownerType" [ownerId]="id"
+                             [imgType]="driverAvatarType"></crm-owner-image>
+          </div>
+        </td>
+        <td width="60%" colspan="25" align="center" class="application-title" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.APPLICATION_FOR_DRIVING_CERTIFICATE' | translate}}
+          </strong>
+        </td>
+        <td width="20%" colspan="5" rowspan="5">
+          <div style="display:none">
+            <qrcode [qrdata]="pageItem.getQrData()" [errorCorrectionLevel]="'M'" (qrCodeURL)="onChangeURL($event)"></qrcode>
+          </div>
+          <img [src]="qrCodeDownloadLink" />
+        </td>
+      </tr>
+      <tr>
+        <td width="14%" colspan="6" align="right" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.DIVIDE' | translate}}
+          </strong>
+        </td>
+        <td width="46%" colspan="19">
+          {{'GENERAL.PRINT_COMPANY_NAME' |translate}}
+        </td>
+      </tr>
+      <tr>
+        <td width="14%" colspan="6" align="right" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.USER' | translate}}
+          </strong>
+        </td>
+        <td width="46%" colspan="19">
+          {{ pageItem.userFullName }}
+        </td>
+      </tr>
+      <tr>
+        <td width="14%" colspan="6" align="right" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.THE_REASON' | translate}}
+          </strong>
+        </td>
+        <td width="16%" colspan="4">
+          {{pageItem.certReason}}
+        </td>
+        <td width="16%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.DATE_ENTERED' | translate}}
+          </strong>
+        </td>
+        <td width="14%" colspan="9">
+          {{ pageItem.editDate }}
+        </td>
+      </tr>
+      <tr>
+        <td width="14%" colspan="6" align="right" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.DRIVING_SCHOOL' | translate}}
+          </strong>
+        </td>
+        <td width="46%" colspan="19">
+          {{pageItem.drivingSchool}}
+        </td>
+      </tr>
+      <tr>
+        <td width="14%" colspan="6" align="right" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.PHONE' | translate}}
+          </strong>
+        </td>
+        <td width="16%" colspan="4">
+          {{pageItem.phone}}
+        </td>
+        <td width="27%" colspan="13" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.PASSED_THE_EXAM_IN_SEVERAL_ATTEMPTS' | translate}}
+          </strong>
+        </td>
+        <td width="3%" colspan="2">
+          {{pageItem.attendExamCount}}
+        </td>
+        <td width="20%" colspan="5" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.PERSONAL_NUMBER' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="14%" colspan="6" align="right" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.INFORMATION' | translate}}
+          </strong>
+        </td>
+        <td width="46%" colspan="19">
+          {{pageItem.certInfo}}
+        </td>
+        <td width="20%" colspan="5" align="center" style="border-bottom: none;">
+          {{pageItem.kod}}
+        </td>
+      </tr>
+      <tr>
+        <td width="34%" colspan="12" align="right" style="border-top: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.WORKPLACE' | translate}}
+          </strong>
+        </td>
+        <td width="66%" colspan="21" style="border-top: none;">
+          {{pageItem.workPlace}}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center">
+        </td>
+        <td width="27%" colspan="10" align="center" class="label">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.SURNAME' | translate}}
+          </strong>
+        </td>
+        <td width="21%" colspan="5" align="center" class="label">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.NAME' | translate}}
+          </strong>
+        </td>
+        <td width="25%" colspan="11" align="center" class="label">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.SHARIFI' | translate}}
+          </strong>
+        </td>
+        <td width="20%" colspan="5" align="center" class="label">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.DATE_OF_BIRTH' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.KRILL' | translate}}
+          </strong>
+        </td>
+        <td width="27%" colspan="10">
+          {{pageItem.rlastName}}
+        </td>
+        <td width="21%" colspan="5">
+          {{pageItem.rfirstName}}
+        </td>
+        <td width="25%" colspan="11">
+          {{pageItem.rmiddleName}}
+        </td>
+        <td width="20%" colspan="5">
+          {{pageItem.bornDate}}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.LOTIN' | translate}}
+          </strong>
+        </td>
+        <td width="27%" colspan="10">
+          {{pageItem.lastName }}
+        </td>
+        <td width="21%" colspan="5">
+          {{pageItem.firstName}}
+        </td>
+        <td width="25%" colspan="11">
+          {{pageItem.middleName}}
+        </td>
+        <td width="20%" colspan="5">
+          {{ pageItem.gender}}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.INGLIZ' | translate}}
+          </strong>
+        </td>
+        <td width="27%" colspan="10">
+          {{pageItem.ufirstName}}
+        </td>
+        <td width="21%" colspan="5">
+          {{pageItem.ulastName}}
+        </td>
+        <td width="10%" colspan="4" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.CITIZENSHIP' | translate}}
+          </strong>
+        </td>
+        <td width="35%" colspan="12">
+          {{ pageItem.citizenship }}
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="33" align="center" class="label">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.INFORMATION_ABOUT_THE_MAIN_DOCUMENT' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="11%" colspan="3" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.TURI' | translate}}
+          </strong>
+        </td>
+        <td width="46%" colspan="15">
+          {{ pageItem.docType}}
+        </td>
+        <td width="12%" colspan="5" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.SERIES' | translate}}
+          </strong>
+        </td>
+        <td width="10%" colspan="5">
+          {{ pageItem.docSeria}}
+        </td>
+        <td width="4%" align="center">
+          <strong>№</strong>
+        </td>
+        <td width="16%" colspan="4">
+          {{ pageItem.docNumber}}
+        </td>
+      </tr>
+      <tr>
+        <td width="11%" colspan="3" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.GIVEN' | translate}}
+          </strong>
+        </td>
+        <td width="46%" colspan="15">
+          {{ pageItem.docGivenBy }}
+        </td>
+        <td width="12%" colspan="5" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.DATE_OF_ISSUE' | translate}}
+          </strong>
+        </td>
+        <td width="14%" colspan="6">
+          {{ pageItem.docGivenDate }}
+        </td>
+        <td width="3%" align="center">
+          ~
+        </td>
+        <td width="13%" colspan="3">
+          {{ pageItem.docIssueDate }}
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="33" align="center" class="label">
+          <strong>{{'DRIVER_DETAIL_PRINT.PLACE_OF_BIRTH' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="26%" colspan="9" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.COUNTRY_OF_BIRTH' | translate}}
+          </strong>
+        </td>
+        <td width="24%" colspan="6" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.PROVINCE' | translate}}
+          </strong>
+        </td>
+        <td width="20%" colspan="8" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.TUMANI' | translate}}
+          </strong>
+        </td>
+        <td width="30%" colspan="10" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.PLACE_OF_BIRTH_ON_THE_DOCUMENT' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="26%" colspan="9">
+          {{pageItem.bornCountry}}
+        </td>
+        <td width="24%" colspan="6">
+          {{pageItem.bornRegion}}
+        </td>
+        <td width="20%" colspan="8">
+          {{pageItem.bornCity}}
+        </td>
+        <td width="30%" colspan="10">
+          {{pageItem.bornPlace}}
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" colspan="15" align="center" class="label">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.CATEGORIES' | translate}}
+          </strong>
+        </td>
+        <td width="50%" colspan="18" align="center" class="label">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.RESIDENCE_ADDRES' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center" class="category">
+          <strong>A</strong>
+        </td>
+        <td width="4%" align="center">
+          <span *ngIf="hasCategory('A')">
+            &#10004;
+          </span>
+        </td>
+        <td width="12%" colspan="5">
+          <span *ngIf="hasCategory('A')">
+            {{certDates.get('A') || pageItem.certGivenDate}}
+          </span>
+        </td>
+        <td width="11%" colspan="3">
+          <span *ngIf="hasCategory('A')">
+            {{pageItem.certIssueDate}}
+          </span>
+        </td>
+        <td width="16%" colspan="4">
+        </td>
+        <td width="15%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.COUNTRY' | translate}}
+          </strong>
+        </td>
+        <td width="35%" colspan="12">
+          {{pageItem.citizenship}}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center" class="category">
+          <strong>B</strong>
+        </td>
+        <td width="4%" align="center">
+          <span *ngIf="hasCategory('B')">
+            &#10004;
+          </span>
+        </td>
+        <td width="12%" colspan="5">
+          <span *ngIf="hasCategory('B')">
+            {{certDates.get('B') || pageItem.certGivenDate}}
+          </span>
+
+        </td>
+        <td width="11%" colspan="3">
+          <span *ngIf="hasCategory('B')">
+            {{pageItem.certIssueDate}}
+          </span>
+        </td>
+        <td width="16%" colspan="4">
+        </td>
+        <td width="15%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.PROVINCE' | translate}}
+          </strong>
+        </td>
+        <td width="35%" colspan="12">
+          {{ pageItem.addrRegion }}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center" class="category">
+          <strong>C</strong>
+        </td>
+        <td width="4%" align="center">
+          <span *ngIf="hasCategory('C')">
+            &#10004;
+          </span>
+
+        </td>
+        <td width="12%" colspan="5">
+          <span *ngIf="hasCategory('C')">
+            {{certDates.get('C') || pageItem.certGivenDate}}
+          </span>
+
+        </td>
+        <td width="11%" colspan="3">
+          <span *ngIf="hasCategory('C')">
+            {{pageItem.certIssueDate}}
+          </span>
+        </td>
+        <td width="16%" colspan="4">
+        </td>
+        <td width="15%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.TUMAN' | translate}}
+          </strong>
+        </td>
+        <td width="35%" colspan="12">
+          {{ pageItem.addrCity }}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center" class="category">
+          <strong>D</strong>
+        </td>
+        <td width="4%" align="center">
+          <span *ngIf="hasCategory('D')">
+            &#10004;
+          </span>
+
+        </td>
+        <td width="12%" colspan="5">
+          <span *ngIf="hasCategory('D')">
+            {{certDates.get('D') || pageItem.certGivenDate}}
+          </span>
+
+        </td>
+        <td width="11%" colspan="3">
+          <span *ngIf="hasCategory('D')">
+            {{pageItem.certIssueDate}}
+          </span>
+
+        </td>
+        <td width="16%" colspan="4">
+        </td>
+        <td width="15%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.RESIDENTIAL' | translate}}
+          </strong>
+        </td>
+        <td width="35%" colspan="12">
+          {{ pageItem.addrMassiv }}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center" class="category">
+          <strong>BE</strong>
+        </td>
+        <td width="4%" align="center">
+          <span *ngIf="hasCategory('BE')">
+            &#10004;
+          </span>
+
+        </td>
+        <td width="12%" colspan="5">
+          <span *ngIf="hasCategory('BE')">
+            {{certDates.get('BE') || pageItem.certGivenDate}}
+          </span>
+
+        </td>
+        <td width="11%" colspan="3">
+          <span *ngIf="hasCategory('BE')">
+            {{pageItem.certIssueDate}}
+          </span>
+
+        </td>
+        <td width="16%" colspan="4">
+        </td>
+        <td width="15%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.STREET' | translate}}
+          </strong>
+        </td>
+        <td width="35%" colspan="12">
+          {{ pageItem.addrStreet }}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center" class="category">
+          <strong>CE</strong>
+        </td>
+        <td width="4%" align="center">
+          <span *ngIf="hasCategory('CE')">
+            &#10004;
+          </span>
+        </td>
+        <td width="12%" colspan="5">
+          <span *ngIf="hasCategory('CE')">
+            {{certDates.get('CE') || pageItem.certGivenDate}}
+          </span>
+
+        </td>
+        <td width="11%" colspan="3">
+          <span *ngIf="hasCategory('CE')">
+            {{pageItem.certIssueDate}}
+          </span>
+        </td>
+        <td width="16%" colspan="4">
+        </td>
+        <td width="15%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.ADDRESS' | translate}}
+          </strong>
+        </td>
+        <td width="35%" colspan="12">
+          {{ pageItem.addrText }}
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" colspan="2" align="center" class="category">
+          <strong>DE</strong>
+        </td>
+        <td width="4%" align="center">
+          <span *ngIf="hasCategory('DE')">
+            &#10004;
+          </span>
+
+        </td>
+        <td width="12%" colspan="5">
+          <span *ngIf="hasCategory('DE')">
+            {{certDates.get('DE') || pageItem.certGivenDate}}
+          </span>
+        </td>
+        <td width="11%" colspan="3">
+          <span *ngIf="hasCategory('DE')">
+            {{pageItem.certIssueDate}}
+            </span>
+
+        </td>
+        <td width="16%" colspan="4">
+        </td>
+        <td width="15%" colspan="6" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.DOM' | translate}}
+          </strong>
+        </td>
+        <td width="5%" colspan="2">
+          {{ pageItem.addrHouse}}
+        </td>
+        <td width="9%" colspan="4" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.CORPUS' | translate}}
+          </strong>
+        </td>
+        <td width="8%" colspan="3">
+          {{ pageItem.addrBlock}}
+        </td>
+        <td width="5%" colspan="2" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.KV' | translate}}
+          </strong>
+        </td>
+        <td width="8%">
+          {{ pageItem.addrFlat}}
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="33" class="empty-row">
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" colspan="15" align="center" class="label" style="border-right: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.PREVIOUS_CERTIFICATE_AND_COUPON' | translate}}
+          </strong>
+        </td>
+        <td width="50%" colspan="18" align="center" class="label" style="border-left: none;">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.ISSUED_DRIVER' | translate}}
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="12%" colspan="4" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.CERTIFICATE' | translate}}
+          </strong>
+        </td>
+        <td width="4%">
+          {{ pageItem.unknownField }}
+        </td>
+        <td width="4%" align="center">
+          <strong>№</strong>
+        </td>
+        <td width="7%" colspan="4">
+          {{ pageItem.prevCertNum  }}
+        </td>
+        <td width="12%" colspan="3" align="right">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.GIVEN' | translate}}
+          </strong>
+        </td>
+        <td width="10%" colspan="2">
+          {{ pageItem.prevCertGivenDate }}
+        </td>
+        <td width="8%" colspan="4" align="center">
+          {{ pageItem.certSeria }}
+        </td>
+        <td width="12%" colspan="4" align="center">
+          {{ pageItem.certNumber }}
+        </td>
+        <td width="19%" colspan="8" align="right">
+          <strong>{{'DRIVER_DETAIL_PRINT.DATE_OF_ISSUE' | translate}}
+          </strong>
+        </td>
+        <td width="12%" colspan="2">
+          {{ pageItem.certGivenDate }}
+        </td>
+      </tr>
+      <tr>
+        <td width="12%" colspan="4" align="right">
+          <strong>{{'DRIVER_DETAIL_PRINT.TALON' | translate}}
+          </strong>
+        </td>
+        <td width="4%">
+        </td>
+        <td width="4%" align="center">
+          <strong>№</strong>
+        </td>
+        <td width="7%" colspan="4">
+        </td>
+        <td width="12%" colspan="3" align="right">
+          <strong>{{'DRIVER_DETAIL_PRINT.ACCOUNT' | translate}}
+          </strong>
+          <strong>№</strong>
+        </td>
+        <td width="10%" colspan="2">
+        </td>
+        <td width="8%" colspan="4">
+        </td>
+        <td width="12%" colspan="4">
+        </td>
+        <td width="19%" colspan="8" align="right">
+          <strong>{{'DRIVER_DETAIL_PRINT.VALIDITY_PERIOD' | translate}}
+            <!-- Amal muddati -->
+          </strong>
+        </td>
+        <td width="12%" colspan="2">
+          {{ pageItem.certIssueDate }}
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="33" align="center" class="label checked">
+          {{'DRIVER_DETAIL_PRINT.I_CHECKED_AND_CONFIRMED_INFORMATION' | translate}}
+          <!--Ma’lumotlarni tekshirdim va tasdiqlayman -->
+        </td>
+      </tr>
+      <tr>
+        <td width="50%" colspan="15" align="center">
+          <crm-owner-image  [height]="60" #signature class="avatar-image" [defaultSrc]="pageItem.signature" [ownerType]="ownerType" [ownerId]="id" [imgType]="driverSignType"></crm-owner-image>
+        </td>
+        <td width="5%" colspan="2" align="center">
+          &#10004;
+        </td>
+        <td width="45%" colspan="16">
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="33" class="empty-row">
+        </td>
+      </tr>
+      <tr>
+        <td width="100%" colspan="33" align="center" class="checker">
+          <strong>{{'DRIVER_DETAIL_PRINT.INSPECTORS' | translate}}
+            <!-- Tekshiruvchilar -->
+          </strong>
+        </td>
+      </tr>
+      <tr>
+        <td width="4%" align="center">
+          <strong>№</strong>
+        </td>
+        <td width="18%" colspan="6" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.TYPE_OF_INSPECTION' | translate}}
+            <!-- Tekshiruv turi -->
+          </strong>
+        </td>
+        <td width="18%" colspan="6" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.INSPECTION_STATUS' | translate}}
+            <!-- Tekshiruv holati -->
+          </strong>
+        </td>
+        <td width="22%" colspan="7" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.ADDITIONAL_INFORMATION' | translate}}
+            <!-- Qo’shimcha ma’lumotlar -->
+          </strong>
+        </td>
+        <td width="14%" colspan="5" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.BEGINNING' | translate}}
+            <!-- Boshlanishi -->
+          </strong>
+        </td>
+        <td width="12%" colspan="5" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.TUGASHI' | translate}}
+            <!-- Tugashi -->
+          </strong>
+        </td>
+        <td width="13%" colspan="3" align="center">
+          <strong>
+            {{'DRIVER_DETAIL_PRINT.TO_CONFIRM' | translate}}
+            <!-- Tasdiqlagan -->
+          </strong>
+        </td>
+      </tr>
+      <tr *ngFor="let check of pageItem.driverChecks">
+        <td width="4%">
+          {{check.id || empty}}
+        </td>
+        <td width="18%" colspan="6">
+          {{check.type_id || empty}}
+        </td>
+        <td width="18%" colspan="6">
+          {{check.result_id || empty}}
+        </td>
+        <td width="22%" colspan="7">
+          {{check.note || empty}}
+        </td>
+        <td width="14%" colspan="5">
+          {{check.start_date || empty}}
+        </td>
+        <td width="12%" colspan="5">
+          {{check.end_date || empty}}
+        </td>
+        <td width="13%" colspan="3">
+          <span *ngIf="check.signed">&#10004;</span>
+        </td>
+      </tr>
+      <tr height="0">
+        <td width="4%">
+        </td>
+        <td width="3%">
+        </td>
+        <td width="4%">
+        </td>
+        <td width="4%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="4%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="3%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="7%">
+        </td>
+        <td width="0%">
+        </td>
+        <td width="5%">
+        </td>
+        <td width="3%">
+        </td>
+        <td width="8%">
+        </td>
+        <td width="0%">
+        </td>
+        <td width="5%">
+        </td>
+        <td width="2%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="3%">
+        </td>
+        <td width="4%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="3%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="4%">
+        </td>
+        <td width="3%">
+        </td>
+        <td width="2%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="4%">
+        </td>
+        <td width="3%">
+        </td>
+        <td width="1%">
+        </td>
+        <td width="4%">
+        </td>
+        <td width="8%">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</mat-dialog-content>

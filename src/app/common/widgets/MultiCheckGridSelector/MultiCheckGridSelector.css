@@ -1,0 +1,22 @@
+.nodeName{
+  cursor: pointer;
+}
+.nodeName.selected{
+  background-color: #c2ddf5;
+}
+
+.header{
+  background: var(--color-primary);
+}
+.header h3{
+  margin: 0;
+  font-weight: 600;
+  padding: 1px 8px;
+  font-size: 20px;
+}
+table {
+  border-spacing: 0px;
+}
+table thead td{
+  border: 1px solid black;
+}

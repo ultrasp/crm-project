@@ -1,0 +1,10 @@
+<div style="text-align: center;">
+    <h1>{{'HOME_LINKS.SELECT_PRE_SYSTEM' | translate}}</h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let item of homeComponentFakeData; index as i">
+            <quick-link-item [title]="item.title" [subtitle]="item.subtitle || ''" [icon]="item.icon" [urlLink]="item.link"></quick-link-item>
+        </div>
+    </div>
+</div>

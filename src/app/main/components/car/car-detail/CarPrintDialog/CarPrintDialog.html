@@ -1,0 +1,510 @@
+<div class="modal-header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".title">
+  <crm-button [type]="'text'" [label]="'GENERAL.SEND_TO_PRINT' | translate" (onClick)="gotoPrint()"></crm-button>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()"
+            style="cursor: pointer;">close
+  </mat-icon>
+</div>
+<mat-dialog-content class="mat-typography">
+  <div class="driver-detail-dialog__content" id="printDocument">
+    <div style="padding: 30px">
+      <div>
+      <div class="row">
+        <div align="center" style="padding-left: 5%; padding-right: 5%; font-size: 18px; margin-left: 50%; width: 50%">
+          {{"CAR_PRINT_DIALOG.TO_INSTRUCTION_ON_PROCEDURE..." | translate}}
+          <div>{{printData.isLegal() ? '4 - ' : '3 - ' }}{{"CAR_PRINT_DIALOG.APPLICATION" | translate}}</div>
+        </div>
+      </div>
+      </div>
+      <div class="row" style="margin-top: 20px">
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="center" width="40%">
+                <strong>{{(printData.isLegal() ? ("CAR_PRINT_DIALOG.VEHICLE_OWNED_BY_A_LEGAL_VEHICLE_ENTITY_ACCOUNT" | translate) :
+                  ("CAR_PRINT_DIALOG.VEHICLE_OWNED_BY_A_INDIVIDUAL_VEHICLE_ENTITY_ACCOUNT" | translate))}}</strong>
+              </td>
+              <td align="center" width="30%">
+                {{"CAR_PRINT_DIALOG.REGISTRATION_NUMBER_ICON" | translate}}
+              </td>
+              <td align="center" width="30%">
+                {{printData.govNumber}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px">
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td colspan="3" align="center">
+                <strong>
+                  {{(printData.isLegal() ? ("CAR_PRINT_DIALOG.STATE_MOTOR_VEHICLE_REGISTRATION_FORM" | translate) :
+                  ("CAR_PRINT_DIALOG.PERSONAL_MOTOR_VEHICLE_RECORD_SHEET" | translate))}}
+                </strong>
+              </td>
+              <td colspan="3" align="center">
+                <strong>
+                  {{(printData.isLegal() ? ("CAR_PRINT_DIALOG.INFORMATION_ABOUT_THE_OWNER_OF_THE_VEHICLE" | translate) :
+                  ("CAR_PRINT_DIALOG.INFORMATION_ABOUT_THE_OWNER_OF_THE_VEHICLE" | translate))}}
+                </strong>
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                  {{'CAR.TEXNO_PROCESS' | translate}}
+                </strong>
+              </td>
+              <td width="2%" align="left">
+                1
+              </td>
+              <td width="23%" align="left">
+                {{printData.reason}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ ( printData.isLegal() ? 'GENERAL.ORGANIZATION_TITLE' : 'GENERAL.LASTNAME') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                12
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? printData.companyName : printData.personLastName}}
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.REGISTRATION_TIME' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                3
+              </td>
+              <td width="23%" align="left">
+                {{printData.registerTime}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ ( printData.isLegal() ? 'GENERAL.TYPE' : 'GENERAL.NAME') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                13
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? printData.companyType : printData.personFirstName}}
+
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.GOV_NUMBER' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                2
+              </td>
+              <td width="23%" align="left">
+                {{printData.govNumber}}
+              </td>
+              <ng-container *ngIf="!printData.isLegal()">
+              <td width="25%">
+                <strong>
+                {{'GENERAL.MIDDLENAME' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                14
+              </td>
+              <td width="23%" align="left">
+                {{printData.personMiddleName}}
+              </td>
+              </ng-container>
+              <ng-container *ngIf="printData.isLegal()">
+                <td colspan="3" align="center">
+                  <strong>
+                  {{ 'CAR_PRINT_DIALOG.BUSINESS_ADDRESS' | translate }}
+                </strong>
+                </td>
+              </ng-container>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.PREVIOUS_GOV_NUMBER' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                4
+              </td>
+              <td width="23%" align="left">
+                {{printData.previousGovNumber}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ (printData.isLegal() ? 'ADDRESS.COUNTRY' : 'GENERAL.BIRTH_YEAR') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? 17 : 15}}
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? printData.country : printData.birthYear}}
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.MODEL' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                5
+              </td>
+              <td width="23%" align="left">
+                {{printData.carModel}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ (printData.isLegal() ? 'ADDRESS.REGION' : 'GENERAL.PASPORT_SERIA') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? 18 : 16}}
+
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? printData.region : printData.pasportSeria}}
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.TYPE' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                5a
+              </td>
+              <td width="23%" align="left">
+                {{printData.carType}}
+              </td>
+              <ng-container *ngIf="!printData.isLegal()">
+                <td colspan="3" align="center">
+                  <strong>{{ 'DRIVER.ADDRESS' | translate }}</strong>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="printData.isLegal()">
+              <td width="25%">
+                <strong>{{ 'ADDRESS.CITY' | translate }}</strong>
+              </td>
+              <td width="2%" align="left">
+                19
+              </td>
+              <td width="23%" align="left">
+                {{printData.city}}
+              </td>
+              </ng-container>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.MADE_PLACE' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                5б
+              </td>
+              <td width="23%" align="left">
+                {{printData.madePlace | translate}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ ( printData.isLegal() ? 'ADDRESS.STREET' : 'ADDRESS.CITY') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? '20' : 18 }}
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? printData.street : printData.city}}
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.YEAR' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                6
+              </td>
+              <td width="23%" align="left">
+                {{printData.year}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ ( printData.isLegal() ? 'ADDRESS.HOUSE' : 'ADDRESS.STREET') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? '21' : '19a' | translate}}
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? printData.house : printData.street}}
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.ENGINE_NUMBER' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                7
+              </td>
+              <td width="23%" align="left">
+                {{printData.engineNumber}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ ( printData.isLegal() ? 'ADDRESS.FLAT' : 'ADDRESS.HOUSE') | translate }}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? '22' : '19a' | translate}}
+              </td>
+              <td width="23%" align="left">
+                {{ printData.isLegal() ? printData.flat : printData.house}}
+              </td>
+            </tr>            
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.CHASSIS_NUMBER' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                8
+              </td>
+              <td width="23%" align="left">
+                {{printData.chassisNumber}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ (printData.isLegal() ? 'GENERAL.GARAGE' : 'ADDRESS.FLAT') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? '23' : '21' | translate}}
+
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? printData.garajAddress : printData.flat}}
+              </td>
+            </tr>
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.BODY_NUMBER' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                9
+              </td>
+              <td width="23%" align="left">
+                {{printData.bodyNumber}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ (printData.isLegal() ? '' : 'ADDRESS.KORPUS') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? '' : '22' | translate}}
+
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? '' : printData.addressBlock}}
+              </td>
+            </tr>  
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.MAIN_COLOR' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                10
+              </td>
+              <td width="23%" align="left">
+                {{printData.mainColor}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ (printData.isLegal() ?  ''  : 'CAR.PHONE') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? '' : '22' | translate}}
+
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? '' : printData.phone}}
+              </td>
+            </tr> 
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'CAR.COLOR' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                10
+              </td>
+              <td width="23%" align="left">
+                {{printData.subColor}}
+              </td>
+              <td width="25%">
+                <strong>
+                {{ (printData.isLegal() ? '' : 'CAR_PRINT_DIALOG.TEX_INSPECTION_MARK') | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                {{printData.isLegal() ? '' : '23' | translate}}
+              </td>
+              <td width="23%" align="left">
+                {{printData.isLegal() ? '' : printData.texInspectionMark}}
+              </td>
+            </tr> 
+            <tr>
+              <td width="25%">
+                <strong>
+                {{'DRIVER_DETAIL_PRINT.CERTIFICATE' | translate}}
+              </strong>
+              </td>
+              <td width="2%" align="left">
+                11
+              </td>
+              <td width="23%" align="left">
+                {{printData.certificate}}
+              </td>
+              <td width="25%">
+
+              </td>
+              <td width="2%" align="left">
+
+              </td>
+              <td width="23%" align="left">
+
+              </td>
+            </tr> 
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr >
+                <td width="30%" align="right">
+                  <strong>{{'CAR.SPEC_NOTE' | translate}} :</strong>
+                </td>
+                <td width="70%" align="left">
+                  {{printData.specNote}}
+                </td>
+              </tr>
+              <tr >
+                <td width="30%" align="right">
+                  <strong>{{'CAR_PRINT_DIALOG.BASIC_DOCUMENT' | translate}} :</strong>
+                </td>
+                <td width="70%" align="left">
+                  {{printData.basicDocument}}
+                </td>
+              </tr>
+              <tr >
+                <td width="30%" align="right">
+                  <strong>{{'CAR.EXTRA_NOTE' | translate}} :</strong>
+                </td>
+                <td width="70%" align="left">
+                  {{printData.extraNote}}
+                </td>
+              </tr>
+              <tr >
+                <td width="30%" align="right">
+                  <strong>{{'CAR.PHONE' | translate}} :</strong>
+                </td>
+                <td width="70%" align="left">
+                  {{printData.phone}}
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="30%" align="right">
+                <strong>{{'CAR.TUNING_LICENSE' | translate}} :</strong>
+              </td>
+              <td *ngIf="tuning.length > 0" width="70%" align="left">
+                {{tuning[0].type_id}}
+              </td>
+              <td *ngIf="tuning.length == 0" width="70%" align="left">
+                {{'GENERAL.NO_DATA' | translate}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="30%" align="right">
+                <strong>{{'CAR.TRUSTEE' | translate}} :</strong>
+              </td>
+              <td *ngIf="trust.length > 0" width="70%" align="left">
+                <p *ngFor="let item of trust">
+                  {{item.user_name + ' ' + item.date_end}}
+                </p>
+              </td>
+              <td *ngIf="trust.length == 0" width="70%" align="left">
+                {{'GENERAL.NO_DATA' | translate}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="30%" align="right">
+                <strong>{{'CAR.BLOCK' | translate}} :</strong>
+              </td>
+              <td *ngIf="block.length > 0" width="70%" align="left">
+                <div *ngFor="let item of block">
+                  {{item.blocker_company }},
+                  {{item.blocker_person }}
+                  {{"CAR.BLOCK_DATE" | translate}}:
+                  {{item.block_date}}
+                </div>
+              </td>
+              <td *ngIf="block.length == 0" width="70%" align="left">
+                {{'GENERAL.NO_DATA' | translate}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

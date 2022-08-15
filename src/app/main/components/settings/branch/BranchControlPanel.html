@@ -1,0 +1,72 @@
+<div class="header">
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <crm-tree-selector [setRequestParams]="BranchParams" #tree [key]="branchKey" (reportSelected)="reportNodeSelected($event)"></crm-tree-selector>
+  </div>
+  <div class="col-sm-9" [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-6">
+        <crm-input [label]="'SETTINGS.SHORT_NAME' | translate" formControlName="name" [isRequired]="true"
+                   [showError]="f('name')"></crm-input>
+      </div>
+      <div class="col-sm-6">
+        <crm-load-list [label]="'ADDRESS.REGION' | translate" formControlName="region_id"
+                       [requestName]="'address'" [autoLoad]="true" [setRequestParams]="setRegionParam" [showError]="f('region_id')">
+        </crm-load-list>
+      </div>
+      <div class="col-sm-6">
+        <crm-load-list [label]="'ADDRESS.CITY' | translate" formControlName="city_id"
+                       [requestName]="'address'" [autoLoad]="false" [addsNull]="true" [setRequestParams]="setCityParam"
+                       [refreshList]="form.get('region_id')?.value" [showError]="f('city_id')">
+        </crm-load-list>
+      </div>
+      <div class="col-sm-6">
+        <crm-load-list [label]="'GENERAL.TYPE' | translate" [isRequired]="true" formControlName="type_id"
+                       [requestName]="'reference'" [autoLoad]="false" [addsNull]="true" [setRequestParams]="setTypeParam"
+                       [showError]="f('type_id')">
+        </crm-load-list>
+      </div>
+      <div class="col-sm-6">
+        <crm-load-list [label]="'GENERAL.STATUS' | translate" [isRequired]="true" formControlName="status"
+                       [requestName]="'reference'" [autoLoad]="false" [addsNull]="true" [setRequestParams]="setStatusParam"
+                       [showError]="f('status')">
+        </crm-load-list>
+      </div>
+      <div class="col-sm-6">
+        <crm-date-input [isRequired]="true" [showError]="f('start_date')"
+                        [label]="'SETTINGS.CREATED_DATE' | translate"
+        formControlName="start_date">
+        </crm-date-input>
+      </div>
+      <div class="col-sm-6">
+        <crm-branch [label]="'SETTINGS.PARENT_TRB' | translate" formControlName="branchId" [isRequired]="true"
+                    [showError]="f('branchId')"></crm-branch>
+      </div>
+      <div class="col-sm-6">
+        <crm-date-input [showError]="f('end_date')"
+          [label]="'SETTINGS.CLOSING_DATE' | translate"
+        formControlName="end_date">
+        </crm-date-input>
+      </div>
+      <div class="col-sm-6">
+        <crm-input [label]="'GENERAL.INFORMATION' | translate" formControlName="description"
+                   [showError]="f('description')"></crm-input>
+      </div>
+      <div class="col-sm-6">
+        <div style="height: 20px"></div>
+        <crm-button style="" (click)="onSave()" [label]="'FORM.STORE' | translate" [type]="'text'"></crm-button>
+        <crm-button style="margin-left: 10px" (click)="onClear()" [label]="'FORM.RESET' | translate" [type]="'text'"></crm-button>
+        <crm-button style="margin-left: 10px" (click)="onAdd()" [label]="'FORM.ADD' | translate" [type]="'text'"></crm-button>
+      </div>
+    </div>
+    <div>
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab label="{{'SETTINGS.POSITIONS' | translate}}">
+          <app-branch-position-list #positionListComponent [branchId]="selected"></app-branch-position-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+  </div>
+</div>

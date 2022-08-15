@@ -1,0 +1,4 @@
+<crm-button [type]="'text'" [label]="'Файл'" [matMenuTriggerFor]="menu"></crm-button>
+<mat-menu #menu="matMenu">
+  <button (click)="openImageUploadDialog()" mat-menu-item>{{'EMPLOYEE.PHOTO' | translate}}</button>
+</mat-menu>

@@ -1,0 +1,18 @@
+<div class="row modal--attribute-container">
+  <div class="col-sm-12">
+    <ng-container *ngFor="let group of groups">
+      <fieldset class="border">
+        <legend> {{'ATTRIBUTE_GROUP.' +  group.key | translate }}</legend>
+        <div class="row">
+          <ng-container *ngFor="let item of group.children; let m = index">
+              <div class="col-sm-4">
+                <crm-attribute-param [param]="item" #params [ngClass]="attrClass"></crm-attribute-param>
+              </div>
+          </ng-container>
+        </div>
+      </fieldset>
+    </ng-container>
+  </div>
+</div>
+<crm-button *ngIf="addSaveButton" [type]="'mat-raised-button'" [colorMode]="'primary'" (click)="onSaveClick()">
+  {{'save' | translate}}</crm-button>

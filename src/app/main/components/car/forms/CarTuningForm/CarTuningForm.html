@@ -1,0 +1,47 @@
+<form (ngSubmit)="save()" class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6" [hidden]="isGaz" >
+      <crm-load-list [label]="'GENERAL.TYPE' | translate" [isRequired]="true" [requestName]="'reference'"
+        [setRequestParams]="setRefType" [autoLoad]="false" formControlName="type_id" [showError]="f('type_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="(isGaz ? 'CAR.GAZ_CYLINDER_NUMBER' : 'GENERAL.DOCUMENT_NUMBER') | translate" [showError]="f('document_number')" formControlName="document_number">
+      </crm-input>
+    </div>
+    <div class="col-sm-6" [hidden]="!isGaz" >
+      <crm-input [label]="'CAR.GAZ_MANUFACTURE_PLACE' | translate" [isRequired]="true" formControlName="ud1" [showError]="f('ud1')">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="false" [label]="(isGaz ? 'CAR.GAZ_SETUP_ORGANIZATION': 'GENERAL.INFORMATION') | translate" [showError]="f('given_by')" formControlName="given_by">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-load-list [label]="'GENERAL.COMPANY' | translate" formControlName="given_by_id" [requestName]="referenceKey"
+      [setRequestParams]="givenPlaceParams"  [showError]="f('given_by_id')"></crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="(isGaz ? 'CAR.GAZ_SETUP_DATE': 'PASPORT.GIVEDATE')  | translate" [showError]="f('given_date')" formControlName="given_date"></crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="(isGaz ? 'CAR.GAZ_ISSUE_DATE': 'PASPORT.ISSUEDATE') | translate" [showError]="f('issue_date')" formControlName="issue_date"></crm-date-input>
+    </div>
+    <div class="col-sm-6" *ngIf="isGaz">
+      <crm-date-input [isRequired]="true" [label]="'CAR.GAZ_CHECK_DATE' | translate" [showError]="f('check_date')" formControlName="check_date"></crm-date-input>
+    </div>
+    <div class="col-sm-6" *ngIf="isGaz">
+      <crm-date-input [isRequired]="true" [label]="'CAR.GAZ_NEXT_TEST_DATE' | translate" [showError]="f('next_check_date')" formControlName="next_check_date"></crm-date-input>
+    </div>
+    <div class="col-sm-6" *ngIf="isGaz">
+      <crm-date-input [isRequired]="true" [label]="'CAR.GAZ_MANUFACTURE_DATE' | translate" [showError]="f('provide_date')" formControlName="provide_date"></crm-date-input>
+    </div>
+    <div class="col-sm-6" *ngIf="isGaz">
+        <crm-input [isRequired]="true" [label]="'CAR.GAZ_CYLINDER_CAPACITY' | translate" [showError]="f('ud2')" formControlName="ud2"></crm-input>
+    </div>
+    <div class="col-sm-6" *ngIf="isGaz">
+        <crm-input [isRequired]="true" [label]="'CAR.GAZ_CYLINDER_WEIGHT' | translate" [showError]="f('ud3')" formControlName="ud3"></crm-input>
+    </div>
+  </div>
+</form>
+

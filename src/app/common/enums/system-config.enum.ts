@@ -1,0 +1,27 @@
+export enum SystemConfig {
+    SESSION_INFO = 'session_info',
+    // CRM_GATEWAY_URL = "http://192.168.154.185:8092/",
+    CRM_GATEWAY_URL = "https://172.17.2.116:8093/",
+    CRM_FILE_PREFIX = "file/v1/",
+    CRM_CRM_PREFIX = "crm/v1/",
+    CRM_API_PREFIX = "api/v1/",
+    CRM_DRIVER_PREFIX = 'driver/v1/',
+    CRM_REPORT_PREFIX = 'report/v1/',
+    CRM_CAR_PREFIX = 'car/v1/',
+    CRM_CAR_CHECK_PREFIX = 'check/v1/',
+    CRM_AUDIT_PREFIX = 'audit/v1/',
+    ALL_REFERENCES = 'AllReferences',
+    BRANCH = 'branch',
+    CURRENT_LANGUAGE = 'currentLanguage',
+    LANG_RU = 'ru',
+    LANG_UZ = 'uz',
+    EMPLOYEE = 'employee',
+    CRM_MIP_PREFIX = 'integration/v1/',
+    USER_ROLES = 'user_roles',
+    USER_ACCESS = 'user_access',
+    ACCESS_LIST = 'access_list',
+    ADDRESS = 'address',
+    REF_TREE = 'ref_tree',
+    NO_ERROR = "NO_ERROR"
+}
+

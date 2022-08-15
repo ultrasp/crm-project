@@ -1,0 +1,39 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-8">
+      <crm-autocomplete-load-list [labelSize]="55"   [label]="'PASPORT.OWNERSHIP_CERTIFICATE' | translate" [isRequired]="true" [requestName]="'reference'"
+      [setRequestParams]="setRefType" [autoLoad]="false" formControlName="agr_type_id"
+      [showError]="f('agr_type_id')" [selectUIType]="inputsUIType"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [labelSize]="35" [label]="'GENERAL.REGISTRY' | translate" [isRequired]="false" formControlName="agr_reestr"
+        [showError]="f('agr_reestr')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'FORM.FORM'  | translate" [isRequired]="false" formControlName="agr_blank"
+        [showError]="f('agr_blank')" [inputUIType]="inputsUIType" [maxLength]="25"></crm-input>
+    </div>
+    <div class="col-sm-8">
+      <crm-integer [label]="'CAR.OWNER_CONTRACT_NO' | translate" [isRequired]="false" formControlName="agr_number"
+        [showError]="f('agr_number')" [inputUIType]="inputsUIType"></crm-integer>
+    </div>
+    <div class="col-sm-4">
+      <crm-date-input [label]="'GENERAL.DATE'   | translate" [isRequired]="true" formControlName="agr_date"
+        [showError]="f('agr_date')" [dateUIType]="inputsUIType"></crm-date-input>
+    </div>
+
+    <div class="col-sm-8">
+      <crm-input [label]="'GENERAL.NOTARY_NAME' |translate"  formControlName="agr_notary_name"
+      [showError]="f('agr_notary_name')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.DNI' |translate"  formControlName="agr_dni_name"
+      [showError]="f('agr_dni_name')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+
+    <div class="col-sm-8">
+      <crm-attribute-param [param]="carSalonParam" formControlName="salon_name"></crm-attribute-param>
+    </div>
+  </div>
+</form>

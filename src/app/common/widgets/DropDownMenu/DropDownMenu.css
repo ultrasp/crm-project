@@ -1,0 +1,19 @@
+:host{
+    display: block;
+    height: auto;
+    float: left;
+}
+:host ::ng-deep .mat-menu-trigger{
+    float: left;
+    height: auto;
+}
+:host button.flat-btn{
+    color: var(--text-color-label);
+    font-weight: bold;
+    background-color: var(--background-color-modal)!important;
+    border-radius: 5px;
+}
+:host .flat-btn:hover{
+    background-color: var(--background-color-selected-primary)!important;
+    color: var(--text-color-bgk);
+}

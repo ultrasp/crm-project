@@ -1,0 +1,30 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [label]="'EMPLOYEE.PUNISH_TYPE' | translate" [isRequired]="true" [requestName]="'reference'"
+        [setRequestParams]="setRefType" [autoLoad]="false" formControlName="punish_id"
+        [showError]="f('punish_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'EMPLOYEE.PUNISH_Date' | translate" formControlName="punish_date"
+        [showError]="f('punish_date')"></crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'EMPLOYEE.PUNISH_ARTICLE' | translate" formControlName="article"
+        [showError]="f('article')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'EMPLOYEE.COMMAND_NUMBER' | translate" formControlName="order_no"
+        [showError]="f('order_no')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'PASPORT.ISSUEBY' | translate" formControlName="order_by"
+        [showError]="f('order_by')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.COMMENT' | translate" formControlName="comment"
+        [showError]="f('comment')"></crm-input>
+    </div>
+  </div>
+</form>

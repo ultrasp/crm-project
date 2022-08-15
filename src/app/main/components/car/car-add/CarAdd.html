@@ -1,0 +1,100 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-5">
+      <crm-autocomplete-load-list [showError]="f('reason_id')" [label]="'CAR.TEXNO_PROCESS' | translate"
+        formControlName="reason_id" [isRequired]="true" [requestName]="referenceKey" [setRequestParams]="setTexnoParams"
+        [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [showError]="f('gov_number')" [label]="'CAR.GOV_NUMBER' | translate" formControlName="gov_number"
+        [isRequired]="true" [inputUIType]="'one-line'"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-date-input [showError]="f('start_date')" [label]="'GENERAL.NOTE_DATE' | translate"
+        formControlName="start_date" [isRequired]="true" [dateUIType]="'one-line'"></crm-date-input>
+    </div>
+    <div class="col-sm-2">
+      <crm-input [showError]="f('doc_seria')" [label]="'CAR.SERIA_NUMBER' | translate" formControlName="doc_seria"
+        [inputUIType]="'one-line'" [isEnabled]="false"></crm-input>
+    </div>
+    <div class="col-sm-1">
+      <crm-input [showError]="f('doc_number')" [label]="'№'" formControlName="doc_number" [inputUIType]="'one-line'"
+        [isEnabled]="false">
+      </crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('spec_note')" [label]="'CAR.SPEC_NOTE'  | translate" formControlName="spec_note"
+        [inputUIType]="'one-line'" [isEnabled]="true">
+      </crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('extra_note')" [label]="'CAR.EXTRA_NOTE'  | translate" formControlName="extra_note"
+        [inputUIType]="'one-line'" [isEnabled]="true">
+      </crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-contact-input [showError]="f('client_phone')" [label]="'CAR.PHONE' |translate" formControlName="client_phone"
+        [isRequired]="true" [inputUIType]="'one-line'">
+      </crm-contact-input>
+    </div>
+
+    <hr class="modal--section-devider">
+
+    <div class="col-sm-6">
+      <mat-tab-group id="firstTabGroup" (selectedTabChange)="tabChanged()" animationDuration="0ms"
+        [(selectedIndex)]="activeTabIndex">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tab--index-deviders">{{this.listOfCommands[0]}}</span>{{'CAR.CAR_OWNER' | translate}}
+          </ng-template>
+          <car-owner-information [owner_id]="client_id" #ownerInformation [form]="form"></car-owner-information>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tab--index-deviders">{{this.listOfCommands[1]}}</span>{{'ADDRESS.ADDRESS' | translate}}
+          </ng-template>
+          <crm-address-panel #addressPanel [form]="form" [ownerType]="ownerType" [ownerId]="car_id"
+            [inputsUIType]="'one-line'">
+          </crm-address-panel>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tab--index-deviders">{{this.listOfCommands[2]}}</span>{{'CAR.CAR_OWNER_DOC' | translate}}
+          </ng-template>
+          <crm-ownership #ownerShip [form]="form" [inputsUIType]="'one-line'"></crm-ownership>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tab--index-deviders">{{this.listOfCommands[3]}}</span>{{'GENERAL.ATTRIBUTES' | translate}}
+          </ng-template>
+          <crm-attribute-setup-panel #attributePanel [ownerType]="ownerType" [ownerId]="car_id" [addSaveButton]="true">
+          </crm-attribute-setup-panel>
+        </mat-tab>
+
+      </mat-tab-group>
+    </div>
+    <div class="col-sm-6">
+      <mat-tab-group id="secondTabGroup" (selectedTabChange)="tabChanged(4)" animationDuration="0ms"
+        [(selectedIndex)]="secondActiveTabIndex">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tab--index-deviders">{{this.listOfCommands[4]}}</span>{{'CAR.CAR_CHARACTER' | translate}}
+          </ng-template>
+          <crm-car-technic-params #technicParams [form]="form" [isAdd]="isAdd"></crm-car-technic-params>
+        </mat-tab>
+        <mat-tab *ngIf="this.form.get('hasGaz')?.value">
+          <ng-template mat-tab-label>
+            <span class="tab--index-deviders">{{this.listOfCommands[5]}}</span>{{'CAR.GAZ_INFO' | translate}}
+          </ng-template>
+          <app-car-tuning-form #tuningForm [isGaz]="true" [parentForm]="form"></app-car-tuning-form>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div class="col-sm-6">
+      <div class="inline" style="transform: translate(10px, 0px);">
+        <crm-button (click)="save()" *ngIf="isAdd" [label]="'FORM.STORE' | translate" [type]="'text'"></crm-button>
+      </div>
+    </div>
+  </div>
+
+</form>

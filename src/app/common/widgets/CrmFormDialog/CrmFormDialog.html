@@ -1,0 +1,13 @@
+<div class="modal-header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".form-title">
+  <h2 mat-dialog-title class="form-title"  >{{ data.title | translate }} </h2>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()" style="cursor: pointer;">close</mat-icon>
+ </div>
+
+<div mat-dialog-content class="mat-typography">
+  <ng-template content-container></ng-template>
+</div>
+<div mat-dialog-actions class="button-container">
+  <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="save()"></crm-button>
+  <crm-button [colorMode]="'default'" [label]="'FORM.CANCEL' | translate " [type]="'text'" (onClick)="close()">
+  </crm-button>
+</div>

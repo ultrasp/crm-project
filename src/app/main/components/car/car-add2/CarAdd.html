@@ -1,0 +1,122 @@
+<div [formGroup]="form">
+  <div class="row">
+    <div class="row">
+      <div class="col-sm-5">
+        <crm-autocomplete-load-list [labelSize]="35" [showError]="f('reason_id')" [label]="'CAR.TEXNO_PROCESS' | translate"
+          formControlName="reason_id" [isRequired]="true" [requestName]="referenceKey"
+          [setRequestParams]="setTexnoParams" [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+      </div>
+      <div class="col-sm-4">
+        <crm-input crm-input-pattern [labelSize]="50" [showError]="f('gov_number')" [label]="'CAR.GOV_NUMBER' | translate" formControlName="gov_number"
+          [isRequired]="true" [inputUIType]="'one-line-2'"></crm-input>
+      </div>
+      <div class="col-sm-3" style="display: flex">
+        <crm-input [labelSize]="50" style="width: 50%" [showError]="f('doc_seria')" [label]="'CAR.SERIA_NUMBER' | translate" formControlName="doc_seria"
+          [inputUIType]="'one-line-2'" [isEnabled]="false"></crm-input>
+        <crm-input style="width: 45%; margin-left: 5%" [showError]="f('doc_number')" formControlName="doc_number" [inputUIType]="'one-line-2'"
+          [isEnabled]="false">
+        </crm-input>
+      </div>
+    </div>
+
+    <hr class="modal--section-devider">
+
+    <div class="col-sm-6">
+      <car-owner-information-2 [owner_id]="client_id" #ownerInformation [form]="form"></car-owner-information-2>
+
+      <h4 class="block--title-devider">
+        <span> {{'ADDRESS.ADDRESS' | translate}} </span>
+      </h4>
+      <crm-address-panel-2 [form]="form" [ownerType]="ownerType" [ownerId]="car_id" #addressPanel
+        [inputsUIType]="'one-line'">
+      </crm-address-panel-2>
+
+      <h4 class="block--title-devider">
+        <span> {{'CAR.CAR_OWNER_DOC' | translate}} </span>
+      </h4>
+      <crm-ownership-2 [carSalonParam]="carSalonParam" [form]="form" #ownerShip [inputsUIType]="'one-line'"></crm-ownership-2>
+      <hr>
+      <div class="col-sm-6">
+        <crm-date-input [labelSize]="40" [showError]="f('start_date')" [label]="'CAR.REGISTR_TIME' | translate"
+                        formControlName="start_date" [isRequired]="true" [dateUIType]="'one-line'"></crm-date-input>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="col-sm-12">
+        <crm-car-technic-params-2 #technicParams [form]="form" [isAdd]="isAdd" [virtYearParam]="virtYearParam"></crm-car-technic-params-2>
+      </div>
+
+      <div class="col-sm-12" *ngIf="this.form.get('hasGaz')?.value">
+        <h4 class="block--title-devider">
+          <span> {{'CAR.GAZ_INFO' | translate}} </span>
+        </h4>
+
+        <app-car-tuning-form-2 #tuningForm [isGaz]="true" [parentForm]="form"></app-car-tuning-form-2>
+      </div>
+
+      <hr>
+      <div class="row">
+        <div class="col-sm-5">
+          <div class="label">
+            {{'CAR.OLD_TP_SERIA_NUMBER' | translate}}
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [showError]="f('old_tp_seria')" formControlName="old_tp_seria" [inputUIType]="'one-line-2'"
+            [isEnabled]="true">
+          </crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [showError]="f('old_tp_number')" formControlName="old_tp_number" [inputUIType]="'one-line-2'"
+            [isEnabled]="true">
+          </crm-input>
+        </div>
+        <div class="col-sm-8">
+          <crm-input [label]="'CAR.OLD_DRB' | translate" [showError]="f('old_drp')" formControlName="old_drp"
+            [inputUIType]="'one-line-2'" [isEnabled]="true">
+          </crm-input>
+        </div>
+      </div>
+
+
+      <hr>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <crm-input [showError]="f('spec_note')" [label]="'CAR.SPEC_NOTE' | translate" formControlName="spec_note"
+            [inputUIType]="'one-line'" [isEnabled]="true">
+          </crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [showError]="f('extra_note')" [label]="'CAR.EXTRA_NOTE' | translate" formControlName="extra_note"
+            [inputUIType]="'one-line'" [isEnabled]="true">
+          </crm-input>
+        </div>
+        <div class="col-sm-6">
+          <crm-contact-input [showError]="f('client_phone')" [label]="'CAR.PHONE' |translate"
+            formControlName="client_phone" [isRequired]="true" [inputUIType]="'one-line'">
+          </crm-contact-input>
+        </div>
+      </div>
+      <div>
+        <crm-attribute-setup-panel #attributePanel [ownerType]="ownerType" [ownerId]="car_id" [addSaveButton]="true" [parentForm]="form">
+        </crm-attribute-setup-panel>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-sm-6">
+    </div>
+    <div class="col-sm-6">
+      <div class="inline" style="transform: translate(10px, 0px);">
+        <crm-button (click)="save()" *ngIf="isAdd" [label]="'FORM.STORE' | translate" [type]="'text'"></crm-button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

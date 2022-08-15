@@ -1,0 +1,11 @@
+<div [ngClass]="{'input--container-flex': selectUIType === 'one-line'}">
+  <div class=" label" style="{{(selectUIType === 'one-line' ? 'width: ' + labelSize +'%': '')}}" *ngIf="!!label && haslabel">{{label}} <span *ngIf="isRequired" style="color: red;">*</span>
+  </div>
+    <div style="{{((selectUIType === 'one-line' && (!!label && haslabel)) ? 'width: ' + (100 - labelSize) +'%': '')}}"  class="inpWrap" [class.hasError]="showError">
+      <mat-select [disabled]="disabled" [(value)]="selectedkey" (selectionChange)="itemChanged($event)" (openedChange)="selectOpened($event)" >
+        <mat-option *ngIf="addsNull">--</mat-option>
+        <mat-option [value]="item.key" *ngFor="let item of _options">{{item.title}}</mat-option>
+      </mat-select>
+    </div>
+    <div *ngIf="showError" style="color: red;">{{invalidText}}</div>
+</div>

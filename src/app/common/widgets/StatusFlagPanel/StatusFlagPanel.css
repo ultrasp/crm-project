@@ -1,0 +1,14 @@
+.wrap {
+  overflow: hidden;
+  padding: 8px;
+}
+
+:host ::ng-deep .input{
+  width: 20%;    
+  text-align: right;
+}
+:host ::ng-deep .label{
+  width: 80%;
+  color: black;
+  text-align: left;
+}

@@ -1,0 +1,9 @@
+.wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 8px;
+}
+.wrap .element-4 {
+  display: inline-block;
+}

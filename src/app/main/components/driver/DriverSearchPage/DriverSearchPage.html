@@ -1,0 +1,95 @@
+<secondary-layout>
+  <div filter>
+    <form  [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'DRIVER.OWN_NUMBER' | translate" formControlName="own_number" [inputUIType]="'one-line'"></crm-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-date-input [labelSize]="45" [label]="'GENERAL.FROM_BIRTHDATE' | translate" formControlName="fromBornDate" [dateUIType]="'one-line'"></crm-date-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-date-input [labelSize]="45" [label]="'GENERAL.TO' | translate" formControlName="toBornDate" [dateUIType]="'one-line'"></crm-date-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" crm-input-pattern [label]="'GENERAL.PASPORT_SERIA_NUMBER' | translate" formControlName="pasport" [inputUIType]="'one-line'">
+          </crm-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'GENERAL.LASTNAME' | translate" formControlName="lastname" [inputUIType]="'one-line'"></crm-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'GENERAL.NAME' | translate" formControlName="firstname" [inputUIType]="'one-line'"></crm-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'GENERAL.MIDDLENAME' |translate" formControlName="middleName" [inputUIType]="'one-line'"></crm-input>
+        </div>
+
+
+        <div class="col-sm-12">
+          <crm-date-input [labelSize]="45" [label]="'GENERAL.STOPED_DATE_FROM' | translate" formControlName="fromStopedData" [dateUIType]="'one-line'">
+          </crm-date-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-date-input [labelSize]="45" [label]="'GENERAL.TO' | translate" formControlName="toStopedData" [dateUIType]="'one-line'"></crm-date-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" crm-input-pattern [label]="'GENERAL.DRIVER_LICENSE_SERIA_NUMBER' |translate" formControlName="driverLicense" [inputUIType]="'one-line'">
+          </crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'GENERAL.SEX' |translate" [requestName]="'reference'" formControlName="sex" [selectUIType]="'one-line'"
+            [autoLoad]="false" [setRequestParams]="genderParams"></crm-load-list>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'GENERAL.PNFL' |translate" formControlName="pnfl" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-multi-load-list [labelSize]="45" [label]="'DRIVER.STATUS' |translate" [requestName]="'reference'" formControlName="state" [inputUIType]="'one-line'"
+            [autoLoad]="true" [setRequestParams]="stateParams"></crm-multi-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'ADDRESS.REGION' | translate" formControlName="region" [requestName]="'address'" [selectUIType]="'one-line'"
+            [autoLoad]="true" [setRequestParams]="setRegionParam"></crm-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'ADDRESS.CITY' | translate" formControlName="city" [requestName]="'address'" [selectUIType]="'one-line'"
+            [autoLoad]="false" [addsNull]="true" [setRequestParams]="setCityParam"
+            [refreshList]="form.get('region')?.value">
+          </crm-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'DRIVER.CERTIFICATE_STATUS' | translate" formControlName="certificate_state" [requestName]="'reference'"
+            [autoLoad]="false" [addsNull]="true" [setRequestParams]="certificateStateParams" [selectUIType]="'one-line'">
+          </crm-load-list>
+        </div>
+        <div class="col-sm-12">
+          <div class="btn--container-right">
+            <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+              (onClick)="getList()">
+            </crm-button>
+            <crm-button [colorMode]="'third'" [label]="'FORM.RESET' | translate" [type]="'text'" [class]="'third-btn'"
+              (onClick)="resetForm()">
+            </crm-button>
+            <div class="inline">
+              <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="openForm()" accessKey="dr_add"></crm-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <crm-ag-gridbean (onSelectionChanged)="gridSelectEvent($event)" #dataGrid [columnDefs]="refTableColumnDefs" [sideToside]="false"
+    [request]="requestDrivers" [rowClassRules]="rowClassRules"  [pageSize]="pageSize" table>
+  </crm-ag-gridbean >
+
+</secondary-layout>

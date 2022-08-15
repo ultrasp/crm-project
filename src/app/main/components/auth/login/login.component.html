@@ -1,0 +1,62 @@
+<mat-card class="login--card">
+  <div class="login--card-header">
+    <div class="login--icon-container">
+      <div class="header-image"></div>
+      <mat-card-title>
+        YHXBB
+      </mat-card-title>
+    </div>
+
+    <div class="col-sm-6 col-md-6 login--language-container">
+
+      <span class="header--info-label">{{'LANGUAGE.LANG' | translate}}:</span>
+      <div class="header--info-value">
+        <mat-form-field appearance="fill">
+          <mat-select [(value)]="languageActive">
+            <mat-option *ngFor="let lang of translate.getLangs()" (click)="selectLanguage(lang)" [value]="lang">
+              {{ 'LANGUAGE.' + lang | translate }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+  <hr class="modal--section-devider">
+  <mat-card-content class="login--form-container">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="container-fluid">
+      <div class="login--radio-container">
+        <mat-radio-group formControlName="loginMode">
+          <mat-radio-button class="example-margin login--radio-btn" value="login">
+            {{ 'LOGIN.LOGIN' | translate }}
+          </mat-radio-button>
+          <mat-radio-button class="example-margin" value="before">{{ 'LOGIN.USB_KEY' | translate }}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="row">
+
+
+        <mat-form-field class="example-full-width col-sm-6" appearance="fill">
+          <mat-label>{{ 'LOGIN.LOGIN' | translate }}</mat-label>
+          <input type="text" matInput placeholder="{{'LOGIN.ENTER_LOGIN' | translate}}" formControlName="username"
+            autocomplete="off">
+        </mat-form-field>
+        <mat-form-field class="example-full-width col-sm-6" appearance="fill">
+          <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
+          <input *ngIf="passTextType" type="password" matInput placeholder="{{'LOGIN.ENTER_PASSWORD' | translate}}" formControlName="password"
+            autocomplete="off">
+          <input *ngIf="!passTextType" type="text" matInput placeholder="{{'LOGIN.ENTER_PASSWORD' | translate}}" formControlName="password"
+          autocomplete="off">
+          <mat-icon matSuffix (click)="passTextType = !passTextType" style="height: 20px;font-size:100%">remove_red_eye</mat-icon>
+        </mat-form-field>
+
+      </div>
+
+      <div class="btn--container-right login--btn-container">
+        <mat-checkbox formControlName="isRemember" class="login--save-beckbox">{{ 'LOGIN.SAVE' | translate }}</mat-checkbox>
+        <button type="submit" class="button" mat-button>{{ 'LOGIN.ENTER' | translate }}</button>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,21 @@
+<div>
+  <div class="modal-header">
+    <p class="form-title">{{'GENERAL.SEARCH_BY_MIP_DIALOG_TITLE' | translate}}</p>
+    <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="closeModal()"
+      style="cursor: pointer;">close</mat-icon>
+  </div>
+  <form [formGroup]="form" action="#">
+    <div>
+      <crm-input [label]="'GENERAL.PASPORT_SERIA_NUMBER' | translate" [isRequired]="true" formControlName="docNo"
+        [showError]="f('docNo')"></crm-input>
+    </div>
+    <div class="input-pinfl">
+      <crm-input [label]="'GENERAL.PNFL' | translate" [isRequired]="true" formControlName="pinfl"
+        [showError]="f('pinfl')"></crm-input>
+    </div>
+    <div class="button-container">
+      <crm-button *ngIf="addNewCitizenShow" [icon]="'add'" [colorMode]="'default'" [label]="'DRIVER.FOREIGN_CITIZEN' | translate" (onClick)="addNewCitizen()" [type]="'text'"></crm-button>
+      <crm-button [label]="'GENERAL.DOWNLOAD' | translate" (onClick)="submit()" [type]="'text'"></crm-button>
+    </div>
+  </form>
+</div>

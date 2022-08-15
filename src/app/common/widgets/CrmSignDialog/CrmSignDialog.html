@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <p class="form-title">{{data.title | translate}}</p>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="closeModal()"
+    style="cursor: pointer;">close</mat-icon>
+</div>
+
+<div class="file-upload--container">
+  <div class="mat-typography file-upload--btn-text-container">
+    <crm-sig-plus-form (signImage)="setSignImage($event)"></crm-sig-plus-form>
+  </div>
+  <div *ngIf="showButtons" mat-dialog-actions class="file-upload--btn-container">
+    <button  (click)="onConfirm()" [disabled]="!isEnabledUpload" mat-raised-button color="primary">OK</button>
+    <button (click)="onCancel()" mat-button class="file-upload--btn-cancel">отмена</button>
+    <button (click)="onClear()" mat-button class="file-upload--btn-cancel">clear</button>
+  </div>
+</div>

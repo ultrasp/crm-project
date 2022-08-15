@@ -1,0 +1,84 @@
+<form class="container-fluid" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-4">
+      <crm-input [label]="'ПНФЛ'" formControlName="pnfl" [isEnabled]="false"></crm-input>
+    </div>
+    <div class="col-sm-8">
+    </div>
+    <div class="col-sm-4">
+      <crm-branch #filialList [label]="'GENERAL.ORGANIZATION' | translate" formControlName="branch_id" [isRequired]="true"
+        formControlName="branch_id" [showError]="f('branch_id')"></crm-branch>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.JETON_NUMBER' | translate" formControlName="token_id"></crm-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.MILITARY_NUMBER' | translate" formControlName="military_id"></crm-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.LASTNAME' | translate" formControlName="last_name"></crm-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.NAME' | translate" formControlName="first_name"></crm-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.MIDDLENAME' | translate" formControlName="middle_name"></crm-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #genderList [label]="'GENERAL.SEX' | translate" [isRequired]="true" [requestName]="'reference'" [autoLoad]="false"
+        [setRequestParams]="genderParams" formControlName="sex_id" [showError]="f('sex_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-date-input [label]="'GENERAL.BIRTHDATE' | translate" [enabled]="true" [isRequired]="true" [showError]="f('born_date')"
+        formControlName="born_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #nationalityList [label]="'GENERAL.CITIZENSHIP' | translate" [isRequired]="true" [requestName]="'reference'"
+        [autoLoad]="false" [setRequestParams]="nationalityParams" formControlName="citizenship_id"
+        [showError]="f('citizenship_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #ethnicNatinalityList [label]="'GENERAL.NATION' | translate" [isRequired]="true" [requestName]="'reference'"
+        [autoLoad]="false" [setRequestParams]="ethnicNatinalityParams" formControlName="nationality_id"
+        [showError]="f('nationality_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #academicDegreeList [label]="'GENERAL.EDUCATION_DEGREE' | translate" [isRequired]="true" [requestName]="'reference'"
+        [autoLoad]="false" [setRequestParams]="academicDegreeParams" formControlName="academic_type_id"
+        [showError]="f('academic_type_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #academicAwardList [label]="'EMPLOYEE.SCIENSE_DEGREE' |translate" [isRequired]="true" [requestName]="'reference'"
+        [autoLoad]="false" [setRequestParams]="academicAwardParams" formControlName="academic_degree_id"
+        [showError]="f('academic_degree_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #positionList [label]="'GENERAL.POSITION'|translate" [isRequired]="true" [requestName]="'reference'"
+        [autoLoad]="false" [setRequestParams]="positionParams" formControlName="position_id"
+        [showError]="f('position_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #militaryDegreeList [label]="'EMPLOYEE.MILITARY_DEGREE' |translate" [isRequired]="true" [requestName]="'reference'"
+        [autoLoad]="false" [setRequestParams]="militaryDegreeParams" formControlName="military_title_id"
+        [showError]="f('military_title_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-load-list #genderList [label]="'EMPLOYEE.SPECIALIZATION'|translate" [isRequired]="true" [requestName]="'reference'" [autoLoad]="false"
+        [setRequestParams]="professionParams" formControlName="profession_id" [showError]="f('profession_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-checkbox #partyMembership [label]="'EMPLOYEE.IS_PARTY_MEMBER' | translate" formControlName="party_member"
+        [showError]="f('party_member')"></crm-checkbox>
+    </div>
+
+  </div>
+</form>

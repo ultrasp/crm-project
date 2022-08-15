@@ -1,0 +1,51 @@
+<div class="modal-header"  cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".form-title">
+  <h4 class="form-title">{{ (this.driver_id ? 'DRIVER.EDIT_TITLE' : 'DRIVER.ADD_TITLE') | translate }} </h4>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()" style="cursor: pointer;">close</mat-icon>
+ </div>
+<app-driver-info [isForeign]="isForeign" [form]="form" [genderParams]="genderParams" [nationalityParams]="nationalityParams"></app-driver-info>
+<hr class="modal--section-devider">
+
+<mat-tab-group animationDuration="0ms">
+
+  <mat-tab label="{{'DRIVER.DOCUMENT' | translate}}">
+    <div class="container-fluid">
+      <app-driver-document [isHistoryFormShow]="isNewDriver" #driverDocument [form]="form" [ownerId]="driver_id" [readonly]="!isNewDriver" [isRequired]="!driver_id"></app-driver-document>
+
+    </div>
+  </mat-tab>
+  <mat-tab label="{{'DRIVER.PASSPORT' | translate}}">
+    <div class="container-fluid">
+
+      <crm-passport-panel [ownerType]="ownerType" #passportPanel [form]="form" [ownerId]="driver_id">
+      </crm-passport-panel>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="{{'DRIVER.ATTRIBUTE' | translate}}">
+    <div class="container-fluid">
+
+      <crm-attribute-setup-panel #attributePanel [ownerType]="ownerType" [ownerId]="driver_id" [addSaveButton]="true">
+      </crm-attribute-setup-panel>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="{{'DRIVER.ADDRESS' | translate}}">
+    <div class="container-fluid">
+
+      <crm-address-panel [ownerType]="ownerType" #addressPanel [form]="form" [ownerId]="driver_id"></crm-address-panel>
+    </div>
+  </mat-tab>
+
+  <mat-tab label="{{'DRIVER.BIRTH_PLACE' | translate}}">
+    <div class="container-fluid">
+
+      <app-driver-birth-place [isForeign]="isForeign" [form]="form"></app-driver-birth-place>
+    </div>
+  </mat-tab>
+
+</mat-tab-group>
+<div class="container-fluid">
+  <div class="button-container"><button mat-raised-button color="primary" (click)="save()">+{{ 'FORM.STORE' |
+      translate }}</button>
+  </div>
+</div>

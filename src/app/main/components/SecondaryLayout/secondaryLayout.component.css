@@ -1,0 +1,21 @@
+:host .container--filter-table{
+    display: flex;
+    height: 100%;
+}
+:host .form-container{
+    width: 30%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 0 10px;
+}
+:host .table-container{
+    width: 70%;
+    padding: 0  0  0 10px;
+}
+.form-container::-webkit-scrollbar {
+    width: 5px;
+    background-color: #fff;
+}
+.form-container::-webkit-scrollbar-thumb {
+    background-color: #bec4d1;
+}

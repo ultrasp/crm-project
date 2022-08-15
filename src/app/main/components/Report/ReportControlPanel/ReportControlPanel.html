@@ -1,0 +1,49 @@
+<div class="header">
+  <h3> {{"GENERAL.REPORTS" | translate}} </h3>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <crm-tree-selector [key]="keyClass" (reportSelected)="reportNodeSelected($event)"></crm-tree-selector>
+  </div>
+  <div class="col-sm-9">
+    <div class="row">
+      <div class="col-sm-12">
+        <crm-button [type]="'text'" [label]="'GENERAL.CLEAR' | translate" color="primary" (onClick)="onClear()"></crm-button>
+        <crm-button [type]="'text'" [label]="'GENERAL.REFRESH' | translate" color="primary" (onClick)="onRefresh()"></crm-button>
+        <crm-button [type]="'text'" [label]="'FORM.STORE' | translate" color="primary" (onClick)="onSave()"></crm-button>
+        <crm-button [type]="'text'" [label]="'FORM.SAVE_AS_NEW' | translate" color="primary" (onClick)="onSaveAsNew()"></crm-button>
+      </div>
+      <div [formGroup]="form">
+        <crm-input [label]="'GENERAL.TITLE' | translate" formControlName="name" [isRequired]="true"
+          [showError]="f('name')"></crm-input>
+
+        <crm-load-list [label]="'GENERAL.BELONGS_TO' | translate" [requestName]="'report'" [autoLoad]="false"
+          [setRequestParams]="setParentReportParam" formControlName="parentId" [showError]="f('parentId')">
+        </crm-load-list>
+
+        <crm-branch [label]="'GENERAL.ORGANIZATION' | translate" formControlName="branchId" [isRequired]="true"
+          [showError]="f('name')"></crm-branch>
+
+        <crm-input [label]="'GENERAL.ACCESS' | translate" formControlName="securityRole"></crm-input>
+
+        <crm-input [label]="'GENERAL.RESULT_TYPE' | translate" formControlName="contentType" [isRequired]="true"
+          [showError]="f('contentType')"></crm-input>
+
+        <crm-input [label]="'GENERAL.TEMPLATE_TITLE' | translate" formControlName="templateName"></crm-input>
+        <crm-input [label]="'FORM.ORDER' | translate" formControlName="order"></crm-input>
+
+        <mat-tab-group>
+          <mat-tab [label]="'GENERAL.PARAMETRS' | translate">
+            <crm-report-control-params-panel [reportId]="reportId"></crm-report-control-params-panel>
+          </mat-tab>
+          <mat-tab [label]="'GENERAL.SQL_QUERY' | translate">
+            <crm-textarea [label]="'GENERAL.SQL_QUERY' | translate" formControlName="sqlBody"></crm-textarea>
+          </mat-tab>
+          <mat-tab [label]="'GENERAL.STATUS' | translate">
+            <crm-status-flag-panel #pnlStatusFlag  [readMode]="false"></crm-status-flag-panel>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

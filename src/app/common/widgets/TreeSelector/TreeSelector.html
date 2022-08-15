@@ -1,0 +1,22 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <crm-button type="mat-icon-button" disabled>
+      <mat-icon class="mat-icon" color="primary">
+        content_paste
+      </mat-icon>
+    </crm-button>
+    <div class="nodeName" [ngClass]="{'selected': selectedItem && selectedItem?.id == node.obj.id}"
+      (click)="nodeSelected(node)">
+      {{node.name}}</div>
+  </mat-tree-node>
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+
+    <crm-button [icon]="treeControl.isExpanded(node) ? 'folder_open' : 'folder'" matTreeNodeToggle
+      [attr.aria-label]="'Toggle ' + node.name">
+    </crm-button>
+
+    <div class="nodeName" [ngClass]="{'selected': selectedItem && selectedItem?.id == node.obj.id}"
+      (click)="nodeSelected(node)">
+      {{node.name}}</div>
+  </mat-tree-node>
+</mat-tree>

@@ -1,0 +1,29 @@
+:host{
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+}
+:host .input--container-flex, :host .input--container-flex-2{
+    display: flex;
+    justify-content: flex-end;
+}
+
+:host .input--container-flex .label{
+    width: 30%;
+    text-align: right;
+}
+:host .input--container-flex .inpWrap{
+    width: 70%;
+}
+
+:host .input--container-flex-2 .label.hasLabel{
+    width: 150px;
+    text-align: right;
+}
+:host .input--container-flex-2 .inpWrap{
+    width: 100%;
+}
+
+:host input{
+    font-family: sans-serif;
+}

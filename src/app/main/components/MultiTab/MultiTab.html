@@ -1,0 +1,16 @@
+<div class="multitabWrapper">
+<mat-tab-group headerPosition="below" class="fixedTab" [(selectedIndex)]="selectedIndex" animationDuration="0ms" >
+ 
+    
+  <mat-tab  *ngFor="let portalItem of portals; let tabIndex = index">
+    <ng-template mat-tab-label>{{ (tabIndex+1).toString() }}
+      <ng-container *ngIf="tabIndex != 0">
+        <mat-icon aria-hidden="false" fontIcon="close" (click)="removeTabItem(tabIndex)" style="color: red;">close</mat-icon>
+      </ng-container>
+    </ng-template>
+    <div class="example-portal-outlet">
+      <ng-template [cdkPortalOutlet]="portalItem.portal" (attached)=itemAttached($event,portalItem)></ng-template>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+</div>

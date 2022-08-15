@@ -1,0 +1,17 @@
+.button-container{
+    display: flex;
+    justify-content: right;
+  }
+  .modal-header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-title {
+    color: var(--text-color-title);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  :host ::ng-deep .mat-dialog-title{
+    cursor: grab;
+
+  }

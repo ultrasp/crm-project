@@ -1,0 +1,8 @@
+<div [ngClass]="{'input--container-flex': inputUIType === 'one-line','input--container-flex-2': inputUIType === 'one-line-2'}">
+  <div *ngIf="(!!label && haslabel)"  [ngClass]="{'hasLabel': label }" style="{{(isInputUiTypeInLne() ? 'width: ' + labelSize +'%': '')}}" class="label">
+    {{label}} <span *ngIf="isRequired" style="color: red;">*</span>
+  </div>
+  <div class="inpWrap" style="{{((isInputUiTypeInLne() && (!!label && haslabel)) ? 'width: ' + (100 - labelSize) +'%': '')}}"  [class.hasError]="showError">
+    <input matInput [maxlength]="maxLength" [placeholder]="placeHolder || ''" [(ngModel)]="value" (change)="valueChanged($event)" [readonly]="!isEnabled">
+  </div>
+</div>

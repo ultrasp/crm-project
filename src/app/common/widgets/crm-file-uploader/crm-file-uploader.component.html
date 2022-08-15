@@ -1,0 +1,24 @@
+<input type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload--container">
+
+    <p class="file-upload--label" *ngIf="showFileSave">{{fileName || "No file uploaded yet."}}</p>
+
+    <button mat-raised-button color="primary" (click)="fileUpload.click()" [disabled]="!isEnabledUpload" *ngIf="!showFileSave">
+        {{ 'GENERAL.UPLOAD_FILE' | translate }}
+    </button>
+</div>
+
+<div *ngIf="errorMessage" class="invalid-feedback" style="display: block">
+    <div *ngIf="errorMessage">{{errorMessage}}</div>
+</div>
+
+<div class="progress">
+
+    <mat-progress-bar class="progress-bar" mode="determinate" [value]="uploadProgress" *ngIf="uploadProgress">
+
+    </mat-progress-bar>
+
+    <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
+
+</div>

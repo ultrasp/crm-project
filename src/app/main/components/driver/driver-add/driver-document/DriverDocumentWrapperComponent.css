@@ -1,0 +1,28 @@
+table.detail-table tr td{
+  border-bottom: 1px dashed #E9EAEA;
+  font-size: 14px;
+
+}
+table.detail-table tr td div{
+  line-height: 1.4;
+  padding: 10px;
+}
+.crm-case-param-label {
+  color: #6F7173;
+  font-weight: 400;
+}
+.crm-case-param-value-white-space {
+  color: #0093DD;
+  font-weight: 700;
+  white-space: pre;
+  vertical-align: inherit;
+}
+.text-right{
+  text-align:right ;
+}
+.text-left{
+  text-align: left;
+}
+.deprivited{
+  color: red;
+}

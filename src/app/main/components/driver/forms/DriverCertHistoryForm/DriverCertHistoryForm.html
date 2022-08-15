@@ -1,0 +1,46 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'GENERAL.DRIVER_LICENSE_SERIA' | translate" [showError]="f('doc_ser')"
+                 formControlName="doc_ser">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'GENERAL.DRIVER_LICENSE_NUMBER' | translate" [showError]="f('doc_num')"
+                 formControlName="doc_num">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="'GENERAL.GIVEN_DATE' | translate" [showError]="f('given_date')"
+                      formControlName="given_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="'GENERAL.ISSUEDATE' | translate" [showError]="f('issue_date')"
+                      formControlName="issue_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'DRIVER.TALON_NUMBER' | translate" [showError]="f('note')"
+                 formControlName="note">
+      </crm-input>
+    </div>
+  </div>
+  <div class="row">
+    <ng-container formArrayName="categories">
+      <ng-container *ngFor="let categoryForm of categories.controls; let i = index">
+        <div [formGroupName]="i" class="row">
+          <div class="col-sm-1">
+            <div class="categories">
+              <mat-checkbox formControlName="checked" (click)="$event.stopPropagation()"
+                            (change)="onChecked(categoryForm)"
+                            [checked]="selection.isSelected(i)" [aria-label]="checkboxLabel(i)">
+              </mat-checkbox>
+              <span>{{categoryForm.value.title}}</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</form>

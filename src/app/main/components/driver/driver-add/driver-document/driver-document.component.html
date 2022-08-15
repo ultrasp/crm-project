@@ -1,0 +1,87 @@
+<div [formGroup]="form" class="wrap">
+  <div class="row">
+    <div class="col-sm-3">
+      <crm-input [label]="'DRIVER.DOCUMENT_NUM' | translate" [value]="docNum" [isEnabled]="false">
+      </crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-date-input [showError]="f('categoryStartDate')" formControlName="categoryStartDate"
+        [label]="'GENERAL.GIVEN_DATE' | translate" [isRequired]="isRequired" [enabled]="false">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-date-input [showError]="f('categoryEndDate')" formControlName="categoryEndDate"
+        [label]="'GENERAL.ISSUEDATE' | translate" [isRequired]="isRequired" [enabled]="!readonly">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-load-list [disabled]="readonly" [requestName]="'reference'" [setRequestParams]="categoryReasonParams"
+        [showError]="f('categoryReason_id')" formControlName="categoryReason_id"
+        [label]="'DRIVER.REASON_FOR_ISSUE' | translate" [isRequired]="isRequired">
+      </crm-load-list>
+    </div>
+    <ng-container *ngIf="isHistoryFormShow && isSelectedNotFirstTime()">
+      <div class="col-sm-12">
+        <div class="label">
+          {{'DRIVER.PREVIOUS_DRIVERS_LICENSE' | translate}}
+        </div>
+      </div>
+      <hr>
+      <div class="col-sm-3">
+        <crm-input [isRequired]="true" [label]="'GENERAL.DRIVER_LICENSE_SERIA' | translate" [showError]="f('doc_ser')"
+                   formControlName="doc_ser">
+        </crm-input>
+      </div>
+      <div class="col-sm-3">
+        <crm-input [isRequired]="true" [label]="'GENERAL.DRIVER_LICENSE_NUMBER' | translate" [showError]="f('doc_num')"
+                   formControlName="doc_num">
+        </crm-input>
+      </div>
+      <div class="col-sm-3">
+        <crm-date-input [isRequired]="true" [label]="'GENERAL.GIVEN_DATE' | translate" [showError]="f('given_date')"
+                        formControlName="given_date">
+        </crm-date-input>
+      </div>
+      <div class="col-sm-3">
+        <crm-date-input [isRequired]="true" [label]="'GENERAL.ISSUEDATE' | translate" [showError]="f('issue_date')"
+                        formControlName="issue_date">
+        </crm-date-input>
+      </div>
+      <div class="col-sm-3">
+        <crm-input [isRequired]="true" [label]="'DRIVER.COUPON_NUMBER' | translate" [showError]="f('history_note')"
+                   formControlName="history_note">
+        </crm-input>
+      </div>
+      <hr>
+    </ng-container>
+  </div>
+  <div>
+    <div class="row">
+      <ng-container formArrayName="categories">
+        <ng-container *ngFor="let categoryForm of categories.controls; let i = index">
+            <div [formGroupName]="i" class="row">
+              <div class="col-sm-1">
+                <div class="categories">
+                  <mat-checkbox formControlName="checked" (click)="$event.stopPropagation()" (change)="onChecked(categoryForm)"
+                    [checked]="selection.isSelected(i)" [aria-label]="checkboxLabel(i)" [disabled]="readonly">
+                  </mat-checkbox>
+                  <span>{{categoryForm.value.title}}</span>
+                </div>
+              </div>
+              <div class="col-sm-3" *ngIf="categoryForm.value.checked">
+                <crm-date-input [labelSize]="0" [enabled]="false" [value]="certDates.get(categoryForm.value.title) || null"></crm-date-input>
+              </div>
+              <div class="col-sm-3" *ngIf="categoryForm.value.checked">
+                <crm-date-input [labelSize]="0" [enabled]="false" [value]="this.form.get('categoryEndDate')?.value"></crm-date-input>
+              </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" *ngIf="f('certificateFlag')" style="color: red;">
+        {{ 'VALIDATION_ERROR.MUST_CHECK_AT_LEAST_ONE' | translate}}
+      </div>
+    </div>
+  </div>
+</div>

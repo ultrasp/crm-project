@@ -1,0 +1,15 @@
+<div [hidden]="!visible">
+  <section class="d-flex align-items-center justify-content-between input-container">
+    <h4 class="block--title-devider">
+      <span>
+        {{ label }}
+      </span>
+      <span *ngIf="isRequired" style="color: red;">*</span>
+    </h4>
+    <div [class.hasError]="showError" class="radio--btn-container">
+      <mat-radio-group (change)="itemChanged($event)" [value]="value" [disabled]="!isEnabled" class="input">
+        <mat-radio-button *ngFor="let op of listOptions" [value]="op.key" class="radio--btn-group-element">{{(op.title || '') | translate}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </section>
+</div>

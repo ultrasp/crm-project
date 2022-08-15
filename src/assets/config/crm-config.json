@@ -1,0 +1,6 @@
+{
+    "AppVersion": "1.0.0.0",
+    "PageSize": "20",
+    "PassportPeriod": "10",
+    "DriverCertificatePeriod": "10"
+}

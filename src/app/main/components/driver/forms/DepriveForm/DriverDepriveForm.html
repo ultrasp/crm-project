@@ -1,0 +1,29 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [isRequired]="true" [requestName]="'reference'" [setRequestParams]="depriveRequest"
+                     [showError]="f('block_type_id')"
+                     [label]="'DRIVER.TYPE_DEPRIVE' | translate"
+                     formControlName="block_type_id">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'GENERAL.INFORMATION' | translate" [showError]="f('note')" formControlName="note">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [showError]="f('block_start')"
+                      [label]="'GENERAL.FROM' | translate"
+                      formControlName="block_start">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="'GENERAL.TO' | translate"
+                      [showError]="f('block_end')" formControlName="block_end">
+      </crm-date-input>
+    </div>
+  </div>
+  <crm-button (onClick)="save()" [type]="'text'" [label]="'FORM.STORE' | translate">
+  </crm-button>
+</form>
+

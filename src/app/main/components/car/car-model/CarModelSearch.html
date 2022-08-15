@@ -1,0 +1,31 @@
+<filter-table-wrapper>
+  <div filter>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-6">
+          <crm-load-list #brand [label]="'CAR.BRAND' | translate" formControlName="brand_id"
+            [requestName]="referenceKey" [autoLoad]="false" [setRequestParams]="carBrandParams"></crm-load-list>
+        </div>
+        <div class="col-sm-6">
+          <crm-input [label]="'CAR.CAR_MODEL_NAME' | translate" formControlName="name"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          
+          <div class="btn--container-right">
+            <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+              (onClick)="getCarModelList()">
+            </crm-button>
+            <crm-button [colorMode]="'third'" [label]="'FORM.RESET' | translate" [type]="'text'" [class]="'third-btn'"
+            (onClick)="resetForm()">
+          </crm-button>
+          <div class="inline" style="transform: translate(10px, 0px);">
+              <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="openForm()"></crm-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <crm-ag-gridbean #dataGrid [columnDefs]="refTableColumnDefs" [request]="requestCarModels" [pageSize]="pageSize" table>
+  </crm-ag-gridbean>
+</filter-table-wrapper>

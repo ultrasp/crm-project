@@ -1,0 +1,11 @@
+<div  class="modal-header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".form-title">
+  <h2 mat-dialog-title class="form-title"  >{{ dataDialog.title | translate }} </h2>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()" style="cursor: pointer;">close</mat-icon>
+</div>
+<div>
+  <div *ngIf="dataDialog.title" class="title">
+    {{dataDialog.title | translate}}
+  </div>
+  <crm-json-view  [data]="dataDialog.data">
+  </crm-json-view>
+</div>

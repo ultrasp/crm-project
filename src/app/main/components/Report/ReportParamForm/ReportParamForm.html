@@ -1,0 +1,9 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    {{'GENERAL.REPORT_PARAM_FORM' | translate}}
+    <crm-input [label]="'FORM.ORDER' | translate" formControlName="order" [showError]="f('order')"></crm-input>
+    <crm-input [label]="'GENERAL.TITLE' | translate" formControlName="name" [showError]="f('name')"></crm-input>
+    <crm-input [label]="'GENERAL.COMPONENT' | translate" formControlName="component" [showError]="f('component')"></crm-input>
+    <crm-input [label]="'GENERAL.TYPE' | translate" formControlName="dataType" [showError]="f('dataType')"></crm-input>
+  </div>
+</form>

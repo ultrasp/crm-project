@@ -1,0 +1,92 @@
+<secondary-layout>
+  <div filter>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-12">
+          <crm-multi-load-list [labelSize]="45" [label]="'CAR.TEXNO_PROCESS' | translate" formControlName="reasons"
+            [requestName]="referenceKey" [setRequestParams]="setTexnoParams" [inputUIType]="'one-line'"></crm-multi-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" crm-input-pattern [label]="'CAR.DRB' | translate" formControlName="drb" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'CAR.COLOR' | translate" formControlName="color_id" [requestName]="referenceTreeKey"
+            [setRequestParams]="setColorParams" [selectUIType]="'one-line'"></crm-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'CAR.TECHNIC_NUM' | translate" formControlName="technical_number" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-date-input [labelSize]="45" [label]="'CAR.REGISTER_DATE_FROM' | translate" formControlName="register_date_from" [dateUIType]="'one-line'">
+          </crm-date-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-date-input [labelSize]="45" [label]="'GENERAL._TO' | translate" formControlName="register_date_to" [dateUIType]="'one-line'"></crm-date-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-integer [labelSize]="45" [label]="'CAR.YEAR_FROM' | translate" formControlName="year_from" [inputUIType]="'one-line'"></crm-integer>
+        </div>
+        <div class="col-sm-12">
+          <crm-integer [labelSize]="45" [label]="'GENERAL._TO' | translate" formControlName="year_to" [inputUIType]="'one-line'"></crm-integer>
+        </div>
+        <div class="col-sm-12">
+          <crm-multi-load-list [labelSize]="45" [label]="'CAR.BRAND' | translate" formControlName="brands" [requestName]="referenceKey"
+            [setRequestParams]="setBrandParams" [inputUIType]="'one-line'"></crm-multi-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-multi-load-list [labelSize]="45" [label]="'CAR.MODEL' | translate" formControlName="model" [requestName]="carModelKey"
+            [autoLoad]="true" [inputUIType]="'one-line'"></crm-multi-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" crm-input-pattern [label]="'CAR.VIN_CODE' | translate" formControlName="vin_code" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" crm-input-pattern [label]="'CAR.BODY_NUMBER' | translate" formControlName="body_number" [inputUIType]="'one-line'"></crm-input>
+        </div>
+
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'CAR.SECTOR' | translate" formControlName="sector_id" [requestName]="referenceKey"
+            [setRequestParams]="setSectorParams" [selectUIType]="'one-line'"></crm-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'CAR.PNFL_INN' | translate" formControlName="passport_number" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [labelSize]="45" [label]="'CAR.FIO_ORGANIZATION_NAME' | translate" formControlName="name" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-branch [labelSize]="45" [label]="'GENERAL.TRIB' | translate" formControlName="branch" [inputUIType]="'one-line'"></crm-branch>
+        </div>
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'ADDRESS.REGION' | translate" [isRequired]="true" formControlName="region" [selectUIType]="'one-line'"
+            [requestName]="'address'" [autoLoad]="true" [setRequestParams]="setRegionParam" (textChanged)="objAddressText.region = $event"></crm-load-list>
+        </div>
+        <div class="col-sm-12">
+          <crm-load-list [labelSize]="45" [label]="'ADDRESS.CITY' | translate" [isRequired]="true" formControlName="city"
+            [requestName]="'address'" [autoLoad]="false" [addsNull]="true" [setRequestParams]="setCityParam"
+            [refreshList]="form.get('region')?.value"  (textChanged)="objAddressText.city  = $event" [selectUIType]="'one-line'">
+          </crm-load-list>
+        </div>
+        <div class="col-sm-12">
+          <div class="btn--container-right">
+            <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+              (onClick)="getCarList()">
+            </crm-button>
+            <crm-button [colorMode]="'third'" [label]="'FORM.RESET' | translate" [type]="'text'" [class]="'third-btn'"
+              (onClick)="resetForm()">
+            </crm-button>
+            <div class="inline" style="transform: translate(10px, 0px);">
+              <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="gotoAdd()" accessKey="car_add"></crm-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <crm-ag-gridbean #dataGrid (onSelectionChanged)="gridSelectEvent($event)" [columnDefs]="refTableColumnDefs" [sideToside]="true"
+   [request]="requestCars" [pageSize]="pageSize" table [rowClassRules]="rowClassRules"  (gridReady)="gridReady()">
+
+  </crm-ag-gridbean>
+</secondary-layout>

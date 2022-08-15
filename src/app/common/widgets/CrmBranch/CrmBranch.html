@@ -1,0 +1,28 @@
+
+<div [ngClass]="{'input--container-flex': inputUIType === 'one-line'}">
+  <div style="{{(inputUIType === 'one-line' ? 'width: ' + labelSize +'%': '')}}" class="label">{{label}} <span *ngIf="isRequired" style="color: red;">*</span>
+  </div>
+  <div style="{{((inputUIType === 'one-line' && (!!label && haslabel)) ? 'width: ' + (100 - labelSize) +'%': '')}}"  class="inpWrap">
+    <div [class.hasError]="showError" style="position: relative">
+      <div style="position: relative" (click)="openSelectTree()">
+        <input readonly type="text" disabled="disabled" class="form-control" value="{{selectedItem}}" >
+        <mat-icon (click)="openSelectTree()"
+                  class="drop-down-open">keyboard_arrow_down</mat-icon>
+      </div>
+      <div  class="select-input">
+        <mat-select #myselect >
+          <mat-option (click)="clear()">-- None --</mat-option>
+          <ul style="margin: 0">
+            <li *ngFor="let item of items" style="padding-left: {{item.depth * 20 + 10}}px"
+              (click)="selectItem(item.id)"
+              class="{{item.hide ? 'hide' : 'show'}} {{item.isSelected ? 'selected' : ''}}">
+              <mat-icon class="open-close-icon" (click)="openCloseIconClicked($event, item.id)"
+                *ngIf="item.haveChild">{{item.isOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right'}}</mat-icon>
+              <span class="item-label">{{item.name}}</span>
+            </li>
+          </ul>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+</div>

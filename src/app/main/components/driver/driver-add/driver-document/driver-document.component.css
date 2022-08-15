@@ -1,0 +1,26 @@
+.wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 8px;
+}
+
+
+table {
+  width: 100%;
+}
+
+td {
+  padding: 0 10px !important;
+}
+
+.categories {
+  margin-top: 15px;
+}
+
+.categories span {
+  margin-left: 15px;
+}
+::ng-deep .mat-checkbox-layout{
+  background-color: var(--background-color-white);
+}

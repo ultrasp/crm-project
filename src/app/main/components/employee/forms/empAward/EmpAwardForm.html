@@ -1,0 +1,18 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [label]="'EMPLOYEE.AWARD_ID' | translate" [isRequired]="true" [requestName]="'reference'"
+        [setRequestParams]="setRefType" [autoLoad]="false" formControlName="award_id"
+        [showError]="f('award_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'EMPLOYEE.AWARD_DATE' | translate" formControlName="award_date"
+        [showError]="f('award_date')"></crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.COMMENT' | translate" formControlName="comment"
+                 [showError]="f('comment')"></crm-input>
+    </div>
+  </div>
+</form>

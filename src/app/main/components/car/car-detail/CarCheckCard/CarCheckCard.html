@@ -1,0 +1,141 @@
+  <div class="driver-detail-dialog__content" id="printDocument">
+    <div>
+      <div class="row">
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="70%">
+                
+                  {{'GENERAL.ORGANIZATION' | translate}}:
+                <strong>
+                {{printData.branch}}
+                </strong>
+              </td>
+              <td width="30%">
+                  {{'GENERAL._ID' | translate}} :
+                {{printData.id}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  {{'CAR.TEXNO_PROCESS' | translate}}:
+                {{printData.technical_specification}}
+              </td>
+              <td>
+                  {{'CAR.DRB' | translate}} :
+                  <strong>
+                {{printData.gov_number}}
+              </strong>
+            </td>
+            </tr>
+            <tr>
+              <td>
+                  {{'CAR.STATE' | translate}}:
+                  <strong>
+                {{printData.status}}
+              </strong>
+            </td>
+              <td>
+                  {{'CAR.SENT' | translate}} :
+                {{printData.data_sent}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" border="1">
+            <tbody>
+            <tr>
+              <td width="25%">
+                  {{'GENERAL.LASTNAME' | translate}}:
+                {{printData.last_name}}
+              </td>
+              <td width="25%">
+                  {{'GENERAL.NAME' | translate}} :
+                {{printData.first_name}}
+              </td>
+              <td width="25%">
+                  {{'GENERAL.MIDDLENAME' | translate}} :
+                {{printData.middle_name}}
+              </td>
+              <td width="25%">
+                  {{'GENERAL.BIRTHDATE' | translate}} :
+                {{printData.birth_date}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="50%">
+                  {{'CAR_PRINT_DIALOG.BASIC_DOCUMENT' | translate}}:
+                {{printData.docType}}
+              </td>
+              <td width="25%">
+                  {{'PASPORT.SERIYA' | translate}} :
+                {{printData.doc_series}}
+              </td>
+              <td width="25%">
+                  {{'PASPORT.NUMBER' | translate}} :
+                {{printData.doc_number}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="34%">
+                  {{'CAR.BODY_NUMBER' | translate}}:
+                <strong>
+                  {{printData.body_number}}
+                </strong>
+              </td>
+              <td width="33%">
+                  {{'CAR.ENGINE_NUMBER' | translate}} :
+                  <strong>
+                    {{printData.engine_number}}
+                  </strong>
+              </td>
+              <td width="33%">
+                  {{'CAR.CHASSIS_NUMBER' | translate}} :
+                  <strong>
+                    {{printData.chassis_number}}
+                  </strong>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="60%">
+                  {{'CAR.MODEL' | translate}}:
+                {{printData.model}}
+              </td>
+              <td width="40%">
+                  {{'CAR.COLOR' | translate}} :
+                {{printData.color}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="60%">
+                  {{'CAR.TYPE' | translate}}:
+                {{printData.type}}
+              </td>
+              <td width="40%">
+                  {{'CAR.YEAR' | translate}} :
+                {{printData.year}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

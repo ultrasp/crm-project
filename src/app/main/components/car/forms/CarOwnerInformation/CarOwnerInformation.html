@@ -1,0 +1,10 @@
+<div [formGroup]="form">
+    <crm-radio-group [listOptions]="ownerTypes" formControlName="ownerType" [isRequired]="true" [showError]="f('ownerType')" [label]="'GENERAL.CAR_OWNER_TYPE' | translate"></crm-radio-group>
+ 
+  <div *ngIf="isFizik()">
+    <car-owner-individuals #individuals  [driverId]="owner_id" [parentForm]="form"></car-owner-individuals>
+  </div>
+  <div *ngIf="isYurik()">
+    <crm-add-car-owner-legal #legal [driverId]="owner_id" [parentForm]="form"></crm-add-car-owner-legal>
+  </div>
+</div>

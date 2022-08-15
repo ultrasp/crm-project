@@ -1,0 +1,9 @@
+<div class="container--filter-table">
+    <div class="form-container" id="formContainer">
+        <ng-content select="[filter]"></ng-content>
+    </div>
+    
+    <div class="table-container" [style.height.px]="tableContainer">
+        <ng-content select="[table]"></ng-content>
+    </div>
+</div>

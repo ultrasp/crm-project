@@ -1,0 +1,14 @@
+<div *ngIf="uiTheme == themes.Web">
+  <header *ngIf="isLoggedIn" (logout)="logout()" [name]='name' [userName]="userName"></header>
+  <breadcrumb *ngIf="isLoggedIn"></breadcrumb>
+  <div class="container-fluid layout">
+    <div [class]="sidebarStatus ? 'opened-nav' : 'nav-container'" *ngIf="isLoggedIn" id="nav-container">
+      <navbar (sidebarStatus)="sidebarController($event)"></navbar>
+    </div>
+    <div class="main-container" id="main-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<crm-layout *ngIf="uiTheme == themes.MobileFirst" (logout)="logout()" [name]='name' [userName]="userName"></crm-layout>

@@ -1,0 +1,14 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-12">
+      <crm-load-list [label]="'EMPLOYEE.LANGUAGE' | translate" [isRequired]="true" [requestName]="'reference'"
+        [setRequestParams]="setLangRefType" [autoLoad]="true" formControlName="lang_id" [showError]="f('lang_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-12">
+      <crm-load-list [label]="'EMPLOYEE.DEGREE' | translate" [isRequired]="true" [requestName]="'reference'"
+        [setRequestParams]="setDegreeRefType" [autoLoad]="true" formControlName="degree" [showError]="f('degree')">
+      </crm-load-list>
+    </div>
+  </div>
+</form>

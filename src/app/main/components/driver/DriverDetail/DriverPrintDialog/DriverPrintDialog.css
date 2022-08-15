@@ -1,0 +1,74 @@
+.driver-detail-dialog__content {
+  margin: 9px 45px 9px 30px;
+  padding: 36px 36px 36px 90px;
+  border: 6px solid #6af;
+  box-shadow: 4px 4px #ddd;
+}
+
+table {
+  border-collapse: collapse;
+  border: 1px dashed #A5A5A5;
+}
+
+tr {
+  line-height: 1;
+}
+
+td {
+  font-size: 18px;
+  padding: 2px 8px;
+  text-transform: uppercase;
+}
+
+strong {
+  font-size: 15px;
+  text-transform: initial;
+}
+
+td.avatar {
+  border: 2px solid #000;
+  padding: 0;
+  height: 200px;
+}
+
+td.avatar :host(crm-image) ::ng-deep(img) {
+  border: 2px solid black;
+  width: 140px;
+  height: 100%;
+}
+
+table tr:first-child {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.application-title strong {
+  font-size: 18px;
+  color: #990000;
+}
+
+tr:last-child, tr:last-child td {
+  padding: 0;
+  border: none;
+}
+
+tr:nth-last-child(2) td {
+  border-bottom: none;
+}
+
+td.checked {
+  font-size: 18px;
+}
+
+td.empty-row {
+  height: 22px;
+}
+
+td.category strong, td.label strong, td.label {
+  text-align: center;
+  color: #2E74B5;
+}
+
+td.checker strong {
+  color: #8497b0;
+}

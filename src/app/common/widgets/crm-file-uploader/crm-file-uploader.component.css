@@ -1,0 +1,25 @@
+.file-input {
+  display: none;
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+.file-upload--label{
+  display: block;
+}
+.file-upload--container{
+  text-align: center;
+}
+:ng-deep button.mat-raised-button{
+  background-color: #2E6E30;
+}
+:ng-deep .mat-dialog-title{
+  font-size: 14px;
+  color: #000;
+  font-weight: 700;
+}

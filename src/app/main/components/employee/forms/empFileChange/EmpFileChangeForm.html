@@ -1,0 +1,12 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-date-input [label]="'EMPLOYEE.PUNISH_Date' | translate" formControlName="punish_date"
+        [showError]="f('punish_date')"></crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.COMMENT' | translate" formControlName="comment"
+        [showError]="f('comment')"></crm-input>
+    </div>
+  </div>
+</form>

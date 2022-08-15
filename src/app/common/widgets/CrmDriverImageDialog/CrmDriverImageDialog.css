@@ -1,0 +1,34 @@
+.file-upload--btn-container{
+    text-align: center;
+    justify-content: space-around;
+}
+.file-upload--btn-cancel{
+    background-color: var(--background-color-white);
+    border: 1px solid #B6B6B6;
+    border-radius: 0;
+}
+.form-title {
+    color: var(--text-color-title);
+    font-size: 14px;
+    font-weight: 700;
+}
+.button-container{
+    display: flex;
+    justify-content: right;
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+}
+  
+.file-upload--container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+    flex-wrap: wrap;
+}
+.file-upload--btn-text-container{
+    width: 100%;
+}

@@ -1,0 +1,7 @@
+<div class="row">
+  <div class="column-12">
+    <crm-button [type]="'text'" color="primary" [enabled]="reportId != '0'" (onClick)="onAdd()" [label]="'FORM.ADD' | translate"></crm-button>
+    <crm-ag-gridbean #dataGrid [columnDefs]="tablecolumnDefs"  [request]="requestReportParams" [pageSize]="pageSize">
+    </crm-ag-gridbean>
+</div>
+</div>

@@ -1,0 +1,7 @@
+<div [ngClass]="{'input--container-flex': inputUIType === 'one-line'}">
+  <div class="label">{{label}} <span *ngIf="isRequired" style="color: red;">*</span>
+  </div>
+    <div class="inpWrap"  [class.hasError]="showError">
+      <input matInput [placeholder]="'(99) 123-4567'" [(ngModel)]="value" (change)="valueChanged($event)" [readonly]="!isEnabled" mask="(00) 000-0000">
+    </div>
+</div>

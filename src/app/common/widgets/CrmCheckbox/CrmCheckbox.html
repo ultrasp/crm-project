@@ -1,0 +1,14 @@
+<div [hidden]="!visible">
+  <section
+    class="d-flex align-items-center justify-content-between input-container" [class.hasError]="showError"
+  >
+    <span class="overflow-inherit label">{{label}}</span>
+    <mat-checkbox
+      [checked]="value"
+      (change)="itemChanged($event)"
+      [disabled]="!isEnabled"
+      class="input"
+    >
+    </mat-checkbox>
+  </section>
+</div>

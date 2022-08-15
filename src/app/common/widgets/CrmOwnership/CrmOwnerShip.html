@@ -1,0 +1,44 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-autocomplete-load-list   [label]="'GENERAL.DOCUMENT_TYPE' | translate" [isRequired]="true" [requestName]="'reference'"
+      [setRequestParams]="setRefType" [autoLoad]="false" formControlName="agr_type_id"
+      [showError]="f('agr_type_id')" [selectUIType]="inputsUIType"></crm-autocomplete-load-list>
+    </div>
+
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.REGISTRY' | translate" [isRequired]="true" formControlName="agr_reestr"
+        [showError]="f('agr_reestr')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+
+    <div class="col-sm-6">
+      <crm-input [label]="'FORM.FORM'  | translate" [isRequired]="true" formControlName="agr_blank"
+        [showError]="f('agr_blank')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+
+    <div class="col-sm-6">
+      <crm-integer [label]="'CAR.OWNER_CONTRACT_NO' | translate" [isRequired]="true" formControlName="agr_number"
+        [showError]="f('agr_number')" [inputUIType]="inputsUIType"></crm-integer>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'GENERAL.DATE'   | translate" [isRequired]="true" formControlName="agr_date"
+        [showError]="f('agr_date')" [dateUIType]="inputsUIType"></crm-date-input>
+    </div>
+
+
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.NOTARY_NAME' |translate"  formControlName="agr_notary_id"
+      [showError]="f('agr_notary_id')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.DNI' |translate"  formControlName="agr_dni_id"
+      [showError]="f('agr_dni_id')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.CAR_DEALERSHIP_NAME' |translate"  formControlName="dealership_name"
+      [showError]="f('dealership_name')" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+  </div>
+</form>

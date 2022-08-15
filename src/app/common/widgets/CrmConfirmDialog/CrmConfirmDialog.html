@@ -1,0 +1,8 @@
+<div mat-dialog-content class="mat-typography">
+  {{data.message | translate}}
+</div>
+<div style="margin-top: 20px; display: flex; justify-content: space-around;">
+  <button (click)="onConfirm()" mat-raised-button>{{'FORM.STORE' |translate }}</button>
+  <button (click)="onCancel()" mat-button>{{'FORM.CANCEL' |translate }}</button>
+</div>
+

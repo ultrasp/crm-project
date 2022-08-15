@@ -1,0 +1,20 @@
+<div class="blocks">
+  <div class="reference-sidebar">
+    <crm-input [formControl]="searchControl" [style]="'margin-top: 10px'" [placeHolder]="'GENERAL.SEARCH' | translate" [haslabel]="false">
+    </crm-input>
+    <crm-list [data]="filteredReftypeData" (itemSelected)="refTypeSelected($event)"></crm-list>
+  </div>
+  <div>
+    <div *ngIf="selectedRefType" style="height: 98%;">
+      <div class="typeTitle">{{selectedRefType.key +'- '+selectedRefType.title}}</div>
+      <crm-button [type]="'text'" [label]="'Добавить'"
+        [style]="'background-color:green; float: right; transform: translate(-50px, 0px);'" style="float: right;"
+        (onClick)="showForm()"></crm-button>
+      <div class="row table-container" style="padding-top: 17px;">
+        <crm-ag-gridbean #dataGrid [columnDefs]="refTcolumnDefs" [data]="referenceData" [request]="getRequest"
+          [pageSize]="pageSize">
+        </crm-ag-gridbean>
+      </div>
+    </div>
+  </div>
+</div>

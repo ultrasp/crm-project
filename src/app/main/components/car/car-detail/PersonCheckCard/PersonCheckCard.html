@@ -1,0 +1,178 @@
+  <div class="driver-detail-dialog__content" id="printDocument">
+    <div>
+      <div class="row">
+        <div>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="70%">
+                <strong>
+                  {{'GENERAL.ORGANIZATION' | translate}}:
+                </strong>
+                {{printData.branch}}
+              </td>
+              <td width="30%">
+                <strong>
+                  {{'GENERAL._ID' | translate}} :
+                </strong>
+                {{printData.id}}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <strong>
+                  {{'GENERAL.DOCUMENT' | translate}}:
+                </strong>
+                {{printData.document}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  {{'CAR.STATE' | translate}}:
+                </strong>
+                {{printData.status}}
+              </td>
+              <td>
+                <strong>
+                  {{'CAR.SENT' | translate}} :
+                </strong>
+                {{printData.data_sent}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  {{'GUID' | translate}}:
+                </strong>
+                {{printData.GUID}}
+              </td>
+              <td>
+                <strong>
+                  {{'DRIVER_DETAIL_PRINT.DATE_ENTERED' | translate}} :
+                </strong>
+                {{printData.create_date}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" border="1">
+            <tbody>
+            <tr>
+              <td rowspan="5" width="20">
+                <img src="{{printData.image}}" alt="">
+              </td>
+              <td width="20%">
+                <strong>
+                  {{'GENERAL.LASTNAME' | translate}}:
+                </strong>
+                {{printData.last_name}}
+              </td>
+              <td width="20%">
+                <strong>
+                  {{'GENERAL.NAME' | translate}} :
+                </strong>
+                {{printData.first_name}}
+              </td>
+              <td width="20%">
+                <strong>
+                  {{'GENERAL.MIDDLENAME' | translate}} :
+                </strong>
+                {{printData.middle_name}}
+              </td>
+              <td width="20%">
+                <strong>
+                  {{'GENERAL.BIRTHDATE' | translate}} :
+                </strong>
+                {{printData.birth_date}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {{printData.last_name}}
+              </td>
+              <td>
+                {{printData.first_name}}
+              </td>
+              <td>
+                {{printData.middle_name}}
+              </td>
+              <td>
+                {{printData.birth_date}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <strong>
+                  {{'GENERAL.BIRTHPLACE' | translate}}:
+                </strong>
+                {{printData.birth_place}}
+              </td>
+              <td>
+                <strong>
+                  {{'GENERAL.PNFL' | translate}} :
+                </strong>
+                {{printData.pinfl}}
+              </td>
+              <td>
+                <strong>
+                  {{'GENERAL.NATION' | translate}} :
+                </strong>
+                {{printData.nationality}}
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <strong>
+                  {{'PASPORT.SERIYA' | translate}}:
+                </strong>
+                {{printData.doc_series}}
+              </td>
+              <td>
+                <strong>
+                  {{'PASPORT.NUMBER' | translate}} :
+                </strong>
+                {{printData.doc_number}}
+              </td>
+              <td>
+                <strong>
+                  {{'GENERAL.GIVEN_DATE' | translate}} :
+                </strong>
+                {{printData.given_date}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" border="1" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+              <td width="50%">
+                <strong>
+                  {{'CAR_PRINT_DIALOG.BASIC_DOCUMENT' | translate}}:
+                </strong>
+                {{printData.docType}}
+              </td>
+              <td width="50%">
+                <strong>
+                  {{'CAR.GIVEN_NAME' | translate}} :
+                </strong>
+                {{printData.docTypeGivenBy}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+

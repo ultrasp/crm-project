@@ -1,0 +1,9 @@
+<div class="row ">
+  <div class="col-sm-4 label">{{label}} <span *ngIf="isRequired" style="color: red;">*</span>
+  </div>
+  <div class="col-sm-8 ">
+    <div class="inpWrap"  [class.hasError]="showError">
+      <textarea  matInput [placeholder]="placeHolder || ''" [(ngModel)]="value" (change)="valueChanged($event)" [readonly]="!isEnabled"></textarea>
+    </div>
+  </div>
+</div>

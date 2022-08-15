@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-sm-12 detail--button-container">
+    <crm-button [type]="'text'" [label]="'CAR.TECHNICAL_INSPECTION_ADD' | translate"
+                (onClick)="onAdd()" [class]="'flat-btn'" [icon]="'add'" [colorMode]="'flat'"></crm-button>
+  </div>
+  <div class="col-sm-12">
+    <div class="row" style="width: 100%;">
+      <div class="col-sm-6">
+        <crm-table-view [title]="'CAR.PERSONAL_AMT'" [options]="carDetailData.car"></crm-table-view>
+      </div>
+      <div class="col-sm-6">
+        <crm-table-view [title]="'CAR.VEHICLE_OWNER_INFORMATION'" [options]="carDetailData.carPerson"></crm-table-view>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <mat-tab-group class="main-tab-group mt-2" [selectedIndex]="selectedTabIndex"  (selectedTabChange)="tabChanged($event)">
+      <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
+        <ng-template mat-tab-label>{{ tab.title | translate }}
+        </ng-template>
+        <div>
+          <app-tab-content [tab]="tab" [isActive]="tab.active" (btnClicked)="btnClicked($event)"></app-tab-content>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

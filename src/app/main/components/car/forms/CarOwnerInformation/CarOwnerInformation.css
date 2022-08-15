@@ -1,0 +1,14 @@
+    .radio--btn-container{
+        background-color: #EBEAEA;
+    }
+::ng-deep .mat-radio-outer-circle{
+    border-color: var(--border-colors)!important;
+}
+::ng-deep .mat-radio-inner-circle{
+    background-color: var(--icon-colored)!important;
+
+}
+::ng-deep .mat-radio-persistent-ripple{
+    background-color: var(--icon-colored)!important;
+
+}

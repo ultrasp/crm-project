@@ -1,0 +1,35 @@
+
+
+<table border="1" cellpadding="0" width="500">
+  <tbody><tr>
+    <td height="100" width="500">
+      <canvas #cnv width="500" height="100"></canvas>
+    </td>
+  </tr>
+  </tbody></table>
+
+
+<br>
+<p #sigWebVrsnNote style="font-family: Arial;"></p>
+
+
+<form [formGroup]="form">
+  <div>
+    <crm-button [type]="'text'" [label]="'GENERAL.SIGN' | translate" (onClick)="onSign()" [class]="'flat-btn'" [colorMode]="'flat'" *ngIf="false"></crm-button>
+    <crm-button [type]="'text'" [label]="'GENERAL.CLEAR' | translate" (onClick)="onClear()" [class]="'flat-btn'"  [colorMode]="'flat'"  *ngIf="false"></crm-button>
+    <crm-button [type]="'text'" [label]="'GENERAL.DONE' | translate" (onClick)="onDone()" [class]="'flat-btn'" [colorMode]="'flat'"  *ngIf="false"></crm-button>
+
+    <input type="HIDDEN" formControlName="bioSigData">
+    <input type="HIDDEN" formControlName="sigImgData">
+    <crm-textarea [value]="'SigString:'" formControlName="sigStringData" *ngIf="false">
+    </crm-textarea>
+    <crm-textarea [value]="'Base64 String:'" formControlName="sigImageData" *ngIf="false">
+    </crm-textarea>
+  </div>
+</form>
+<p  #daysUntilExpElement></p>
+<p id="SigWebVersion"></p>
+<p id="SigWebTabletJSVersion"></p>
+<p id="CertificateExpirationDate"></p>
+
+

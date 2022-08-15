@@ -1,0 +1,15 @@
+<a [routerLink]="urlLink" class="quicklinkitem--link">
+    <div class="quicklinkitem--container" [ngClass]="{disabled: !urlLink}">
+        <div class="quicklinkitem--icon-container">
+            <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon">{{ icon }}
+            </mat-icon>
+        </div>
+        <div class="quicklinkitem--text-container">
+            <h2 class="quicklinkitem--text">{{ title | translate }}</h2>
+            <p class="quicklinkitem--text-subtitle">{{ subtitle | translate }}</p>
+        </div>
+        <div *ngIf="!urlLink" class="quicklinkitem--disable-window">
+            <h2>{{ "HOME_LINKS.NO_ACTIVE" | translate }}</h2>
+        </div>
+    </div>
+</a>

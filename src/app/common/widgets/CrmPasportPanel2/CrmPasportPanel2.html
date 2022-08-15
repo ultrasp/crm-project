@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+  <div class="row" style="width: 100%;margin-right: 0;">
+    <div class="col-sm-6" [ngClass]="{'col-sm-12' : formLabelType}">
+      <crm-autocomplete-load-list [label]="'GENERAL.DOCUMENT_TYPE' | translate" [requestName]="'reference'"
+        [autoLoad]="false" [setRequestParams]="documentTypeParams" formControlName="docType" [showError]="f('docType')"
+        [selectUIType]="formLabelType"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-6" [ngClass]="{'col-sm-12' : formLabelType}">
+      <crm-load-list [labelSize]="50" [label]="'PASPORT.ISSUEBY' | translate" formControlName="givenBy" [requestName]="referenceKey"
+      [setRequestParams]="givenPlaceParams" [selectUIType]="formLabelType" [isRequired]="true" [showError]="f('givenBy')"></crm-load-list>
+      <ng-container *ngIf="form.get('givenBy')?.value == null && givenByText != ''">
+        {{givenByText}}
+      </ng-container>
+      <!-- <crm-input [label]="'PASPORT.ISSUEBY' | translate" [isRequired]="true" formControlName="givenBy"
+        [showError]="f('givenBy')" [inputUIType]="formLabelType"></crm-input> -->
+    </div>
+    <div class="col-sm-3">
+      <crm-input [labelSize]="45" [showError]="f('seriya')" [label]="'CAR.SERIA_NUMBER' | translate" formControlName="seriya"
+        [inputUIType]="'one-line-2'" [isEnabled]="false"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('nomer')" [label]="" formControlName="nomer" [inputUIType]="'one-line-2'"
+        [isEnabled]="false">
+      </crm-input>
+    </div>
+    <div class="col-sm-6" [ngClass]="{'col-sm-6' : formLabelType}">
+      <crm-load-list [labelSize]="50" #nationalityList [label]="'GENERAL.CITIZENSHIP' | translate" [isRequired]="true"
+        [requestName]="'country'" [autoLoad]="false"
+        formControlName="citizenship_id" [showError]="f('citizenship_id')"  [selectUIType]="'one-line'">
+      </crm-load-list>
+    </div>
+
+  </div>
+</form>

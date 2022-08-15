@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-sm-10" style="margin: 10px;margin-left: 0;margin-right: 0;">
+    <crm-input [label]="'GENERAL.PASPORT' | translate" [isRequired]="true" 
+      [showError]="pasportDocNo == ''" [(value)]="pasportDocNo" [inputUIType]="'one-line'" ></crm-input>
+  </div>
+  <div class="col-sm-2 btn--container-right">
+    <crm-button [label]="'FORM.SEARCH' | translate" [type]="'text'" (onClick)="onSearch()"></crm-button>
+  </div>
+</div>
+
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.PNFL' | translate" [isRequired]="true" formControlName="pnfl"
+      [showError]="f('last_name')" [inputUIType]="'one-line'"></crm-input>
+
+      </div>
+      <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.LASTNAME' | translate" [isRequired]="true" formControlName="last_name"
+        [showError]="f('last_name')" [inputUIType]="'one-line'"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.NAME' | translate" [isRequired]="true" formControlName="name"
+        [showError]="f('name')" [inputUIType]="'one-line'">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.MIDDLENAME' | translate" [isRequired]="true" formControlName="middlename"
+        [showError]="f('middlename')" [inputUIType]="'one-line'"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-autocomplete-load-list [label]="'GENERAL.SEX' | translate" [isRequired]="true" [requestName]="'reference'"
+      [setRequestParams]="setRefType" [autoLoad]="false" formControlName="sex_type" [showError]="f('sex_type')" [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'GENERAL.BIRTHDATE'   | translate" [isRequired]="true" formControlName="birth_date"
+        [showError]="f('birth_date')" [dateUIType]="'one-line'"></crm-date-input>
+    </div>
+    <div class="col-sm-12 custom--passport-container">
+      <h4 class="block--title-devider">
+        <span>
+          {{'EMPLOYEE.PASPORT_INFORMATION' | translate}}
+        </span>
+      </h4>
+      <crm-passport-panel [ownerType]="ownerType" [ownerId]="driverId"  [form]="form" [formLabelType]="'one-line'" [autoload]="false">
+      </crm-passport-panel>
+    </div>
+    <div class="col-sm-12">
+      <h4 class="block--title-devider">
+        <span>
+          {{'DRIVER.BIRTH_PLACE' | translate}}
+        </span>
+      </h4>
+      <app-driver-birth-place [form]="form" [inputUIType]="'one-line'"></app-driver-birth-place>
+    </div>
+  </div>
+</form>

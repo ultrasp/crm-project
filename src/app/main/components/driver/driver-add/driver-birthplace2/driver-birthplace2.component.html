@@ -1,0 +1,8 @@
+<div [formGroup]="form"  class="wrap">
+  <crm-autocomplete-load-list [labelSize]="30" [label]="'ADDRESS.BIRTH_PLACE_GOVERMENT' | translate" [isRequired]="true" [requestName]="'country'"
+    [autoLoad]="false"  formControlName="born_country_id"
+    [showError]="f('born_country_id')" class="col-sm-6" [selectUIType]="inputUIType"></crm-autocomplete-load-list>
+  <crm-autocomplete-load-list [label]="'ADDRESS.REGION' | translate" formControlName="born_region_id"
+    [requestName]="'address'" [autoLoad]="true" [setRequestParams]="setRegionParam" [showError]="f('born_region_id')"
+    class="col-sm-6" [selectUIType]="inputUIType"></crm-autocomplete-load-list>
+</div>

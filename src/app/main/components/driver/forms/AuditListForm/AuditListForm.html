@@ -1,0 +1,30 @@
+<div class="modal-header"  cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".form-title">
+  <h4 class="form-title" style="cursor: grab;">{{ 'DRIVER.AUDIT' | translate }} </h4>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()" style="cursor: pointer;">close</mat-icon>
+ </div>
+<form class="container" [formGroup]="form" (ngSubmit)="getList()">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-date-input [showError]="f('start_date')" [isRequired]="true"
+                      [label]="'DRIVER.FROM' | translate"
+                      formControlName="start_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [showError]="f('end_date')" [isRequired]="true" [label]="'DRIVER.TO' | translate"
+                  formControlName="end_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-12 btn--container-right">
+      <crm-button [type]="'text'" [label]="'FORM.SEARCH' | translate" >
+      </crm-button>
+    </div>
+  </div>
+</form>
+
+<div>
+  <crm-ag-gridbean [request]="request" [columnDefs]="refTableColumnDefs">
+  </crm-ag-gridbean>
+</div>
+
+

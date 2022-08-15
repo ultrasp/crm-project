@@ -1,0 +1,29 @@
+<div class="header">
+  <h3> {{"GENERAL.REPORTS" | translate}} </h3>
+</div>
+<div class="row h100-100 mx-0">
+  <div class="col-sm-6">
+    <crm-tree-selector [key]="keyClass" (reportSelected)="reportNodeSelected($event)"></crm-tree-selector>
+  </div>
+  <div class="col-sm-6 report-right" *ngIf="selectedReport && selectedReport.id != '0'">
+
+    <div class="detail-title">{{selectedReport.name}}</div>
+    <div class="m-3">
+      <mat-checkbox color="primary" [(ngModel)]="isASync" style="padding: 1em 2em;">
+        {{'GENERAL.ASYNC' | translate}}
+      </mat-checkbox>
+      {{selFormatType}}
+      <crm-select [label]="'GENERAL.TYPE' | translate" [options]="formats" [value]="selFormatType" (selectionChanged)="onFormatChange($event)" [addsNull]="false"></crm-select>
+      <div #wrapper *ngIf="params.length!==0" style="padding: 1em;">
+        <ng-container *ngFor="let item of params; let m = index">
+          <div class="col-sm-12">
+            <crm-attribute-param [param]="item" #params></crm-attribute-param>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <br>
+    <crm-button [type]="'text'" [label]="'GENERAL.SHOW' |translate" color="primary" (click)="onView()"></crm-button>
+  </div>
+
+</div>

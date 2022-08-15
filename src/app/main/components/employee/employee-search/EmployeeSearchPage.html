@@ -1,0 +1,58 @@
+<filter-table-wrapper>
+  <div filter>
+    <form [formGroup]="form">
+        <div class="row">
+          <div class="col-sm-2">
+            <crm-input [label]="'GENERAL.LASTNAME' |translate" formControlName="last_name"></crm-input>
+          </div>
+          <div class="col-sm-2">
+            <crm-input [label]="'GENERAL.NAME'|translate" formControlName="first_name"></crm-input>
+          </div>
+          <div class="col-sm-2">
+            <crm-input [label]="'GENERAL.MIDDLENAME'|translate" formControlName="middle_name"></crm-input>
+          </div>
+          <div class="col-sm-4">
+            <crm-branch #branch [label]="'GENERAL.ORGANIZATION' |translate" formControlName="branch_id">
+            </crm-branch>
+          </div>
+          <div class="col-sm-2">
+            <crm-input [label]="'GENERAL.JETON_NUMBER' | translate" formControlName="token_id"></crm-input>
+          </div>
+          <div class="col-sm-2">
+            <crm-input [label]="'GENERAL.MILITARY_NUMBER' | translate" formControlName="military_id"></crm-input>
+          </div>
+          <div class="col-sm-2">
+            <crm-load-list #positionList [label]="'GENERAL.POSITION' |translate" [requestName]="'reference'"
+              [autoLoad]="false" [setRequestParams]="positionParams" formControlName="position_id"
+              [showError]="f('position_id')">
+            </crm-load-list>
+          </div>
+          <div class="col-sm-2">
+            <crm-date-input [label]="'GENERAL.BIRTHDATE'|translate" formControlName="from_born_date">
+            </crm-date-input>
+          </div>
+          <div class="col-sm-2">
+            <crm-date-input [hasLabel]="false" formControlName="to_born_date"></crm-date-input>
+          </div>
+          <div class="col-sm-4">
+            <div class="btn--container-right">
+              <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+                (onClick)="getEmployeeList()">
+              </crm-button>
+              <crm-button [colorMode]="'third'" [label]="'FORM.RESET' | translate" [type]="'text'" [class]="'third-btn'"
+              (onClick)="resetForm()">
+            </crm-button>
+
+              <div class="inline" style="transform: translate(10px, 0px);">
+                <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="openForm()" accessKey="kadr_add_employee"></crm-button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </form>
+  </div>
+  <crm-ag-gridbean (onSelectionChanged)="gridSelectEvent($event)" #dataGrid [columnDefs]="refTableColumnDefs"
+    [request]="requestEmployees" [pageSize]="pageSize" table>
+  </crm-ag-gridbean>
+</filter-table-wrapper>

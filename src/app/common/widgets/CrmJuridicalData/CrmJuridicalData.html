@@ -1,0 +1,12 @@
+
+<div>
+  <h2 class="form-label">{{'GENERAL.SEARCH_BY_MIP_DIALOG_TITLE' | translate}}</h2>
+  <form [formGroup]="form" action="#">
+    <div class="input-pinfl">
+      <crm-input [label]="'GENERAL.INN' | translate" [isRequired]="true" formControlName="inn" [showError]="f('inn')"></crm-input>
+    </div>
+    <div>
+      <crm-button [label]="'GENERAL.DOWNLOAD' | translate" (onClick)="submit()" [type]="'text'"></crm-button>
+    </div>
+  </form>
+</div>

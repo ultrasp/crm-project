@@ -1,0 +1,29 @@
+
+
+.input-pinfl {
+  margin-top: 20px;
+}
+
+.button {
+  height: 40px;
+  float: right;
+  background-color: green;
+  color: white;
+  margin-top: 20px;
+  padding: 5px 10px;
+  border-radius: 0.25rem;
+}
+
+.form-title {
+  color: var(--text-color-title);
+  font-size: 14px;
+  font-weight: 700;
+}
+.button-container{
+  display: flex;
+  justify-content: right;
+}
+.modal-header{
+  display: flex;
+  justify-content: space-between;
+}

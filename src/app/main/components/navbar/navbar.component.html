@@ -1,0 +1,46 @@
+<div class="navbar-container">
+    <div class="navbar-list" id="testID">
+        <ng-container *ngFor="let item of menuItems; let i = index">
+            <div class="navbar-element" *ngIf="item.children.length == 0; else parentItem" routerLinkActive="active-link"
+                id="sidebarBtn" [routerLinkActiveOptions]="{exact: true}">
+                <button mat-button (click)="openSidebar(item.label)" class="navbar-btn"
+                    title="{{item.label | translate}}">
+                    <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon">{{ item.icon }}
+                    </mat-icon>
+                </button>
+              <div [id]="'elementSidebar' + item.label" [class]="sidebarStatusHolder === 'elementSidebar' + item.label ? 'sidebar--expanded-item' : 'sidebar--expand-item'">
+                <div class="dropdown--elements">
+                  <span (click)="menuClicked('test')" class="dropdown--span">
+                    <a [routerLink]="item.url"
+                          class="clickable-element">{{item.label | translate}}</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <ng-template #parentItem>
+                <div class="navbar-element" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}"
+                    id="sidebarBtn2">
+                    <button mat-button (click)="openSidebar(item.label)" class="navbar-btn"
+                        title="{{item.label | translate}}">
+                        <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon">{{ item.icon }}
+                        </mat-icon>
+                    </button>
+                    <div [id]="'elementSidebar' + item.label" [class]="sidebarStatusHolder === 'elementSidebar' + item.label ? 'sidebar--expanded-item' : 'sidebar--expand-item'">
+                        <div class="dropdown--elements">
+                            <span *ngFor="let subItem of item.children; let i = index " class="dropdown--span"
+                                [ngClass]="i+1 === item.children.length ? 'sidebar--dropdown-btn-last' : ''">
+                                <button mat-menu-item *ngIf="hasAccess(subItem)" mat-menu-item
+                                    [routerLink]="subItem.url" routerLinkActive
+                                    #routerLinkActiveInstance="routerLinkActive"
+                                    [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+                                    [class.list-item-active]="routerLinkActiveInstance.isActive"
+                                    class="submenu sidebar--dropdown-btn" (click)="menuClicked(subItem)">{{subItem.label
+                                    | translate}}</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+    </div>
+</div>

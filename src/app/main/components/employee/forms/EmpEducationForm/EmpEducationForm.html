@@ -1,0 +1,30 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-input [label]="'EMPLOYEE.EDU_ORGANIZATION_ADDRESS' | translate" [isRequired]="true" formControlName="educ_address"
+        [showError]="f('educ_address')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'EMPLOYEE.EDU_ORGANIZATION_NAME' | translate" [isRequired]="true" formControlName="educ_organization"
+        [showError]="f('educ_organization')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'GENERAL.START_DATE' | translate" [isRequired]="true" formControlName="start_date"
+        [showError]="f('start_date')"></crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'GENERAL.END_DATE' | translate" [isRequired]="true" formControlName="end_date"
+        [showError]="f('end_date')"></crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-load-list [label]="'GENERAL.TYPE' | translate" [isRequired]="true" [requestName]="'reference'"
+        [setRequestParams]="setRefType" [autoLoad]="false" formControlName="type_id"
+        [showError]="f('type_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'EMPLOYEE.EDUCATION_DOC_NUMBER' | translate" [isRequired]="true" formControlName="document_number"
+        [showError]="f('document_number')"></crm-input>
+    </div>
+  </div>
+</form>

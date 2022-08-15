@@ -1,0 +1,64 @@
+.layout{
+    display: flex;
+    height: 80vh!important;
+    overflow: hidden;
+}
+.layout .nav-container{
+    width: auto;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 30px;
+
+}
+.layout .opened-nav{
+  padding-top: 30px;
+}
+.layout .nav-container::-webkit-scrollbar {
+    width: 5px;
+    background-color: #fff;
+}
+.layout .nav-container::-webkit-scrollbar-thumb {
+    background-color: #bec4d1;
+}
+
+.layout .main-container{
+    width: 92%;
+    overflow-x: hidden;
+    height: 100%;
+    padding-left: 25px;
+    padding-right: 10px;
+    padding-top: 15px;
+}
+.layout .opened-main{
+    width: 83%!important;
+}
+
+.layout .main-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+.layout .main-container::-webkit-scrollbar-thumb {
+    background-color: #bec4d1;
+}
+@media  screen and (max-width: 1450px) {
+    .layout .nav-container{
+        width: 7%;
+    }
+}
+@media  screen and (max-width: 1200px) {
+    .layout .nav-container{
+        width: 8%;
+    }
+}
+@media  screen and (max-width: 1024px) {
+    .layout .nav-container{
+        width: 10%;
+    }
+}
+
+@media  screen and (max-width: 800px) {
+    .layout .nav-container{
+        width: 12%;
+    }
+}

@@ -1,0 +1,105 @@
+<secondary-layout>
+  <div filter>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="btn--container-right">
+            <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+              (onClick)="getCarList()">
+            </crm-button>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <crm-multi-check-grid-selector [colLabels]="['GENERAL.ID','CAR.STOPING_REASON']" formControlName="reasons" [kod]="'key'" [requestName]="referenceKey" [setRequestParams]="setFilterParams"></crm-multi-check-grid-selector>
+        </div>
+        <div class="col-sm-9">
+          <crm-input crm-input-pattern [label]="'DRIVER.OWN_NUMBER' | translate" formControlName="own_number" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-integer crm-input-pattern [label]="'GENERAL.PAGE_N' | translate" formControlName="page_num" [inputUIType]="'one-line'"></crm-integer>
+        </div>
+        <div class="col-sm-12">
+          <crm-input crm-input-pattern [label]="'GENERAL.GUID' | translate" formControlName="guid" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          {{'GENERAL.PERSON_INFO' | translate}}
+        </div>
+        <div class="col-sm-12">
+          <crm-input [label]="'GENERAL.LASTNAME' | translate"  formControlName="last_name"
+             [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [label]="'GENERAL.NAME' | translate"  formControlName="name" 
+            [inputUIType]="'one-line'">
+          </crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [label]="'GENERAL.MIDDLENAME' | translate" formControlName="middlename"
+            [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          {{'GENERAL.BIRTHDATE' | translate}}
+        </div>
+        <div class="col-sm-6">
+          <crm-date-input [label]="'GENERAL._FROM' | translate" formControlName="born_from" ></crm-date-input>
+        </div>
+        <div class="col-sm-6">
+          <crm-date-input [label]="'GENERAL._TO' | translate" formControlName="born_to" ></crm-date-input>
+        </div>
+        <div class="col-sm-12">
+          {{'GENERAL.PASPORT' | translate}}
+        </div>
+        <div class="col-sm-6">
+          <crm-input [label]="'PASPORT.SERIYA' | translate" formControlName="pasport_seria" ></crm-input>
+        </div>
+        <div class="col-sm-6">
+          <crm-input [label]="'PASPORT.NUMBER' | translate" formControlName="pasport_num" ></crm-input>
+        </div>
+
+        <div class="col-sm-12">
+          {{'GENERAL.SEND_DATE' | translate}}
+        </div>
+        <div class="col-sm-6">
+          <crm-date-input [label]="'GENERAL._FROM' | translate" formControlName="send_from" ></crm-date-input>
+        </div>
+        <div class="col-sm-6">
+          <crm-date-input [label]="'GENERAL._TO' | translate" formControlName="send_to" ></crm-date-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-tree-grid-selector [colLabels]="['GENERAL.ID','GENERAL.DIVISION_TITLE']" formControlName="division_id"></crm-tree-grid-selector>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div table>
+    <div class="row" *ngIf="curInfoId && curInfoId != '-1';else other_content">
+      <div class="col-sm-1">
+        <crm-button  [type]="'icon'" [class]="'flat-btn big-icon'" [icon]="'navigate_before'" [colorMode]="'flat'" (onClick)="prevCard()"></crm-button>
+      </div>
+      <div class="col-sm-10">
+        <person-check-card [curInfoId]="curInfoId"></person-check-card>
+      </div>
+      <div class="col-sm-1">
+        <crm-button  [type]="'icon'" [class]="'flat-btn big-icon'" [icon]="'navigate_next'" [colorMode]="'flat'" (onClick)="nextCard()"></crm-button>
+      </div>
+    </div>
+    <ng-template #other_content>
+      <div class="row" style="height: 381px;"></div>
+    </ng-template>
+    <div class="row" style="height: 300px;">
+      <crm-ag-gridbean #dataGrid [columnDefs]="refTableColumnDefs" [request]="requestParamPerson" [pageSize]="pageSize" table  >
+      </crm-ag-gridbean>
+      </div>
+    <div class="row">
+      <div class="cols-sm-12">
+        <crm-button  [type]="'text'" [label]="'GENERAL.RECHECK' | translate" [class]="'flat-btn'"  [colorMode]="'flat'" (onClick)="showConfirmDialog(BTN_DATA_IS_NOT_FULL)"></crm-button>
+        <crm-button  [type]="'text'" [label]="'CAR.CAR_IN_SEARCH'| translate" [class]="'flat-btn'"  [colorMode]="'flat'" (onClick)="showConfirmDialog(BTN_IN_SEARCH)"></crm-button>
+        <crm-button  [type]="'text'" [label]="'CAR.CAR_NOT_IN_SEARCH'| translate" [class]="'flat-btn'"  [colorMode]="'flat'" (onClick)="showConfirmDialog(BTN_NOT_IN_SEARCH)"></crm-button>
+        <crm-button  [type]="'text'" [label]="'CAR.CHECK_AFTER'| translate" [class]="'flat-btn'"  [colorMode]="'flat'" (onClick)="showConfirmDialog(BTN_CHECK_AFTER)"></crm-button>
+
+      </div>
+    </div>
+  </div>
+
+</secondary-layout>

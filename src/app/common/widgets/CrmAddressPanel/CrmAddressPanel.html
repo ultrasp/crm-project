@@ -1,0 +1,45 @@
+<div [formGroup]="form" class="wrap">
+  <div class="row">
+    <div class="col-sm-12">
+      <crm-load-list [label]="'ADDRESS.REGION' | translate" [isRequired]="true" formControlName="region"
+        [requestName]="'address'" [autoLoad]="true" [setRequestParams]="setRegionParam" [showError]="f('region')"
+        (textChanged)="objAddressText.region = $event" [selectUIType]="inputsUIType"></crm-load-list>
+    </div>
+    <div class="col-sm-12">
+      <crm-load-list [label]="'ADDRESS.CITY' | translate" [isRequired]="true" formControlName="city"
+        [requestName]="'address'" [autoLoad]="false" [addsNull]="true" [setRequestParams]="setCityParam"
+        [refreshList]="form.get('region')?.value" [showError]="f('city')" (textChanged)="objAddressText.city  = $event" [selectUIType]="inputsUIType">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-12">
+      <crm-input [label]="'ADDRESS.LIVE_PLACE' | translate" formControlName="livePlace" [inputUIType]="inputsUIType"></crm-input>
+      <!-- <autocomplete-textbox [textDoesNotMatchErrorHidden]="false" [label]="'ADDRESS.LIVE_PLACE' | translate"
+        formControlName="livePlace" [requestClass]="'address'" [setRequestParams]="setLivePlaceParam"
+        [requestParams]="[form.get('city')?.value, 2]" [(text)]="objAddressText.livePlace" [inputUIType]="inputsUIType"></autocomplete-textbox> -->
+    </div>
+    <div class="col-sm-12">
+      <crm-input [label]="'ADDRESS.STREET' | translate" formControlName="street" [inputUIType]="inputsUIType"></crm-input>
+      <!-- <autocomplete-textbox [textDoesNotMatchErrorHidden]="false" [label]="'ADDRESS.STREET' | translate"
+        formControlName="street" [requestClass]="'address'" [setRequestParams]="setStreetParam"
+        [requestParams]="[form.get('city')?.value, 4]" [(text)]="objAddressText.street" [inputUIType]="inputsUIType"></autocomplete-textbox> -->
+    </div>
+    <div class="col-sm-12">
+      <crm-input [label]="'ADDRESS.ADDRESS' | translate" formControlName="note" [inputUIType]="inputsUIType"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [label]="'ADDRESS.HOUSE' | translate" formControlName="house" [inputUIType]="inputsUIType">
+      </crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [label]="'ADDRESS.KORPUS' | translate" formControlName="korpus" [inputUIType]="inputsUIType">
+      </crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-integer [label]="'ADDRESS.FLAT' | translate" formControlName="flat" [inputUIType]="inputsUIType"></crm-integer>
+    </div>
+    <div class="col-sm-3">
+      <crm-integer [label]="'ADDRESS.CADAS_ID' | translate" formControlName="cadas_id" [inputUIType]="inputsUIType"></crm-integer>
+    </div>
+  </div>
+
+</div>

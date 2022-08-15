@@ -1,0 +1,27 @@
+<secondary-layout>
+  <div filter>
+    <form [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-12">
+          <crm-input [showError]="f('drb')" [isRequired]="true"  [label]="'CAR.DRB' | translate" formControlName="drb" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <crm-input [showError]="f('technical_number')" [isRequired]="true" [label]="'CAR.TECHNIC_NUM' | translate" formControlName="technical_number" [inputUIType]="'one-line'"></crm-input>
+        </div>
+        <div class="col-sm-12">
+          <div class="btn--container-right">
+            <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+              (onClick)="getCarList()">
+            </crm-button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <crm-ag-gridbean #dataGrid (onSelectionChanged)="gridSelectEvent($event)" [columnDefs]="refTableColumnDefs" [sideToside]="true"
+   [request]="requestCars" [pageSize]="pageSize" table [rowClassRules]="rowClassRules">
+
+  </crm-ag-gridbean>
+</secondary-layout>

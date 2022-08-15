@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <p class="form-title">{{data.title | translate}}</p>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="closeModal()"
+    style="cursor: pointer;">close</mat-icon>
+</div>
+
+<div class="file-upload--container">
+  <div class="row">
+    <div class="col-12">
+      <crm-video-device (captureImage)="captureImage($event)" ></crm-video-device>
+    </div>
+  </div>
+  <div class="progress" style="width: 100%">
+
+    <mat-progress-bar class="progress-bar" mode="determinate" [value]="uploadProgress" *ngIf="uploadProgress">
+
+    </mat-progress-bar>
+
+    <mat-icon class="cancel-upload" (click)="cancelUpload()" *ngIf="uploadProgress">delete_forever</mat-icon>
+
+  </div>
+  <div *ngIf="showFileSave" mat-dialog-actions class="file-upload--btn-container">
+    <button [disabled]="fileUploadData == null" (click)="onSave()" mat-raised-button color="primary">{{"FORM.STORE" | translate}}</button>
+    <button (click)="onCancel()" mat-button class="file-upload--btn-cancel">отмена</button>
+  </div>
+</div>

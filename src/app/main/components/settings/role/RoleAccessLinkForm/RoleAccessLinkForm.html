@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-12">
+      <crm-autocomplete-load-list [label]="'ROLE.ACCESS' | translate" formControlName="access_id"
+        [requestName]="'access'" [autoLoad]="false" [selectUIType]="'one-line'" [isRequired]="true">
+      </crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-12">
+      <crm-select [label]="'GENERAL.TYPE' | translate" [selectUIType]="'one-line'" [isRequired]="true"
+        [options]="typeOptions" [showError]="f('type')" formControlName="type"></crm-select>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-10"  style="margin: 10px;margin-left: 0;margin-right: 0;">
+      <crm-input [label]="'GENERAL.STIR' | translate" [inputUIType]="'one-line'"  [isRequired]="true" formControlName="stir" [showError]="f('stir')"></crm-input>
+    </div>
+    <div class="col-sm-2 btn--container-right">
+      <crm-button  [label]="'FORM.SEARCH' | translate" [type]="'text'" (onClick)="onSearch()"></crm-button>
+    </div>
+    <div class="col-sm-4">
+      <crm-autocomplete-load-list   [label]="'GENERAL.TYPE' | translate" [isRequired]="true" [requestName]="'reference'"
+      [setRequestParams]="setRefType" [autoLoad]="false" formControlName="type"
+      [showError]="f('type')"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.ORGANIZATION_TITLE' | translate" [isRequired]="true" formControlName="organization" [showError]="f('organization')"></crm-input>
+    </div>
+    <div class="col-sm-4">
+      <crm-input [label]="'GENERAL.GARAGE' | translate" [isRequired]="false" formControlName="garage" [showError]="f('garage')"></crm-input>
+    </div>
+
+  </div>
+
+</form>

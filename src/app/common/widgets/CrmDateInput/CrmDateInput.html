@@ -1,0 +1,31 @@
+<div [ngClass]="{'input--container-flex': dateUIType === 'one-line'}">
+  <div  style="{{(dateUIType === 'one-line' && haslabel ? 'width: ' + labelSize +'%': '')}}"  *ngIf="hasLabel" class=" label">
+    <span>{{label}} <span *ngIf="isRequired" style="color: red;">*</span></span>
+  </div>
+  <div style="{{(((dateUIType === 'one-line' && !!label && haslabel)) ? 'width: ' + (100 - labelSize) +'%': '')}}" [ngClass]="{'labeless-input' : !hasLabel}" class="datewrp">
+    <mat-form-field appearance="fill" [class.hasError]="showError">
+      <input
+        matInput
+        style="display: none;"
+        [matDatepicker]="picker"
+        [(ngModel)]="value"
+        [disabled]="!enabled"
+        (dateChange)="onDateChange($event)"
+        [min]="minDate"
+        [max]="maxDate"
+
+      />
+      <input matInput [mask]="'d0/M0/0000'" [showMaskTyped]="true" [dropSpecialCharacters]="false" [leadZeroDateTime]="true" [(ngModel)]="textDate" (change)="onTextDateChange()" [disabled]="!enabled"/>
+
+      <mat-icon
+        matDatepickerToggleIcon
+        *ngIf="value && enabled"
+        (click)="clearDate($event)"
+        >clear</mat-icon
+      >
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <span *ngIf="showError" class="error">{{invalidText}}</span>
+  </div>
+</div>

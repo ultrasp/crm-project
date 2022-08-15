@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12 detail--button-container">
+    <crm-button [type]="'text'" [label]="'FORM.EDIT' | translate" (onClick)="onEdit()" [class]="'flat-btn'" [icon]="'edit'" [colorMode]="'flat'"></crm-button>
+    <crm-button [type]="'text'" [label]="'DRIVER.PRINT' | translate" (onClick)="printDetails()" [class]="'flat-btn'" [icon]="'print'" [colorMode]="'flat'"></crm-button>
+    <crm-button [type]="'text'" (onClick)="onTechnoProcess()" [label]="'CAR.TEXNO_PROCESS' | translate" [icon]="'engineering'" [class]="'flat-btn'" [colorMode]="'flat'" accessKey="car_texn"></crm-button>
+    <crm-button [type]="'text'" [label]="'CAR.ADD_BAN' | translate" (onClick)="addBan()" [class]="'flat-btn'" [colorMode]="'flat'" accessKey="car_block"></crm-button>
+    <crm-button [type]="'text'" [label]="'CAR.SEND_TO_CHECK' | translate" (onClick)="sendToCheck()" [class]="'flat-btn'" [colorMode]="'flat'" accessKey="car_block"></crm-button>
+  </div>
+  <div class="col-sm-12">
+    <div class="row" style="width: 100%;">
+      <div class="col-sm-6">
+        <crm-table-view [title]="'CAR.PERSONAL_AMT'" [options]="carDetailData.car"></crm-table-view>
+        <crm-table-view [options]="carDetailData.carModelDetails"></crm-table-view>
+      </div>
+      <div class="col-sm-6">
+        <crm-table-view [title]="'CAR.VEHICLE_OWNER_INFORMATION'" [options]="carDetailData.carPerson"></crm-table-view>
+        <!-- <crm-table-view *ngIf="carDetailData.isLegal()" [title]="'CAR_PRINT_DIALOG.BUSINESS_ADDRESS'" [options]="carDetailData.companyAddress"></crm-table-view> -->
+        <crm-table-view [title]="carDetailData.isLegal() ? 'CAR_PRINT_DIALOG.BUSINESS_ADDRESS' : 'DRIVER.ADDRESS'" [options]="carDetailData.carAddress"></crm-table-view>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <mat-tab-group class="main-tab-group mt-2" [selectedIndex]="selectedTabIndex"  (selectedTabChange)="tabChanged($event)">
+      <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
+        <ng-template mat-tab-label>{{ tab.title | translate }}
+        </ng-template>
+        <div>
+          <app-tab-content [tab]="tab" [isActive]="tab.active" (btnClicked)="btnClicked($event)"></app-tab-content>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

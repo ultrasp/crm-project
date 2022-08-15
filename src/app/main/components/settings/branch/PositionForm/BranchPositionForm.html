@@ -1,0 +1,26 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [setRequestParams]="positionParams" [requestName]="'reference'"
+                     [label]="'GENERAL.POSITION' | translate"
+                     [showError]="f('position_id')" [isRequired]="true" formControlName="position_id">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-integer [label]="'SETTINGS.COUNT_OF_JOBS' | translate" [isRequired]="true"
+                  [showError]="f('quantity')" formControlName="quantity">
+      </crm-integer>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [showError]="f('start_date')"
+                      [isRequired]="true" [label]="'SETTINGS.CREATED_DATE' | translate"
+                      formControlName="start_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'SETTINGS.CLOSING_DATE' | translate"
+                 [showError]="f('end_date')" formControlName="end_date">
+      </crm-date-input>
+    </div>
+  </div>
+</form>

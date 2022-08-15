@@ -1,0 +1,24 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [showError]="f('military_title_id')" [autoLoad]="false" [requestName]="'reference'" [setRequestParams]="militaryDegreeParams"
+                     [label]="'EMPLOYEE.MILITARY_DEGREE' | translate" formControlName="military_title_id">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true"  [showError]="f('given_by')"
+                 [label]="'PASPORT.ISSUEBY' | translate" formControlName="given_by">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [showError]="f('military_date')" [isRequired]="true"
+                      [label]="'EMPLOYEE.COMMAND_DATE' | translate" formControlName="military_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [showError]="f('comment')" [isRequired]="true"
+                 [label]="'GENERAL.COMMENT' | translate" formControlName="comment">
+      </crm-input>
+    </div>
+  </div>
+</form>

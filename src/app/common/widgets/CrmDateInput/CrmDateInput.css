@@ -1,0 +1,42 @@
+.mat-datepicker-input {
+  width: 85%;
+}
+
+mat-icon {
+  position: absolute;
+  right: -5px;
+  top: 0;
+  cursor: pointer;
+  color: var(--background-color-selected-primary);
+}
+:host ::ng-deep .mat-form-field-flex{
+  align-items: center!important;
+}
+:host ::ng-deep .mat-datepicker-toggle{
+  color: var(--background-color-selected-primary);
+
+}
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before{
+  height: 0;
+}
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before:hover{
+  background-color: var(--background-color-selected-primary);
+  
+}
+.labeless-input{
+  margin-top: 22px;
+}
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+  background-color: var(--input-background);
+}
+:host .input--container-flex{
+  display: flex;
+  justify-content: flex-end;
+}
+:host .input--container-flex .label{
+  width: 30%;
+  text-align: right;
+}
+:host .input--container-flex .datewrp{
+  width: 70%;
+}

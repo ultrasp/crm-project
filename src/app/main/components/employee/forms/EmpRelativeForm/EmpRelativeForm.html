@@ -1,0 +1,38 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [label]="'EMPLOYEE.RELATIVE_TYPE' | translate" [isRequired]="true" [requestName]="'reference'"
+                     [setRequestParams]="setRefType" [autoLoad]="false" formControlName="type_id"
+                     [showError]="f('type_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.FIO' | translate" [isRequired]="true" formControlName="name"
+                 [showError]="f('name')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [label]="'GENERAL.BORN_DATE' | translate" [isRequired]="true" formControlName="born_date"
+        [showError]="f('born_date')"></crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.BORN_PLACE' | translate" [isRequired]="true" formControlName="born_place"
+        [showError]="f('born_place')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.LIFE_PLACE' | translate" [isRequired]="true" formControlName="life_place"
+        [showError]="f('life_place')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-integer [label]="'FORM.ORDER' | translate" [isRequired]="true" formControlName="order"
+      [showError]="f('order')" [maxLength]="3"></crm-integer>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'GENERAL.LIVE_PLACE' | translate" [isRequired]="true" formControlName="life_place_view"
+                   [showError]="f('life_place_view')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="'EMPLOYEE.WORK_PLACE' | translate" [isRequired]="true" formControlName="work_info"
+                   [showError]="f('work_info')"></crm-input>
+    </div>
+  </div>
+</form>

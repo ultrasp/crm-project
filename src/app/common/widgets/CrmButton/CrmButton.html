@@ -1,0 +1,6 @@
+<div class="button-container" *ngIf="hasAccess">
+  <button type="{{buttonType}}" mat-icon-button color="{{colorMode}}" *ngIf="type == 'icon'" [style]="style" (click)="btnClicked()" [class]="class">
+    <mat-icon>{{icon}}</mat-icon>
+  </button>
+  <button type="{{buttonType}}" mat-raised-button color="{{colorMode}}" *ngIf="type == 'text'" [style]="style" (click)="btnClicked()" [class]="class"><mat-icon *ngIf="icon" aria-hidden="false" aria-label="Example language icon" class="icon icon-button">{{ icon }}</mat-icon>{{label}}</button>
+</div>

@@ -1,0 +1,6 @@
+<crm-button [icon]="icon" [type]="'text'" [label]="title" [matMenuTriggerFor]="menu" #dropdown [class]="class" [colorMode]="'flat'"></crm-button>
+<mat-menu #menu="matMenu">
+  <ng-container *ngFor="let item of items">
+    <button (click)="selectEvent.emit(item.key)" mat-menu-item>{{item.title | translate}}</button>
+  </ng-container>
+</mat-menu>

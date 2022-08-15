@@ -1,0 +1,36 @@
+.drop-down-open {
+  font-size: 25px;
+  position: absolute;
+  right: 5px;
+  top: 7px;
+}
+
+.select-input {
+  position: absolute;
+  width: 100%;
+  top: 50px;
+  z-index: -99;
+  visibility: hidden;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  padding-bottom: 20px;
+}
+::ng-deep .mat-tree{
+  padding-left: 15px;
+}
+
+:host .input--container-flex{
+  display: flex;
+  justify-content: flex-end;
+}
+:host .input--container-flex .label{
+  width: 30%;
+  text-align: right;
+
+}
+:host .input--container-flex .colorInpContainer{
+  width: 70%;
+}

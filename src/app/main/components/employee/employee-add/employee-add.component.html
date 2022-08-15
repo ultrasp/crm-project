@@ -1,0 +1,30 @@
+<div class="modal-header"  cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".form-title">
+<h4 style="color:green"  class="form-title">{{ (this.employee_id ? 'EMPLOYEE.EDIT_TITLE' : 'EMPLOYEE.ADD_TITLE') | translate }} </h4>
+
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()" style="cursor: pointer;">close</mat-icon>
+ </div>
+<app-employee-info [form]="form" [militaryDegreeParams]="militaryDegreeParams" [genderParams]="genderParams"
+  [ethnicNatinalityParams]="ethnicNatinalityParams" [academicAwardParams]="academicAwardParams"
+  [nationalityParams]="nationalityParams" [academicDegreeParams]="academicDegreeParams"
+  [partyMembershipParams]="partyMembershipParams" [positionParams]="positionParams"
+  [professionParams]="professionParams"></app-employee-info>
+
+<mat-tab-group animationDuration="0ms">
+
+  <mat-tab [label]="'ADDRESS.ADDRESS' |translate">
+    <crm-address-panel [form]="form" [ownerId]="employee_id"></crm-address-panel>
+  </mat-tab>
+
+  <mat-tab [label]="'GENERAL.ATTRIBUTES'|translate">
+    <crm-attribute-setup-panel [ownerId]="employee_id" [addSaveButton]="true"></crm-attribute-setup-panel>
+  </mat-tab>
+
+  <mat-tab [label]="'GENERAL.PASPORT' |translate">
+    <crm-passport-panel [form]="form" [ownerId]="employee_id">
+    </crm-passport-panel>
+  </mat-tab>
+
+</mat-tab-group>
+
+  <div class="btn--container-right"><button mat-raised-button color="primary"
+      (click)="save()">+{{ 'FORM.STORE' | translate }}</button></div>

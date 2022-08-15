@@ -1,0 +1,22 @@
+<form class="container" [formGroup]="form" >
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-input [showError]="f('drb')" [isRequired]="false"
+                 [label]="'CAR.DRB' | translate"
+                 formControlName="drb">
+      </crm-input>
+    </div>
+    <div class="col-sm-6 btn--container-right">
+      <crm-button (onClick)="getList()" [class]="'flat-btn'" [colorMode]="'flat'" [type]="'text'" [label]="'FORM.SEARCH' | translate">
+      </crm-button>
+      <crm-button [label]="'FORM.ADD' | translate" (onClick)="onSave()" [class]="'flat-btn'" [icon]="'add'" [colorMode]="'flat'" [type]="'text'"></crm-button>
+    </div>
+  </div>
+</form>
+
+<div>
+  <crm-ag-gridbean [request]="request" [columnDefs]="refTableColumnDefs">
+  </crm-ag-gridbean>
+</div>
+
+

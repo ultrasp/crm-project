@@ -1,0 +1,10 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-12">
+      <crm-load-list [label]="'GENERAL.TYPE' | translate" [isRequired]="true" [requestName]="'reference'"
+      [setRequestParams]="setRefType" [autoLoad]="false"  formControlName="addrTypeId"
+      [showError]="f('addrTypeId')"> </crm-load-list>
+      <crm-address-panel #panel [form]="form" [ownerId]="ownerId" [id]="id" [ownerType]="ownerType"></crm-address-panel>
+    </div>
+  </div>
+</form>

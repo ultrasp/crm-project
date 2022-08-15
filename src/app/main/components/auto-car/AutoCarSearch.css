@@ -1,0 +1,9 @@
+.table-container{
+    height: 50%;
+}
+.search--form-title{
+    font-size: 14px;
+}
+:host .btn--container-right{
+    padding-right: 10px;
+}

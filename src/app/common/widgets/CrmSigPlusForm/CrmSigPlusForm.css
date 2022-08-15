@@ -1,0 +1,38 @@
+.detail--container{
+  width: 100%;
+  padding: 15px 0;
+}
+.detail--container-element{
+  padding: 5px 10px;
+  border-bottom: 1px dashed var(--devider-color);
+  display: flex;
+  font-size: 16px;
+}
+.crm-case-param-label {
+  color: #6F7173;
+  font-weight: 400;
+  width: 50%;
+
+}
+.crm-case-param-value-white-space {
+  color: #28782B;
+  width: 50%;
+  font-weight: 700;
+  vertical-align: inherit;
+  word-break: break-word;
+}
+.text-right{
+  text-align:right ;
+}
+.text-left{
+  text-align: left;
+}
+
+:host .title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #555D64;
+  background: #EBEAEA;
+  padding: 11px 14px;
+}
+

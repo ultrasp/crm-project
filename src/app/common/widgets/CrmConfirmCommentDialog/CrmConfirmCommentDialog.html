@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>{{data.title | translate }}</h1>
+<div mat-dialog-content class="mat-typography" [formGroup]="form">
+  <crm-input [label]="'GENERAL.COMMENT' | translate" formControlName="comment" [inputUIType]="'one-line-2'">
+</crm-input>
+</div>
+<div style="margin-top: 20px; display: flex; justify-content: space-around;">
+  <button (click)="onConfirm()" mat-raised-button>{{'FORM.STORE' |translate }}</button>
+  <button (click)="onCancel()" mat-button>{{'FORM.CANCEL' |translate }}</button>
+</div>
+

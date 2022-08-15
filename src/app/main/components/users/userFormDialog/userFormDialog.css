@@ -1,0 +1,24 @@
+:host ::ng-deep .mat-dialog-content{
+    overflow: visible;
+}
+.form-title{
+    color: var(--text-color-title);
+    font-size: 14px;
+    font-weight: 700;
+}
+.form-title {
+    color: var(--text-color-title);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .button-container{
+    display: flex;
+    justify-content: right;
+  }
+  .modal-header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .button--right{
+      margin-right: 5px;
+  }

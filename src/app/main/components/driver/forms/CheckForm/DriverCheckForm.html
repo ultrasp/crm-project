@@ -1,0 +1,35 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [isRequired]="true" [requestName]="'reference'" [setRequestParams]="checkTypeRequest"
+                     [showError]="f('type_id')"
+                     [label]="'DRIVER.TYPES_OF_INSPECTIONS' | translate"
+                     formControlName="type_id">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-load-list [isRequired]="true" [requestName]="'reference'" [setRequestParams]="checkResultRequest"
+                     [showError]="f('result_id')"
+                     [label]="'DRIVER.INSPECTION_RESULTS' | translate"
+                     formControlName="result_id">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'GENERAL.INFORMATION' | translate"
+                 [showError]="f('note')" formControlName="note">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [showError]="f('start_date')"
+                      [label]="'GENERAL.FROM' | translate"
+                      formControlName="start_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="'GENERAL.TO' | translate"
+                      [showError]="f('end_date')" formControlName="end_date">
+      </crm-date-input>
+    </div>
+  </div>
+</form>
+

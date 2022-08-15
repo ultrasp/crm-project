@@ -1,0 +1,16 @@
+<div>
+  <div class="modal-header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".form-title">
+    <h4 class="form-title" style="cursor: grab;"></h4>
+    <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close(null)"
+              style="cursor: pointer;">close
+    </mat-icon>
+  </div>
+  <div mat-dialog-content class="mat-typography">
+    <crm-ag-gridbean (onSelectionChanged)="selectedChanged($event)" (gridReady)="gridReady()"  #dataGrid [columnDefs]="refTableColumnDefs" [request]="request">
+
+    </crm-ag-gridbean>
+  </div>
+</div>
+
+
+

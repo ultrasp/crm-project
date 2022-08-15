@@ -1,0 +1,35 @@
+:host{
+    display: block;
+}
+.button-container {
+    display: block;
+    float: left;
+}
+.flat-btn{
+    color: var(--text-color-label);
+    font-weight: bold;
+    background-color: var(--body-colors)!important;
+    border-radius: 5px;
+}
+.flat-btn.big-icon mat-icon{
+    font-size: 48px!Important;
+    width: 50px;
+
+}
+.flat-btn:hover{
+    background-color: var(--background-color-selected-primary)!important;
+    color: var(--text-color-bgk);
+}
+:host .icon-button{
+    margin-right: 10px;
+    color: var(--text-color-label);
+    font-size: 20px;
+}
+.flat-btn:hover .icon-button{
+    color: var(--text-color-bgk);
+}
+
+button.third-btn{
+    background-color: rgba(51, 51, 51, 0.08) !important;
+    color: #333333;
+}

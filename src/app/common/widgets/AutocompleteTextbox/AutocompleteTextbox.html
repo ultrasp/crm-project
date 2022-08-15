@@ -1,0 +1,26 @@
+<div [ngClass]="{'input--container-flex': inputUIType === 'one-line'}">
+  <div class=" label" style=" width: {{labelSize}}%" >
+    {{label}}<span *ngIf="isRequired">*</span>
+  </div>
+  <div class="autoComplete--container" style=" width: {{100 - labelSize}}%">
+    <div class="inpWrap"  [class.hasError]="showError">
+      <input
+        matInput
+        [type]="type"
+        [placeholder]="placeholder"
+        [formControl]="textControl"
+        [matAutocomplete]="auto"
+      />
+
+    <span *ngIf="!textDoesNotMatchErrorHidden && !textMatches" class="error">{{'ERROR.TEXT_DOES_NOT_MATCH_ERROR' | translate}}</span>
+    </div>
+  </div>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="optionSelected($event)"
+  >
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{option.title}}
+    </mat-option>
+  </mat-autocomplete>
+</div>

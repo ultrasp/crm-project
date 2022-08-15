@@ -1,0 +1,27 @@
+<form [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-input [label]="(this.block_id ? 'CAR.UNBLOCKER_PERSON' : 'CAR.BLOCKER_PERSON') | translate"
+        [isRequired]="true" formControlName="blocker_person" [showError]="f('blocker_person')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [label]="(this.block_id ? 'CAR.UNBLOCKER_COMPANY' : 'CAR.BLOCKER_COMPANY') | translate"
+        formControlName="company_name" [showError]="f('company_name')"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-load-list [label]="(this.block_id ? 'CAR.UNBLOCKER_COMPANY' : 'CAR.BLOCKER_COMPANY') | translate" formControlName="blocker_id" [requestName]="referenceKey"
+      [setRequestParams]="givenPlaceParams"  [showError]="f('blocker_id')"></crm-load-list>
+    </div>
+
+
+    <div class="col-sm-6">
+      <crm-date-input [label]="(this.block_id ? 'CAR.UNBLOCK_DATE' : 'CAR.BLOCK_DATE') | translate" [isRequired]="true"
+        formControlName="date" [showError]="f('date')">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input *ngIf="!this.block_id" [label]="'CAR.BLOCK_NUMBER' | translate" [isRequired]="!this.block_id"
+        formControlName="doc_number" [showError]="f('doc_number')"></crm-input>
+    </div>
+  </div>
+</form>

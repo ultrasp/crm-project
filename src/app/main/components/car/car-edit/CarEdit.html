@@ -1,0 +1,9 @@
+<h2 class="title">{{ 'CAR.EDIT' | translate }}</h2>
+<form [formGroup]="form" class="container">
+  <div class="row">
+    <crm-car-technic-params [form]="form" class="col-sm-12"></crm-car-technic-params>
+    <app-car-tuning-form [data]="gazInfoData"  *ngIf="this.form.get('hasGaz')?.value" [isGaz]="true" [parentForm]="form" class="col-sm-12 custom--car-edit-container"></app-car-tuning-form>
+    <crm-attribute-setup-panel #attributePanel [ownerType]="ownerType" [ownerId]="car_id" [addSaveButton]="true" class="col-sm-12"></crm-attribute-setup-panel>
+
+  </div>
+</form>

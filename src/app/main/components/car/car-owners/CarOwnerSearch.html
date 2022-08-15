@@ -1,0 +1,40 @@
+<filter-table-wrapper>
+  <div filter>
+    <form [formGroup]="form">
+      <div class="row">
+        <h2 class="title">{{ 'CAR.SEARCH_OWNERS' | translate }}</h2>
+        <div class="col-sm-3">
+          <crm-input [label]="'GENERAL.TITLE' | translate" formControlName="client_name"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'CAR.PASSPORT_NUM' | translate" formControlName="person_doc_num"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'GENERAL.TRIB' | translate" formControlName="relation_branch_id"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'CAR.PHONE' | translate" formControlName="client_phone"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-load-list [label]="'CAR.SECTOR' | translate" formControlName="client_sector" [requestName]="referenceKey"
+            [setRequestParams]="setSectorParams"></crm-load-list>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'CAR.DRB' | translate" formControlName="relation_drb_number"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <crm-input [label]="'CAR.PNFL_INN' | translate" formControlName="client_doc_id"></crm-input>
+        </div>
+        <div class="col-sm-3">
+          <div class="btn--container-right">
+            <crm-button [colorMode]="'default'" [label]="'USER.SEARCH' | translate " [type]="'text'"
+              (onClick)="getCarOwnerList()">
+            </crm-button>
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <crm-ag-gridbean #dataGrid (onSelectionChanged)="gridSelectEvent($event)"  [columnDefs]="refTableColumnDefs" [request]="requestCarOwner" [pageSize]="pageSize" table></crm-ag-gridbean>
+</filter-table-wrapper>

@@ -1,0 +1,31 @@
+<div>
+  <fieldset>
+    <legend>Employee panel:</legend>
+    <employee-detail></employee-detail>
+  </fieldset>
+  
+  <fieldset>
+    <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="openForm()"></crm-button>
+  </fieldset>
+
+</div>
+<div>
+  <crm-video-device></crm-video-device>
+</div>
+<div>
+  <hr>
+  <crm-car-model-load-list [customButtons]="customButtons">
+
+  </crm-car-model-load-list>
+  <!--<hr>
+  <crm-sig-plus-form>
+  </crm-sig-plus-form>
+  <hr>-->
+
+  <crm-amount [label]="'CrmAmount'"></crm-amount>
+  <crm-integer [label]="'CrmInteger'"></crm-integer>
+  <crm-branch [label]="'CrmBranch'"></crm-branch>
+  <button (click)="crmAlertDialogOpen()">CrmAlertDialog ni ochish</button>
+  <button (click)="crmConfirmDialogOpen()">CrmConfirmDialog ni ochish</button>
+  <button (click)="crmPersonDataDialogOpen()">CrmPersonData ni ochish</button>
+</div>

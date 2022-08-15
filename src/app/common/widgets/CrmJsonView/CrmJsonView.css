@@ -1,0 +1,60 @@
+.driver-detail-dialog__content {
+  margin: 9px 45px 9px 30px;
+  padding: 36px 36px 36px 90px;
+  border: 6px solid #6af;
+  box-shadow: 4px 4px #ddd;
+}
+
+table {
+  border-collapse: collapse;
+  border: none;
+}
+
+tr {
+  line-height: 1;
+  height: 30px;
+}
+
+td {
+  font-size: 18px;
+  padding: 2px 8px;
+  border: none;
+}
+
+strong {
+  font-size: 15px;
+  text-transform: initial;
+}
+
+
+.application-title strong {
+  font-size: 18px;
+  color: #990000;
+}
+
+tr:nth-last-child(2) td {
+  border-bottom: none;
+}
+
+td.checked {
+  font-size: 18px;
+}
+
+td.empty-row {
+  height: 22px;
+}
+
+td.category strong, td.label strong, td.label {
+  text-align: center;
+  color: #2E74B5;
+}
+
+td.checker strong {
+  color: #8497b0;
+}
+
+.title {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}

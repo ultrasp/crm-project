@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-sm-12 detail--button-container">
+    <crm-button [type]="'text'" [label]="'FORM.EDIT' | translate" (onClick)="openEdit()" [class]="'flat-btn'" [icon]="'edit'" [colorMode]="'flat'" accessKey="kadr_detail_edit"></crm-button>
+    <app-dropdown-menu (selectEvent)="selectEventPrints($event)" [title]="'FORM.PRINT' | translate" [items]="menuItemsPrint" [icon]="'print'" [class]="'flat-btn'"></app-dropdown-menu>
+    <app-dropdown-menu (selectEvent)="selectEventActions($event)" [title]="'GENERAL.ACTIONS' | translate" [items]="menuItemsActions" [class]="'flat-btn'"></app-dropdown-menu>
+    <app-dropdown-menu (selectEvent)="selectEventCheck($event)" [title]="'GENERAL.CHECK' | translate" [items]="menuItemsCheck" [class]="'flat-btn'"></app-dropdown-menu>
+    <crm-button [type]="'text'" [label]="'DRIVER.UPLOAD_IMAGE' | translate" (onClick)="photoUpload()" [class]="'flat-btn'" [icon]="'image'" [colorMode]="'flat'"></crm-button>
+    <crm-button  [type]="'text'" [label]="'EMPLOYEE.SYNC' | translate"[class]="'flat-btn'" [icon]="'sync'" [colorMode]="'flat'"></crm-button>
+  </div>
+  <div class="col-sm-12">
+    <div class="row" style="width: 100%;">
+      <div class="col-sm-10">
+
+        <table class="detail-table" cellspacing="0" cellpadding="0" style="width: 100%;">
+          <tbody>
+            <tr>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'GENERAL.FULL_NAME' | translate}} </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;">{{emp.name}}
+                </div>
+              </td>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'EMPLOYEE.MILITARY_DEGREE' | translate}}</div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{emp.military_title}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;"> {{'GENERAL.BIRTHDATE' | translate}} </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;">{{emp.birthDate}}
+                </div>
+              </td>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'GENERAL.NATION' | translate}}</div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{emp.nation}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;"> {{'GENERAL.ORGANIZATION' | translate}} </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;">  {{emp.branch}}
+                </div>
+              </td>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'GENERAL.JETON_NUMBER' | translate}}</div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{emp.jetonNumber}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;"> {{'GENERAL.MILITARY_NUMBER' | translate}} </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{emp.militaryNumber}}
+                </div>
+              </td>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">
+                  {{'GENERAL.POSITION' | translate}}
+                </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;">
+                  {{emp.position}}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-2">
+        <crm-owner-image [ownerId]="id" [width]="150" [ownerType]="'employee'" [imgType]="'1'" class="avatar-image" ></crm-owner-image>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <mat-tab-group class="main-tab-group mt-2" [selectedIndex]="selectedTabIndex" (selectedTabChange)="tabChanged($event)">
+      <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
+        <ng-template mat-tab-label>{{ tab.title | translate }}
+        </ng-template>
+        <div>
+          <app-tab-content [tab]="tab" [isActive]="tab.active" (btnClicked)="btnClicked($event)"></app-tab-content>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

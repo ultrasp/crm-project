@@ -1,0 +1,43 @@
+<table>
+  <thead>
+  <tr>
+    <td style="width:40px">
+      <mat-checkbox
+      (change)="checkAll($event)"
+        class="input"
+      >
+      </mat-checkbox>
+    </td>
+    <td style="width:40px">
+
+    </td>
+    <td *ngFor="let colLabel of colLabels">
+      {{colLabel | translate}}
+    </td>
+  </tr>
+</thead>
+  <ng-container  *ngFor="let item of data">
+    <tr *ngIf="item.showRow">
+      <td>
+        <mat-checkbox
+        [checked]="item.isChecked"
+        (change)="itemChanged($event, item)"
+        class="input"
+        >
+       </mat-checkbox>
+      </td>
+      <td>
+        <crm-button [icon]="item.isExpanded ? 'folder_open' : 'folder'"  *ngIf="item.hasChild" (onClick)="expandChild(item)">
+        </crm-button>
+  
+      </td>
+        <td>
+          {{item.id}}
+        </td>
+        <td>
+          {{item.name}}
+        </td>
+    </tr>
+  </ng-container>
+ 
+</table>

@@ -1,0 +1,7 @@
+.radio--btn-group-element{
+    margin-right: 40px;
+}
+.radio--btn-container{
+    background-color: var(--radio-group-container);
+    padding: 10px;
+}

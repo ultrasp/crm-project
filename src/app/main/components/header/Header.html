@@ -1,0 +1,77 @@
+<div class="container-fluid header" id="header-container">
+    <div class="" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="col-sm-4 col-md-4">
+            <div class="header--logo-container">
+                <div class="header--logo"></div>
+                <div class="header--logo-text-container">
+                    <p class="header--logo-text">Ichki Ishlar Vazirligi</p>
+                    <p class="header--logo-text">
+                        Jamoat xafsizligi departamenti</p>
+                    <p class="header--logo-text">
+                        Yo'l harakati xavfsizligi xizmati</p>
+                        
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <div class="row header--info-container">
+                <div class="col-sm-6 col-md-6 header--info-username-container">
+                    <span class="header--info-label">{{'LOGIN.USER' | translate}}:</span>
+                    <div class="header--info-value header--info-value">
+                        <mat-form-field appearance="fill">
+                            <mat-label class="header--info-value">{{name}}</mat-label>
+                            <mat-select class="selecting">
+                                <!-- <mat-option routerLinkActive #routerLinkActiveInstance="routerLinkActive"
+                                [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+                                [class.list-item-active]="routerLinkActiveInstance.isActive" class="submenu" [hidden]="true">
+                                        <span>+ Профил</span>
+                                </mat-option>
+                                <mat-option  routerLinkActive #routerLinkActiveInstance="routerLinkActive"
+                                [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+                                [class.list-item-active]="routerLinkActiveInstance.isActive" class="submenu" [hidden]="true">
+                                        <span>+ Настройки</span>
+                                    
+    
+                                </mat-option> -->
+                                <mat-option  class="submenu" (click)="openPasswordForm()" >
+                                        <span>{{'LOGIN.CHANGE_PASSWORD' | translate}}</span>
+                                    
+                                    </mat-option> 
+                                <mat-option routerLinkActive #routerLinkActiveInstance="routerLinkActive"
+                                [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+                                [class.list-item-active]="routerLinkActiveInstance.isActive" class="submenu"
+                                (click)="onLogout()">
+                                    
+                                        <span>Выйти</span>
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-6 col-md-6 header--info-language-container">
+                    <span class="header--info-label">{{'LANGUAGE.LANG' | translate}}:</span>
+                    <div class="header--info-value">
+                        <mat-form-field appearance="fill">
+                            <mat-select [(value)]="languageActive">
+                                <mat-option *ngFor="let lang of translate.getLangs()" (click)="selectLanguage(lang)"
+                                    [value]="lang">
+                                    {{ 'LANGUAGE.' + lang | translate }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4" style="width: 180px;">
+            <div class="header--logo-container">
+                <div class="header--logo-text-container left--logo-information">
+                    YAGONA AVTOMATLASHTIRILGAN <br/> AXBOROT TIZIMI
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>

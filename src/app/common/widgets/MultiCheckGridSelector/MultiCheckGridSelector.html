@@ -1,0 +1,34 @@
+<table >
+  <thead>
+  <tr>
+    <td style="width:40px">
+      <mat-checkbox
+      (change)="checkAll($event)"
+      [checked]="isSetAll"
+        class="input"
+      >
+      </mat-checkbox>
+    </td>
+    <td *ngFor="let colLabel of colLabels">
+      {{colLabel | translate}}
+    </td>
+  </tr>
+</thead>
+    <tr *ngFor="let item of data">
+      <td>
+        <mat-checkbox
+        [checked]="selectedKeys.includes(item.id)"
+        (change)="itemChanged($event, item)"
+        class="input"
+        >
+       </mat-checkbox>
+      </td>
+        <td>
+          {{item.obj[kod]}}
+        </td>
+        <td>
+          {{item.name}}
+        </td>
+    </tr>
+ 
+</table>

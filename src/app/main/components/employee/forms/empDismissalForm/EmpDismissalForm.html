@@ -1,0 +1,27 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-input [showError]="f('comment')" [label]="'GENERAL.COMMENT' | translate"
+                 [isRequired]="true"
+                 formControlName="comment">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-load-list [setRequestParams]="setDismissReason" [requestName]="'reference'"
+                     [label]="'EMPLOYEE.DISMISS_TYPE' | translate"
+                     [showError]="f('dismiss_type')" [isRequired]="true" formControlName="dismiss_type">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="'EMPLOYEE.COMMAND_DATE' | translate"
+                      [showError]="f('order_date')" formControlName="order_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'EMPLOYEE.COMMAND_NUMBER' | translate"
+                 [showError]="f('order_number')"
+                 formControlName="order_number">
+      </crm-input>
+    </div>
+  </div>
+</form>

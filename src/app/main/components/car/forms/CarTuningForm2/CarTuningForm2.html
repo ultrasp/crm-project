@@ -1,0 +1,17 @@
+<form (ngSubmit)="save()" class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-4" [hidden]="!isGaz">
+      <div class="label">
+        {{'CAR.GAS_NUM_AND_INSTALLED_ORG' | translate}}
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('document_number')" formControlName="document_number" [isRequired]="true">
+      </crm-input>
+    </div>
+    <div class="col-sm-5">
+      <crm-input [showError]="f('given_by')" formControlName="given_by">
+      </crm-input>
+    </div>
+  </div>
+</form>

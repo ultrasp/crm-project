@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+  <div class="row" style="width: 100%;margin-right: 0;">
+    <div class="col-sm-4" [ngClass]="{'col-sm-6' : formLabelType}">
+      <crm-autocomplete-load-list [label]="'GENERAL.DOCUMENT_TYPE' |translate" [requestName]="'reference'"
+      [autoLoad]="false" [setRequestParams]="documentTypeParams" formControlName="docType"
+      [showError]="f('docType')" [selectUIType]="formLabelType" [isDisabled]="isTypeDisabled"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-4" [ngClass]="{'col-sm-6' : formLabelType}">
+      <crm-input [label]="'PASPORT.SERIYA'   | translate" [isRequired]="true" formControlName="seriya"
+        [showError]="f('seriya')" [inputUIType]="formLabelType"></crm-input>
+    </div>
+    <div class="col-sm-4" [ngClass]="{'col-sm-6' : formLabelType}">
+      <crm-input [label]="'PASPORT.NUMBER'   | translate" [isRequired]="true" formControlName="nomer"
+        [showError]="f('nomer')" [inputUIType]="formLabelType"></crm-input>
+    </div>
+    <div class="col-sm-4" [ngClass]="{'col-sm-6' : formLabelType}">
+      <crm-date-input [label]="'PASPORT.GIVEDATE'   | translate" [isRequired]="true" formControlName="givenDate"
+        [showError]="f('givenDate')" [dateUIType]="formLabelType"></crm-date-input>
+    </div>
+    <div class="col-sm-4" [ngClass]="{'col-sm-6' : formLabelType}">
+      <crm-date-input [label]="'PASPORT.ISSUEDATE'   | translate" [isRequired]="true" formControlName="issueDate"
+        [showError]="f('issueDate')" [dateUIType]="formLabelType"></crm-date-input>
+    </div>
+    <div class="col-sm-4" [ngClass]="{'col-sm-6' : formLabelType}">
+      <crm-load-list [label]="'PASPORT.ISSUEBY' | translate" formControlName="givenBy" [requestName]="referenceKey"
+      [setRequestParams]="givenPlaceParams" [selectUIType]="formLabelType"></crm-load-list>
+      <ng-container *ngIf="form.get('given_by_id')?.value == null &&  givenByText !== null">
+        {{givenByText}}
+      </ng-container>
+<!-- <crm-input [label]="'PASPORT.ISSUEBY'   | translate" [isRequired]="true" formControlName="givenBy"
+        [showError]="f('givenBy')" [inputUIType]="formLabelType"></crm-input> -->
+    </div>
+  </div>
+</form>

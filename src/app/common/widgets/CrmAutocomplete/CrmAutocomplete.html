@@ -1,0 +1,11 @@
+<div [ngClass]="{'input--container-flex': selectUIType === 'one-line'}">
+  <div class="label"  style=" width: {{labelSize}}%" *ngIf="haslabel">{{label}} <span *ngIf="isRequired" style="color: red;">*</span>
+  </div>
+  <div class="inpWrap" [class.hasError]="showError" style=" width: {{100 - labelSize}}%">
+    <input type="text" matInput [formControl]="inputControl" [matAutocomplete]="auto" (focus)="onSelectToggle(true)">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"  (opened)="onSelectToggle(true)" (closed)="onSelectToggle(false)" [autoActiveFirstOption]="true" (optionSelected)="optionSelected($event)">
+      <mat-option [value]="item" *ngFor="let item of filteredOptions | async" >{{item.title}}</mat-option>
+    </mat-autocomplete>
+  </div>
+  <div *ngIf="showError" style="color: red;">{{invalidText}}</div>
+</div>

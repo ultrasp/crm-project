@@ -1,0 +1,21 @@
+<div [formGroup]="form">
+    <car-owner-individuals #individuals [driverId]="owner_id" [parentForm]="form" (clientFound)="clientFounded()" [fillFromLocal]="false" [isNew]="true"></car-owner-individuals>
+  <h4 class="block--title-devider">
+    <span>
+      {{'ADDRESS.ADDRESS' | translate}}
+    </span>
+  </h4>
+  <crm-address-panel #addressPanel [form]="form" [ownerType]="ownerClientType" [ownerId]="owner_id" [inputsUIType]="'one-line'">
+  </crm-address-panel>
+  <h4 class="block--title-devider">
+    <span>
+      {{'DRIVER.ATTRIBUTE' | translate}}
+    </span>
+  </h4>
+  <crm-attribute-setup-panel #attributePanel [ownerType]="ownerPersonType" [ownerId]="owner_id" [addSaveButton]="true">
+  </crm-attribute-setup-panel>
+
+  <div class="col-sm-12 float-right">
+      <crm-button (click)="saveProcess()" [label]="'FORM.STORE' | translate" [type]="'text'"></crm-button>
+  </div>
+</div>

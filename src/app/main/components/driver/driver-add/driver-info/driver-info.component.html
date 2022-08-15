@@ -1,0 +1,50 @@
+<form class="container-fluid" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-3">
+      <crm-input [showError]="f('first_name')" [isRequired]="true" [label]="'GENERAL.FIRST_NAME_LAT' | translate" formControlName="first_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('last_name')" [isRequired]="true" [label]="'GENERAL.LAST_NAME_LAT' | translate" formControlName="last_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('middle_name')" [isRequired]="true" [label]="'GENERAL.MIDDLE_NAME_LAT' | translate"  formControlName="middle_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-date-input [label]="'GENERAL.BIRTHDATE' | translate" [enabled]="true" [isRequired]="true" [showError]="f('born_date')"
+                      formControlName="born_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('rfirst_name')" [label]="'GENERAL.FIRST_NAME_KIR' | translate"  formControlName="rfirst_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('rlast_name')" [label]="'GENERAL.LAST_NAME_KIR' | translate" formControlName="rlast_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('rmiddle_name')" [label]="'GENERAL.MIDDLE_NAME_KIR' | translate"  formControlName="rmiddle_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-load-list #genderList [label]="'GENERAL.SEX' | translate" [isRequired]="true" [requestName]="'reference'" [autoLoad]="false"
+                     [setRequestParams]="genderParams" formControlName="sex_id" [showError]="f('sex_id')">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('ufirst_name')" [label]="'GENERAL.FIRST_NAME_ENG' | translate"  formControlName="ufirst_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('ulast_name')" [label]="'GENERAL.LAST_NAME_ENG' | translate"  formControlName="ulast_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-input [showError]="f('umiddle_name')" [label]="'GENERAL.MIDDLE_NAME_ENG' | translate"  formControlName="umiddle_name"></crm-input>
+    </div>
+    <div class="col-sm-3">
+      <crm-load-list #nationalityList [label]="'GENERAL.CITIZENSHIP' | translate" [isRequired]="true" [requestName]="'country'"
+                     [autoLoad]="false" formControlName="citizenship_id"
+                     [showError]="f('citizenship_id')">
+      </crm-load-list>
+    </div>
+    <div *ngIf="!isForeign" class="col-sm-3">
+      <crm-integer [showError]="f('pnfl')" [label]="'GENERAL.PNFL' | translate" [isRequired]="true" formControlName="pnfl" [isEnabled]="true"></crm-integer>
+    </div>
+  </div>
+</form>

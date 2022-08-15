@@ -1,0 +1,102 @@
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  cursor: pointer;
+  border: #757575 1px;
+  background-color: white;
+  padding: 5px 10px 5px 10px;
+}
+li.hide {
+  display: none;
+}
+li:hover {
+  background-color: #ece8e8;
+}
+
+.drop-down-open {
+  font-size: 25px;
+  position: absolute;
+  right: 5px;
+  top: 7px;
+
+}
+.drop-down-block.up {
+  top: -200px;
+}
+
+.drop-down-block {
+  position: absolute;
+  width: 100%;
+  display: none;
+  z-index: 99000 !important;
+  top: 40px;
+  max-height: 200px;
+  min-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: solid 1px;
+  -webkit-box-shadow: 0 5px 8px rgb(0 0 0 / 15%);
+  box-shadow: 0 5px 8px rgb(0 0 0 / 15%);
+}
+.drop-down-block.show {
+  display: block;
+}
+
+.open-close-icon {
+  cursor: pointer;
+  top: 4px;
+  font-size: 20px;
+  position: relative;
+}
+
+.item-label {
+  padding: 5px;
+  font-size: 15px;
+}
+
+.selected {
+  background-color: #d9d4d4;
+}
+.drop-down-open {
+  font-size: 25px;
+  position: absolute;
+  right: 5px;
+  top: 7px;
+}
+
+.select-input {
+  position: absolute;
+  width: 93%;
+  margin-left: 17px;
+  top: 50px;
+  z-index: -99;
+  visibility: hidden;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  padding-bottom: 20px;
+}
+::ng-deep .mat-tree{
+  padding-left: 15px;
+}
+:host .input--container-flex{
+  display: flex;
+  justify-content: flex-end;
+}
+:host .input--container-flex .label{
+  width: 30%;
+  text-align: right;
+}
+:host .input--container-flex .inpWrap{
+  width: 70%;
+  padding: 0px;
+}
+:host .inpWrap{
+  padding: 0px;
+}

@@ -1,0 +1,19 @@
+
+
+.input-pinfl {
+  margin-top: 20px;
+}
+
+.button {
+  height: 40px;
+  float: right;
+  background-color: green;
+  color: white;
+  margin-top: 20px;
+  padding: 5px 10px;
+  border-radius: 0.25rem;
+}
+
+.form-label {
+  text-align: center;
+}

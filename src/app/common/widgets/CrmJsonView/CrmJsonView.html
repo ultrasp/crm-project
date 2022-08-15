@@ -1,0 +1,25 @@
+<div>
+  <div *ngIf="title" class="title">
+    {{title | translate}}
+  </div>
+  <div *ngIf="isArray(data)">
+    <div *ngFor="let item of data">
+      <crm-json-view  [data]="item">
+      </crm-json-view>
+      <hr>
+    </div>
+  </div>
+  <table width="100%" *ngIf="!isArray(data) && isObject(data)" border="1" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr *ngFor="let item of data | keyvalue">
+      <td class="crm-case-param-value-white-space" width="50%" align="right">
+        <strong>{{getTranslated(String(item.key))}} :</strong>
+      </td>
+      <td width="50%" class="crm-case-param-value-white-space" align="left">
+        <crm-json-view *ngIf="(isArray(item.value) || isObject(item.value)) else elseBlock" [data]="item.value"></crm-json-view>
+        <ng-template #elseBlock>{{getValue(String(item.key), String(item.value))}}</ng-template>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

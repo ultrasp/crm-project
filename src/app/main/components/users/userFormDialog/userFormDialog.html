@@ -1,0 +1,44 @@
+<div>
+  <div class="modal-header">
+    <h4 class="form-title">{{ dialogTitle | translate }} </h4>
+    <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="closeModal()" style="cursor: pointer;">close</mat-icon>
+   </div>
+  <div mat-dialog-content class="mat-typography">
+    <form class="container" [formGroup]="form">
+      <div class="row">
+        <div class="col-sm-6" *ngIf="!data.isLoginForm">
+          <crm-branch #branch [label]="'GENERAL.ORGANIZATION' | translate" formControlName="branchId" [showError]="f('branchId')" [isRequired]="true"></crm-branch>
+        </div>
+        <div *ngIf="isInterNal() && !data.isLoginForm" class="col-sm-6">
+          <crm-autocomplete-load-list #employees [showError]="f('employee_id')" [label]="'GENERAL.EMPLOYEE' | translate"
+                                      formControlName="employee_id"
+                                      [isRequired]="true" [requestName]="modelReferenceKey"
+                                      [setRequestParams]="setEmployeeParams"
+                                      [autoLoad]="true">
+
+          </crm-autocomplete-load-list>
+
+        </div>
+        <div *ngIf="isExternal()" class="col-sm-6">
+          <crm-input [label]="'GENERAL.EMPLOYEE' | translate" formControlName="emp"  [isRequired]="true" [showError]="f('emp')"></crm-input>
+        </div>
+        <div class="col-sm-6" *ngIf="!data.isLoginForm">
+          <crm-load-list [label]="'GENERAL.ACCESS' | translate" [isRequired]="true" [requestName]="'role'" [autoLoad]="false" formControlName="roleId"  [showError]="f('roleId')"></crm-load-list>
+        </div>
+        <div class="col-sm-6" *ngIf="!data.isLoginForm">
+          <crm-input [label]="'GENERAL.LOGIN' |translate" formControlName="login" [showError]="f('login')" [isRequired]="true"></crm-input>
+        </div>
+        <div class="col-sm-6">
+          <crm-password [label]="'GENERAL.PASSWORD' | translate" formControlName="password" [showError]="f('password')" [isRequired]="true"></crm-password>
+        </div>
+        <div class="col-sm-6">
+          <crm-password [label]="'GENERAL.REPEAT_PASSWORD' |translate" formControlName="passwordRepeat" [showError]="f('passwordRepeat')" [isRequired]="true"></crm-password>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions class="button-container">
+    <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="save()" class="button--right"></crm-button>
+    <crm-button [colorMode]="'default'" [label]="'FORM.CANCEL' | translate " [type]="'text'" (onClick)="close()" ></crm-button>
+  </div>
+</div>

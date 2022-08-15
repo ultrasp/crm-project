@@ -1,0 +1,87 @@
+.header{
+    background-color: var(--background-color-gray);
+    padding: 22px 0;
+    padding-right: 75px!important;
+    border-bottom: 1px solid var(--devider-color);
+}
+.header .header--logo-container{
+    display: flex;
+    align-items: center;
+}
+.header .header--logo-container .header--logo {
+    background-image: url('/assets/images/main-logo.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+.header .header--logo-container .header--logo-text-container{
+    color: var(--logo-text-color);
+    font-size: 12px;
+    font-weight: 800;
+    align-items: center;
+    margin-left: 12px;
+    text-transform: uppercase;
+    line-height: 14px;
+}
+
+.header .header--logo-container .header--logo-text-container .header--logo-text{
+    display: block;
+    margin: 0;
+}
+
+.header .header--info-label{
+    color: #7E7C7C;
+    font-size: 14px;
+}
+.header .header--info-value{
+    font-weight: 600;
+    color: var(--header-select-main-text);
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.header .header--info-value-input{
+    border-bottom: 1px solid var(--border-colors);
+}
+:host ::ng-deep .hedaer--info-value .mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: var(--text-color-bgk);
+}
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex{
+    background-color: var(--background-color-gray)!important;
+}
+:host ::ng-deep .mat-form-field-infix{
+    background-color: var(--background-color-gray)!important;
+
+}
+:host ::ng-deep .mat-select-value-text{
+    color: var(--header-select-main-text);
+
+}
+:host ::ng-deep .mat-form-field-appearance-fill .mat-form-field-underline::before{
+    background-color: var(--devider-color);
+}
+:host ::ng-deep .mat-select-arrow{
+    color: #717070;
+}
+.header--info-username-container{
+    width: 150px;
+}
+.header--info-language-container{
+    width: 150px;
+}
+.left--logo-information{
+    color: #454545;
+}
+:host ::ng-deep .mat-select-min-line{
+    font-weight: 600;
+    color: var(--header-select-main-text);
+    font-size: 16px;
+    margin-top: 5px;
+}
+:host ::ng-deep .header--info-username-container .mat-form-field-label-wrapper{
+    margin-top: 6px;
+}
+:host ::ng-deep .header--info-username-container .mat-form-field-appearance-fill .mat-form-field-infix{
+    padding-top: 0;
+    padding-bottom: 2;
+}

@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-4">
+                    <crm-input [label]="'ROLE.NAME' | translate" formControlName="name"></crm-input>
+                </div>
+                <div class="col-sm-4">
+                    <crm-input [label]="'ROLE.KEY' | translate" formControlName="key"></crm-input>
+                </div>
+                <div class="col-sm-4">
+                    <crm-input [label]="'ROLE.DESCRIPTION' | translate" formControlName="description"></crm-input>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

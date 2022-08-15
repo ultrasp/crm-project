@@ -1,0 +1,20 @@
+<div style="position: relative">
+  <div [ngClass]="{'input--container-flex': selectUIType === 'one-line'}">
+    <div class="label" style=" width: {{labelSize}}%" *ngIf="haslabel">{{label}} <span *ngIf="isRequired"
+                                                                                       style="color: red;">*</span>
+    </div>
+    <div class="inpWrap" [class.hasError]="showError"
+         style=" {{(selectUIType === 'one-line' && !!label && haslabel) ? 'width: ' + (100 - labelSize) + '%' : ''}}">
+      <input type="text" [formControl]="completeControl" matInput [matAutocomplete]="auto">
+      <mat-autocomplete (optionSelected)="selectChanged($event)" #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of _options" [value]="option">
+          {{option.title}}
+        </mat-option>
+      </mat-autocomplete>
+      <div *ngIf="showError" style="color: red;">{{invalidText}}</div>
+    </div>
+
+    <crm-button [buttonType]="'button'" style="position: absolute; top: -3px; right: 0" [icon]="item.icon" *ngFor="let item of customButtons"
+                (onClick)="customButtonClicked.emit(item.key)"></crm-button>
+  </div>
+</div>

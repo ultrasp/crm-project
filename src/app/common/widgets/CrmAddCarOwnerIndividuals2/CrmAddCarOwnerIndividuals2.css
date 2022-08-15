@@ -1,0 +1,10 @@
+.custom--passport-container{
+    margin: 0;
+    padding: 0;
+}
+:host ::ng-deep .custom--passport-container .row{
+    margin: 0;
+}
+:host ::ng-deep .custom--passport-container .block--title-devider{
+    padding-left: 15px;
+}

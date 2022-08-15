@@ -1,0 +1,53 @@
+.listTable {
+  padding: 0px;
+  height: 545px;
+  width: 100%;
+  background-color: var(--side-menu-background);
+  border-radius: 10px;
+}
+
+.listTable th {
+  height: 48px;
+  color: var(--text-color-title);
+
+}
+
+.listTable th * {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.listTable td {
+  background-color: var(--side-menu-background);
+  border: none;
+  height: 48px;
+  align-items: center;
+  padding: 10px 16px;
+  color: var(--text-color-title);
+
+}
+.rowgroup{
+  margin-top: 10px;
+  color: var(--text-color-title);
+
+}
+.row-selected td {
+  background: var(--background-color-selected-primary);
+  color: var(--text-color-bgk);
+}
+.row-selected td:first-child{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.row-selected td:last-child{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+::ng-deep .ag-cell{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

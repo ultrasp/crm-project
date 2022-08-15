@@ -1,0 +1,20 @@
+<div [ngClass]="{'input--container-flex': inputUIType === 'one-line'}">
+  <div style="width: {{labelSize}}%" class=" label">{{label}} <span *ngIf="isRequired" style="color: red;">*</span>
+  </div>
+  <div  style=" width: {{100 - labelSize}}%" class="colorInpContainer" >
+    <div [class.hasError]="showError" style="position: relative">
+      <div style="position: relative" (click)="openSelectTree()" (keyup)="openSelectTree()" tabindex="0">
+        <input readonly type="text" disabled="disabled" class="form-control" value="{{itemTitle | async}}">
+        <mat-icon (click)="openSelectTree()"
+                  class="drop-down-open">keyboard_arrow_down</mat-icon>
+      </div>
+      <div  class="select-input">
+        <mat-select #myselect tabindex="0" #dropdownSelect>
+          <mat-option (click)="clear()" >----</mat-option>
+          <crm-tree-selector #tree [key]="refTreekey" [setRequestParams]="colorParams" (reportSelected)="reportNodeSelected($event)" [withAll]="false" [selItemId]="selectedValue" ></crm-tree-selector>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+</div>
+

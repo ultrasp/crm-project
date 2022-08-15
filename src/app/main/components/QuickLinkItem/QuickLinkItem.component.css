@@ -1,0 +1,85 @@
+a.quicklinkitem--link {
+    text-decoration: none;
+}
+.quicklinkitem--container{
+    display: flex;
+    background-color: var(--background-color-white);
+    padding: 15px 15px;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 2px var(--box-shadow-color);
+    margin-bottom: 20px;
+    position: relative;
+}
+.quicklinkitem--container:hover{
+    box-shadow: 0px 0px 8px 2px #3a893c75;
+    cursor: pointer;
+}
+.quicklinkitem--container.disabled:hover{
+    box-shadow: 0px 0px 8px 2px rgba(226, 222, 222, 0.9);;
+}
+.quicklinkitem--container .quicklinkitem--icon-container{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #39893C;
+    border-radius: 50%;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+.quicklinkitem--container.disabled .quicklinkitem--icon-container{
+    border: 1px solid #686868;
+}
+:host ::ng-deep .quicklinkitem--container .quicklinkitem--icon-container .mat-icon{
+    color: #39893C;
+}
+
+:host ::ng-deep .quicklinkitem--container.disabled .quicklinkitem--icon-container .mat-icon{
+    color: #686868;
+}
+.quicklinkitem--container .quicklinkitem--text-container{
+    width: 70%;
+    margin-left: 15px;
+    line-height: 0.3em;
+
+}
+.quicklinkitem--container .quicklinkitem--text-container .quicklinkitem--text{
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+}
+.quicklinkitem--container.disabled .quicklinkitem--text-container .quicklinkitem--text{
+    color: #686868;
+}
+.quicklinkitem--container .quicklinkitem--text-container .quicklinkitem--text-subtitle{
+    margin-top: 8px;
+    font-size: 14px;
+    color: #686868;
+}
+.quicklinkitem--container .quicklinkitem--disable-window {
+    color: #686868;
+    background-color: rgba(160, 158, 158, 0.2);
+    position: absolute;
+    width: calc(100%);
+    margin: -15px;
+    height: 100%;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.quicklinkitem--container .quicklinkitem--disable-window h2 {
+    opacity: 0;
+    transition: .2s ease-in-out opacity;
+}
+
+.quicklinkitem--container .quicklinkitem--disable-window:hover {
+    background-color: rgba(226, 226, 226, 0.9);
+}
+
+.quicklinkitem--container .quicklinkitem--disable-window:hover h2 {
+    opacity: 1;
+}

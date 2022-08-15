@@ -1,0 +1,83 @@
+<div class='flex_container'>
+  <div class="header-image"></div>
+  <div class="mat-tab-links">
+    <ng-container *ngFor="let item of menuItems; let i = index">
+      <div class="left_line" *ngIf="item.children == null; else parentItem" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+        <nav mat-tab-nav-bar>
+          <a mat-tab-link [routerLink]="item.url" class="parentMenuItems">
+            {{item.label |  translate}}
+          </a>
+        </nav>
+      </div>
+      <ng-template #parentItem>
+        <div class="left_line" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+          <nav mat-tab-nav-bar>
+            <a mat-tab-link [matMenuTriggerFor]="menu" class="parentMenuItems">
+              {{item.label |  translate}}
+            </a>
+          </nav>
+          <mat-menu #menu="matMenu" [overlapTrigger]="false">
+            <span *ngFor="let subItem of item.children; let i = index ">
+              <a *ngIf="hasAccess(subItem)" mat-menu-item [routerLink]="subItem.url" routerLinkActive
+                #routerLinkActiveInstance="routerLinkActive"
+                [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+                [class.list-item-active]="routerLinkActiveInstance.isActive" class="submenu"
+                (click)="menuClicked(subItem)">
+                <span>{{subItem.label |  translate}}</span>
+              </a>
+            </span>
+          </mat-menu>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+  <div class="logout">
+
+    <div class="left_line" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link [matMenuTriggerFor]="menu" class="parentMenuItems">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon> {{name}}
+        </a>
+      </nav>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+        <span>
+          <mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
+          <mat-card-header>
+            <mat-card-title>{{name}}</mat-card-title>
+            <mat-card-subtitle>{{userName}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <a mat-menu-item routerLinkActive #routerLinkActiveInstance="routerLinkActive"
+            [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+            [class.list-item-active]="routerLinkActiveInstance.isActive" class="submenu" [hidden]="true">
+            <span>+ Профил</span>
+          </a>
+          <a mat-menu-item routerLinkActive #routerLinkActiveInstance="routerLinkActive"
+            [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+            [class.list-item-active]="routerLinkActiveInstance.isActive" class="submenu" [hidden]="true">
+            <span>+ Настройки</span>
+          </a>
+          <a mat-menu-item routerLinkActive #routerLinkActiveInstance="routerLinkActive"
+            [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1"
+            [class.list-item-active]="routerLinkActiveInstance.isActive" class="submenu" (click)="onLogout()">
+            <span>Выйти</span>
+          </a>
+        </span>
+      </mat-menu>
+    </div>
+  </div>
+  <div class="mat-figure-menu">
+    <mat-icon aria-hidden="false" aria-label="Example home icon"  [matMenuTriggerFor]="hourMenu">alarm</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example help icon">help_outline</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example language icon"  [matMenuTriggerFor]="langMenu">language</mat-icon>
+    <mat-menu #langMenu="matMenu">
+      <button mat-menu-item *ngFor="let lang of translate.getLangs()" [ngClass]="{'selectedLang': lang === translate.currentLang}" (click)="selectLanguage(lang)"> {{ lang }}</button>
+    </mat-menu>
+    <mat-menu #hourMenu="matMenu">
+      <span>
+        {{ now | date:'dd.mm.YYYY HH:mm:ss'}}
+      </span>
+    </mat-menu>
+    </div>
+</div>

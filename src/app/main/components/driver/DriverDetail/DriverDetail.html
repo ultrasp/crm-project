@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-sm-12 detail--button-container">
+
+    <crm-button [type]="'text'" [label]="'FORM.EDIT' | translate" (onClick)="openEdit()" [class]="'flat-btn'" [icon]="'edit'" [colorMode]="'flat'" accessKey="dr_edit"></crm-button>
+    <crm-button *ngIf="hasActiveCertificate" [type]="'text'" [label]="'DRIVER.DEPRIVE' | translate" (onClick)="doDeprive()" [class]="'flat-btn'" [icon]="'block'" [colorMode]="'flat'"></crm-button>
+    <crm-button *ngIf="hasActiveCertificate" [type]="'text'" [label]="'DRIVER.NEW_CERTIFICATE' | translate" (onClick)="doNewCertificate()" [class]="'flat-btn'" [icon]="'new'" [colorMode]="'flat'"></crm-button>
+    <crm-button *ngIf="hasStopedCertificate" [type]="'text'" [label]="'DRIVER.ACTIVATE' | translate" (onClick)="doActiveStoped()" [class]="'flat-btn'" [icon]="'check'" [colorMode]="'flat'"></crm-button>
+    <crm-button [type]="'text'" [label]="'DRIVER.UPLOAD_IMAGE' | translate" (onClick)="photoUpload()" [class]="'flat-btn'" [icon]="'image'" [colorMode]="'flat'"></crm-button>
+    <crm-button [type]="'text'" [label]="'DRIVER.UPLOAD_SIGNATURE' | translate" (onClick)="signUpload()" [class]="'flat-btn'" [icon]="'draw'" [colorMode]="'flat'"></crm-button>
+    <crm-button [type]="'text'" [label]="'DRIVER.PRINT' | translate" (onClick)="printDetails()" [class]="'flat-btn'" [icon]="'print'" [colorMode]="'flat'" accessKey="dr_print"></crm-button>
+    <crm-button [type]="'text'" [label]="'DRIVER.AUDIT' | translate" (onClick)="openAudit()" [class]="'flat-btn'" [colorMode]="'flat'" accessKey="dr_view_archive"></crm-button>
+    <crm-button *ngIf="canAddCertificate" [type]="'text'" [label]="'DRIVER.DOCUMENT' | translate" (onClick)="openDriverCerf()" [class]="'flat-btn'"></crm-button>
+  </div>
+  <div class="col-sm-12">
+    <div class="row" style="width: 100%;">
+      <div class="col-sm-10">
+        <table class="detail-table" cellspacing="0" cellpadding="0" style="width: 100%;">
+          <tbody>
+            <tr>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'GENERAL.ID' | translate}} </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;">{{person.kod}}
+                </div>
+              </td>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'DRIVER.STATUS' | translate}}</div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{person.status}}
+                </div>
+              </td>
+
+            </tr>
+            <tr>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'DRIVER.FULLNAME' | translate}}</div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{person.fullName}}
+                </div>
+              </td>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;">{{'GENERAL.BIRTHDATE' | translate}}</div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{person.birthDate}}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;"> {{'GENERAL.SEX' | translate}} </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;">{{person.gender}}
+                </div>
+              </td>
+              <td width="15%" style="vertical-align: top;" class="text-right">
+                <div class="crm-case-param-label" style="width: 100%;"> {{'GENERAL.BIRTHPLACE' | translate}} </div>
+              </td>
+              <td width="35%" style="vertical-align: top;">
+                <div class="crm-case-param-value-white-space" style="width: 100%;"> {{person.birthPlace}}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-2">
+        <div>
+          <crm-owner-image #avatar [width]="150" [ownerId]="id" [ownerType]="ownerType" [imgType]="ownerAvatarType"
+                           class="avatar-image" [autoLoad]="true"></crm-owner-image>
+        </div>
+        <div>
+          <crm-owner-image #sign [width]="150" [ownerId]="id" [ownerType]="ownerType" [imgType]="ownerSIGNType"
+                           class="avatar-image" [autoLoad]="true"></crm-owner-image>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <mat-tab-group class="main-tab-group mt-2" [selectedIndex]="selectedTabIndex" (selectedTabChange)="tabChanged($event)">
+      <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
+        <ng-template mat-tab-label>{{ tab.title | translate }}
+        </ng-template>
+        <div>
+          <app-tab-content [tab]="tab" [isActive]="tab.active" (btnClicked)="btnClicked($event)"></app-tab-content>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

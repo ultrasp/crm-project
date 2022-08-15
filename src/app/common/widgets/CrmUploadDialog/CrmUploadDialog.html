@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <p class="form-title">{{data.title | translate}}</p>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="closeModal()"
+    style="cursor: pointer;">close</mat-icon>
+</div>
+
+<div class="file-upload--container">
+  <div class="mat-typography file-upload--btn-text-container">
+    <crm-file-uploader [attachmentUrl]="attachmentUrl" [showFileSave]="showFileSave" requiredFileType="image/png"
+      [maxSizeInMb]="5" [fileUploadRequest]="getEmployeeId()" (callback)="save($event)"></crm-file-uploader>
+  </div>
+  <div *ngIf="showFileSave" mat-dialog-actions class="file-upload--btn-container">
+    <button [disabled]="fileUploadData == undefined" (click)="onConfirm()" mat-raised-button color="primary">OK</button>
+    <button (click)="onCancel()" mat-button class="file-upload--btn-cancel">отмена</button>
+  </div>
+</div>

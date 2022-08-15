@@ -1,0 +1,26 @@
+<form (ngSubmit)="save()" class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-load-list [isRequired]="true" [label]="'DRIVER.STATUS' | translate" [showError]="f('note')"
+                 formControlName="state_id" [requestName]="'reference'" [setRequestParams]="technicalInspectionRequest">
+      </crm-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'GENERAL.INFORMATION' | translate" [showError]="f('note')"
+                 formControlName="note">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [showError]="f('check_date')"
+                      [label]="'CAR.DATE_OF_INSPECTION' | translate"
+                      formControlName="check_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [label]="'CAR.NEXT_INSPECTION' | translate"
+                      [showError]="f('next_date')" formControlName="next_date">
+      </crm-date-input>
+    </div>
+  </div>
+</form>
+

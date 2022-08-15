@@ -1,0 +1,45 @@
+<form class="container" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'CAR.DRB' | translate"
+                      [showError]="f('drb')" formControlName="drb">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-integer [isRequired]="true" [label]="'GENERAL.COUNT_OF' | translate"
+                      [showError]="f('drb_count')" formControlName="drb_count">
+      </crm-integer>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true" [label]="'CAR.EXTRA_NOTE' | translate"
+                      [showError]="f('note')" formControlName="note">
+      </crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-date-input [isRequired]="true" [showError]="f('date')"
+                      [label]="'GENERAL.DATE' | translate"
+                      formControlName="date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6" *ngIf="this.typeId === '5'">
+      <crm-date-input [isRequired]="true" [showError]="f('start_date')"
+                      [label]="'GENERAL.FROM' | translate"
+                      formControlName="start_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6" *ngIf="this.typeId === '5'">
+      <crm-date-input [isRequired]="true" [showError]="f('end_date')"
+                      [label]="'GENERAL.TO' | translate"
+                      formControlName="end_date">
+      </crm-date-input>
+    </div>
+    <div class="col-sm-6" *ngIf="this.id">
+      <crm-load-list [isRequired]="true" [requestName]="'reference'" [setRequestParams]="stateRequest"
+                     [showError]="f('state_id')"
+                     [label]="'CAR.STATE' | translate"
+                     formControlName="state_id">
+      </crm-load-list>
+    </div>
+  </div>
+</form>
+

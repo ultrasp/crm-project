@@ -1,0 +1,10 @@
+<div *ngIf="title" class="title">
+  {{title | translate}}
+</div>
+<div class="detail--container">
+  <div *ngFor="let option of options" class="detail--container-element">
+      <div class="crm-case-param-label">{{option.title | translate}} </div>
+      <div class="crm-case-param-value-white-space" >{{option.value}}
+      </div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+.navbar-container .navbar-list .navbar-element{
+    margin-bottom: 30px;
+    position: relative;
+    display: flex;
+}
+.navbar-container .navbar-list .navbar-element.active-link{
+    z-index: 10000;
+}
+.navbar-container .navbar-list .navbar-element .navbar-btn{
+    border-radius: 50%;
+    background-color: var(--background-color-selected-primary);
+    color: #fff;
+    padding: 4px;
+    
+}
+.navbar-container .navbar-list .navbar-element .navbar-btn:focus{
+    z-index: 1000;
+}
+
+::ng-deep .dropdown--elements{
+    position: absolute;
+    background-color:  rgba(255, 255, 255, 0.9);
+    box-shadow: 5px 5px 25px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 18px 24px;
+    z-index: 0;
+    min-height: 70px;
+    border-radius: 25px;
+    box-shadow: none;
+    margin-top: -10px;
+    width: 265px;
+    margin-left: 30px;
+    z-index: 100;
+}
+
+::ng-deep .navbar-btn::before{
+    content: "";
+    position: absolute;
+    bottom: 45px;
+    margin: auto;
+    height: 65%;
+    left: 50%;
+    border-right: 1px solid var(--border-colors);
+    z-index: -1000;
+    text-align: center;
+}
+
+:host .sidebar--dropdown-btn{
+    border: none;
+    background-color: none;
+    width: 100%;
+    
+}
+:host .sidebar--dropdown-btn{
+    text-align: left;   
+    padding: 10px;
+    cursor: pointer;
+}
+
+::ng-deep .navbar-element .mat-menu-panel{
+    margin-top: 10px!important;
+}
+.navbar-element:last-of-type .dropdown--elements{
+    bottom: 0;
+}
+:host .mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button{
+    min-width: 46px!important;
+}
+:host .sidebar--expand-item{
+    display: none;
+}
+:host .sidebar--expanded-item{
+    display: block;
+    background-color: var(--background-color-white);
+    border-radius: 25px;
+    margin-left: -30px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+
+}
+:host .clickable-element{
+    text-decoration: none;
+    color: var(--text-color-table);
+    font-size: 14px;
+    padding: 0 40px;
+}
+:host .dropdown--span{
+    display: block;
+    border-bottom: 1px solid #cccccc;
+}
+:host .dropdown--span:last-of-type{
+    display: block;
+    border-bottom: none;
+}
+
+@media screen and (max-width: 1880px) {
+    ::ng-deep .dropdown--elements{
+    width: 250px;
+    }
+}
+@media screen and (max-width: 1786px) {
+    ::ng-deep .dropdown--elements{
+    width: 15rem;
+    }
+}
+@media screen and (max-width: 1700px) {
+    ::ng-deep .dropdown--elements{
+    width: 14rem;
+    }
+}
+@media screen and (max-width: 1650px) {
+    ::ng-deep .dropdown--elements{
+    width: 13rem;
+    }
+}
+@media screen and (max-width: 1550px) {
+    ::ng-deep .dropdown--elements{
+    width: 12rem;
+    }
+}
+
+@media screen and (max-width: 1440px) {
+    ::ng-deep .dropdown--elements{
+    width: 190px;
+    }
+}
+@media screen and (max-width: 1200px) {
+    ::ng-deep .dropdown--elements{
+    width: 152px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    ::ng-deep .dropdown--elements{
+        width: 8rem;
+    }
+}

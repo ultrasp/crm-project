@@ -1,0 +1,12 @@
+<div *ngIf="showAddButton ||dataLoaded" style="width: 100%;">
+  <crm-button *ngIf="showAddButton" class="add-btn" [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="this.addButtonClick.emit()" ></crm-button>
+  <crm-button style="margin-left: {{showAddButton ? '10px' : ''}}" *ngIf="dataLoaded" class="export-btn" (click)="export()" [label]="'GENERAL.EXPORT' | translate" [type]="'text'"> </crm-button>
+</div>
+<div style="display: flex; flex-direction: row; height: 100%; width: 100%;">
+    <ag-grid-angular #agGrid style="width: 100%; height: 100%;" class="ag-theme-alpine" [rowStyle]="rowStyle"
+      [domLayout]="'autoHeight'" [columnDefs]="columnDefs" [gridOptions]="gridOptions" [colResizeDefault]="'shift'"
+      [rowSelection]="rowSelection" [isFullWidthCell]="isFullWidthCell" [headerHeight]="38" [defaultColDef]="defaultColDef"
+      [frameworkComponents]="frameworkComponents" (gridReady)="onGridReady($event)" [rowHeight]="50"
+      (selectionChanged)="onSelectionChangedEvent($event)" (onPaginationChanged)="onPaginationChanged($event)"  >
+    </ag-grid-angular>
+</div>

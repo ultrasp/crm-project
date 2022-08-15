@@ -1,0 +1,38 @@
+<div >
+  <section
+    class="d-flex align-items-center justify-content-between input-container" [class.hasError]="showError"
+  >
+  <div>
+    <span class="overflow-inherit label">{{label}}</span>
+  </div>
+  <table>
+    <tr>
+      <td>
+        ....
+      </td>
+      <td>
+        {{'GENERAL.ID' | translate}}
+      </td>
+      <td>
+        {{'CAR.STOPING_REASON' | translate}}
+      </td>
+    </tr>
+    <tr *ngFor="let item of itemList">
+      <td>
+        <mat-checkbox
+        [checked]="item.isChecked"
+        (change)="itemChanged($event, item)"
+        class="input"
+      >
+    </mat-checkbox>
+  </td>
+  <td>
+    {{item.key}}
+  </td>
+  <td>
+    {{item.title}}
+  </td>
+    </tr>
+  </table>
+  </section>
+</div>

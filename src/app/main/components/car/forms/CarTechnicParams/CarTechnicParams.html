@@ -1,0 +1,71 @@
+<form class="container-fluid" [formGroup]="form">
+  <div class="row">
+    <div class="col-sm-12">
+      <crm-radio-group  [showError]="f('made_place')" [listOptions]="madePlaceOptions" [label]="'CAR.MADE_PLACE' | translate"
+        formControlName="made_place" [isRequired]="true"></crm-radio-group>
+    </div>
+    <div class="col-sm-12">
+      <crm-autocomplete-load-list [showError]="f('fuel_type_id')" [label]="'CAR.FUEL_TYPE' | translate" formControlName="fuel_type_id"
+      [requestName]="referenceKey" [autoLoad]="false" [setRequestParams]="carFuelTypeParams" [isRequired]="true" [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+     </div>
+    <div class="col-sm-6">
+      <crm-autocomplete-load-list #brandInput [showError]="f('brand_id')" [label]="'CAR.BRAND' | translate" formControlName="brand_id" [requestName]="referenceKey"
+      [autoLoad]="false"  (customButtonClicked)="brandAddButtonClicked()"  [customButtons]="brandCustomButtons" [setRequestParams]="carBrandParams" [isRequired]="true" [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-autocomplete-load-list #modelInput  [customButtons]="brandCustomButtons" [showError]="f('model_id')" [label]="'CAR.MODEL' | translate" formControlName="model_id"
+      [refreshList]="refreshModel"
+      [isRequired]="true" [requestName]="modelReferenceKey" (customButtonClicked)="modelAddButtonClicked()"  [setRequestParams]="setModelParams" [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-autocomplete-load-list [showError]="f('type_id')" [label]="'CAR.TYPE' | translate" formControlName="type_id"
+      [isRequired]="true" [requestName]="referenceKey" [setRequestParams]="carTypes" [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-autocomplete-load-list [showError]="f('body_type_id')" [label]="'CAR.BODY_TYPE' | translate" formControlName="body_type_id"
+      [autoLoad]="false" [requestName]="referenceKey" [setRequestParams]="carBodyTypeParams" [isRequired]="true" [selectUIType]="'one-line'"></crm-autocomplete-load-list>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [showError]="f('engine_number')" [label]="'CAR.ENGINE_NUMBER' | translate" formControlName="engine_number" [isRequired]="true" [inputUIType]="'one-line'"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [showError]="f('body_number')" [label]="'CAR.BODY_NUMBER' | translate" formControlName="body_number" [isRequired]="true" [inputUIType]="'one-line'"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input  [showError]="f('chassis_number')" [label]="'CAR.CHASSIS_NUMBER' | translate" formControlName="chassis_number" [isRequired]="true" [inputUIType]="'one-line'"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-input [isRequired]="true"  [showError]="f('vin_code')" [label]="'CAR.VIN_CODE' | translate" formControlName="vin_code" [inputUIType]="'one-line'"></crm-input>
+    </div>
+    <div class="col-sm-6">
+      <crm-color-selector [showError]="f('color_id')" [label]="'CAR.MAIN_COLOR' | translate"  formControlName="color_id" [isRequired]="true" [inputUIType]="'one-line'"></crm-color-selector>
+    </div>
+    <div class="col-sm-6">
+      <crm-color-selector [showError]="f('sub_color_id')" [label]="'CAR.COLOR' | translate"  formControlName="sub_color_id" [isRequired]="true" [inputUIType]="'one-line'"></crm-color-selector>
+    </div>
+    <div class="col-sm-6">
+      <crm-integer [showError]="f('year')" [label]="'CAR.YEAR' | translate" formControlName="year" [isRequired]="true" [inputUIType]="'one-line'" [maxLength]="4"></crm-integer>
+    </div>
+    <div class="col-sm-4">
+      <crm-label [label]="'CAR.WEIGHT' | translate" formControlName="weight"></crm-label>
+    </div>
+    <div class="col-sm-4">
+      <crm-label [label]="'CAR.PURE_WEIGHT' | translate" formControlName="pure_weight"></crm-label>
+    </div>
+    <div class="col-sm-4">
+      <crm-label [label]="'CAR.ENGINE_POWER' | translate" formControlName="power"></crm-label>
+    </div>
+    <div class="col-sm-4">
+      <crm-label [label]="'CAR.PLACE_COUNT' | translate" formControlName="place_count"></crm-label>
+    </div>
+    <div class="col-sm-8">
+      <crm-label [label]="'CAR.COMMON_PLACE' | translate" formControlName="common_place"></crm-label>
+    </div>
+    <div class="col-sm-12">
+      <crm-checkbox [showError]="f('hasGaz')" [label]="'CAR.HAS_GAZ_BALLON' | translate" formControlName="hasGaz" ></crm-checkbox>
+    </div>
+    <div class="col-sm-12" *ngIf="!isAdd">
+      <crm-checkbox [showError]="f('prohibited')" [label]="'CAR.PROHIBITED' | translate" formControlName="prohibited" ></crm-checkbox>
+    </div>
+  </div>
+</form>

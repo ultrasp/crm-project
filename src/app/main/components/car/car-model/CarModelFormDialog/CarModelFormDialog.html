@@ -1,0 +1,53 @@
+<div class="modal-header" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle=".form-title">
+  <h2 mat-dialog-title class="form-title">{{ (data.id ? 'CAR.CAR_MODEL_EDIT' :'CAR.CAR_MODEL_ADD') | translate }} </h2>
+  <mat-icon aria-hidden="false" aria-label="Example language icon" class="icon" (click)="close()"
+    style="cursor: pointer;">close</mat-icon>
+</div>
+<div mat-dialog-content class="mat-typography">
+  <form class="container" [formGroup]="form">
+    <div class="row">
+      <div class="col-sm-6">
+        <crm-load-list [showError]="f('brand_id')" #brand [label]="'CAR.BRAND' | translate" [isRequired]="true"
+          formControlName="brand_id" [requestName]="referenceKey" [autoLoad]="false"
+          [setRequestParams]="carBrandParams"></crm-load-list>
+      </div>
+      <div class="col-sm-6">
+        <crm-load-list [showError]="f('type_id')" #brand [label]="'CAR.MODEL_CLASS' | translate" [isRequired]="true"
+          formControlName="type_id" [requestName]="referenceKey" [autoLoad]="false"
+          [setRequestParams]="carTypeIdParams"></crm-load-list>
+      </div>
+      <div class="col-sm-6">
+        <crm-input [showError]="f('name')" [label]="'CAR.CAR_MODEL_NAME' | translate" [isRequired]="true"
+          formControlName="name">
+        </crm-input>
+      </div>
+      <div class="col-sm-6">
+        <crm-integer [showError]="f('common_place')" [label]="'CAR.COMMON_PLACE' | translate" [isRequired]="true"
+          formControlName="common_place"></crm-integer>
+      </div>
+      <div class="col-sm-6">
+        <crm-integer [showError]="f('engine')" [label]="'CAR.ENGINE_POWER' | translate" [isRequired]="true"
+          formControlName="engine"></crm-integer>
+      </div>
+      <div class="col-sm-6">
+        <crm-integer [showError]="f('place_count')" [label]="'CAR.PLACE_COUNT' | translate" [isRequired]="true"
+          formControlName="place_count"></crm-integer>
+      </div>
+      <div class="col-sm-6">
+        <crm-integer [showError]="f('pure_weight')" [label]="'CAR.PURE_WEIGHT' | translate" [isRequired]="true"
+          formControlName="pure_weight">
+        </crm-integer>
+      </div>
+      <div class="col-sm-6">
+        <crm-integer [showError]="f('weight')" [label]="'CAR.WEIGHT' | translate" [isRequired]="true"
+          formControlName="weight">
+        </crm-integer>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="btn--container-right" mat-dialog-actions>
+  <crm-button [label]="'FORM.ADD' | translate" [type]="'text'" (onClick)="save()"></crm-button>
+  <crm-button [colorMode]="'default'" [label]="'FORM.CANCEL' | translate " [type]="'text'" (onClick)="close()">
+  </crm-button>
+</div>

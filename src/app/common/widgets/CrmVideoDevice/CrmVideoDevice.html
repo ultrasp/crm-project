@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-sm-6">
+        <video id="player" controls autoplay #player style="width: 100%;max-height: 250px;"></video>
+    </div>
+    <div class="col-sm-3">
+        <canvas id="snapshot" width=320 height=240 #snapshot style="display: none;"></canvas>
+        <image-cropper
+            [imageFile]="imageBlob"
+            [maintainAspectRatio]="true"
+            [cropperMaxWidth]="320"
+            [cropperMaxHeight]="240"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+        ></image-cropper>
+
+    </div>
+    <div class="col-sm-3">
+        <img [src]="croppedImage" />
+    </div>
+</div>
+<div>
+    <button (click)="captureSnapshot()" mat-button class="file-upload--btn-cancel">{{ 'GENERAL.IMAGE_CAPTURE' | translate}}</button>
+</div>

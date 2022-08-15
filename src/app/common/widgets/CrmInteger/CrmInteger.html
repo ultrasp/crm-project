@@ -1,0 +1,10 @@
+<div [ngClass]="{'input--container-flex': inputUIType === 'one-line'}">
+  <div style="{{(isInputUiTypeInLne() ? 'width: ' + labelSize +'%': '')}}" class="label">{{label}} <span *ngIf="isRequired" style="color: red; ">*</span>
+  </div>
+  <div class="inpWrap" style="{{((isInputUiTypeInLne() && (!!label && haslabel)) ? 'width: ' + (100 - labelSize) +'%': '')}}" [class.hasError]="showError">
+    <input type="text" mask="separator.0" thousandSeparator="" [allowNegativeNumbers]="true"
+           matInput [placeholder]="placeHolder || ''" [(ngModel)]="value" (change)="valueChanged()"
+    [readonly]="!isEnabled" [maxlength]="maxLength"
+    />
+  </div>
+</div>

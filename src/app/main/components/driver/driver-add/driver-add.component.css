@@ -1,0 +1,25 @@
+::ng-deep .mat-ink-bar {
+    background-color:var(--color-tab-active-border) !important;
+}
+
+.form-label {
+    color: var(--text-color-title);
+    font-size: 14px;
+    font-weight: 700;
+}
+.button-container{
+    display: flex;
+    justify-content: right;
+    padding: 8px;
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+::ng-deep .mat-tab-header{
+    margin-bottom: 20px;
+}
+:host .form-title{
+    cursor: grab;
+}
